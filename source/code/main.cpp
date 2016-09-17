@@ -1,3 +1,6 @@
+// Program written by: Adam Wallberg
+
+
 // Track memory leaks
 #ifdef DEBUG
 #define _CRTDBG_MAP_ALLOC
@@ -6,9 +9,9 @@
 #endif
 
 
+// Framework
 #include "Application.h"
 
-// Program written by: Adam Wallberg
 
 int main()
 {
