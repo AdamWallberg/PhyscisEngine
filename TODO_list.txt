@@ -1,4 +1,7 @@
+- JSON parsing
 - Create system that takes care of GLFW relevant stuff, so that no GLFW code leaks into the rest of the framework.
-- Create window.
+- Start window on specific monitor.
+- Fullscreen.
 - Input.
-- Vector classes. 
+- Vector classes.
+- Logging with file .txt output
