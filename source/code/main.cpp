@@ -9,17 +9,20 @@
 #endif
 
 
-// Framework
+// framework
 #include "Application.h"
 
 
 int main()
 {
 	// Create the application
-	Application app;
+	Application* app = new Application;
 
 	// Run the application
-	app.Run();
+	app->Run();
+
+	// Delete the application
+	delete app;
 
 #ifdef DEBUG
 	// Dump memory leaks
