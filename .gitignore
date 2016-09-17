@@ -7,3 +7,5 @@ build/*
 *.opensdf
 *.suo
 *.pdb
+*.ilk
+*.filters
