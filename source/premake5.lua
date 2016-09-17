@@ -51,7 +51,7 @@ project (FRAMEWORK_NAME)
 	}
 	
 	configuration { "Win32" }
-		targetdir "$(SolutionDir)../libraries/physcis_engine/bin32/"
+		targetdir "$(SolutionDir)../game/bin32/"
 		includedirs{
 			LIBRARY_FOLDER .. "glfw32/include"
 		}
@@ -61,7 +61,7 @@ project (FRAMEWORK_NAME)
 		}
 	
 	configuration { "Win64" }
-		targetdir "$(SolutionDir)../libraries/physcis_engine/bin64/"
+		targetdir "$(SolutionDir)../game/bin64/"
 		includedirs{
 			LIBRARY_FOLDER .. "glfw/include"
 		}
