@@ -1,17 +1,25 @@
 #include "Application.h"
 
+// engine
+#include "Engine\phWindow.h"
+
 
 
 Application::Application()
-	: m_isRunning( true )
+	: m_window( nullptr )
 {
-	
+
+	m_window = new phWindow;
+	m_window->CreateWindow( "Physcis Engine", 1280, 720, 0, false, true );
+
 } // Application
 
 
 
 Application::~Application()
 {
+
+	delete m_window;
 
 } // ~Application
 
@@ -20,11 +28,8 @@ Application::~Application()
 void Application::Run()
 {
 
-	// For now we just keep a member that determines if
-	// the application should close. 
-	// This will be replaced by checking if the "core system"
-	// wants to quit later.
-	while( m_isRunning )
+	// Main loop
+	while( !m_window->ShouldClose() )
 	{
 		Update();
 		Render();
@@ -37,8 +42,8 @@ void Application::Run()
 void Application::Update()
 {
 
-	// For now just quit the application
-	m_isRunning = false;
+	// Update window
+	m_window->Update();
 
 } // Update
 

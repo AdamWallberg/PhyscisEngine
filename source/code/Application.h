@@ -1,5 +1,7 @@
 #pragma once
 
+class phWindow;
+
 // Contains the game loop, and updates the rest of
 // the application. 
 class Application
@@ -17,6 +19,6 @@ private:
 	void Update();
 	void Render();
 
-	bool m_isRunning;
+	phWindow* m_window;
 
 };
