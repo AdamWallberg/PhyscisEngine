@@ -7,8 +7,6 @@ LIBRARY_FOLDER = "$(SolutionDir)../libraries/"
 solution (SOLUTION_NAME)
 	configurations { "Debug", "Release" }
 	
-	startproject( FRAMEWORK_NAME )
-	
 	platforms {
 		"Win32",
 		"Win64"
