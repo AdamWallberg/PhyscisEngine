@@ -1,4 +1,3 @@
-- Memory tracking.
 - Create system that takes care of GLFW relevant stuff, so that no GLFW code leaks into the rest of the framework.
 - Create window.
 - Input.
