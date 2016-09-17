@@ -1,0 +1,7 @@
+*.log
+*.exe
+build/*
+*.sln
+*.sdf
+*.vcxproj
+*.opensdf
