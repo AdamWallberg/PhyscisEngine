@@ -4,3 +4,5 @@
 - Vector classes.
 - Logging with file .txt output
 - Move sending of input events to phInputListenerSystem
+- Remove libraries from repo
+- Implement python scipting
