@@ -8,3 +8,4 @@
 - Implement python scipting
 - Fix memory leak probably caused by phInputListenerSystem.
 - Fix memory leaks caused by *drum roll* nothing!
+- Have different lua scripts for each library.
