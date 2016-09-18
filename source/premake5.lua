@@ -37,6 +37,9 @@ project (FRAMEWORK_NAME)
 	
 	files { "**.h", "**.cpp", "**.hpp" }
 	
+	targetdir "$(SolutionDir)../game/"
+	debugdir "$(SolutionDir)../game/"
+	
 	includedirs {
 		LIBRARY_FOLDER .. "glew-1.13.0/include",
 		"./code/"
@@ -49,7 +52,7 @@ project (FRAMEWORK_NAME)
 	}
 	
 	configuration { "Win32" }
-		targetdir "$(SolutionDir)../game/bin32/"
+		
 		includedirs{
 			LIBRARY_FOLDER .. "glfw32/include"
 		}
@@ -59,7 +62,6 @@ project (FRAMEWORK_NAME)
 		}
 	
 	configuration { "Win64" }
-		targetdir "$(SolutionDir)../game/bin64/"
 		includedirs{
 			LIBRARY_FOLDER .. "glfw/include"
 		}

@@ -9,3 +9,4 @@ build/*
 *.pdb
 *.ilk
 *.filters
+*.user
