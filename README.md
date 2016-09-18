@@ -3,9 +3,7 @@
 
 <h3>Description</h3>
 Physcis Engine is a 3D game engine, using GLFW for OpenGL.<br>
-It's written by me (Adam Wallberg), and is only a small hobby project.
-
-DISCLAIMER: Right now it's an empty project, so come back later.
+It's written by me (Adam Wallberg), and is only a small hobby project.<br>
 
 <h3>Planned Features</h3>
   - "Fully independent" math library (no glm or similar third party libraries)
