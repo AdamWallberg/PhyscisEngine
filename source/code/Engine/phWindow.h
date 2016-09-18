@@ -20,6 +20,7 @@ public:
 
 	// Getters
 	bool ShouldClose() { return m_shouldClose; }
+	GLFWwindow* GetWindow() { return m_window; }
 
 	// Setters
 	void SetWindowTitle( const char* title ) { glfwSetWindowTitle( m_window, title ); }
