@@ -6,3 +6,5 @@
 - Move sending of input events to phInputListenerSystem
 - Remove libraries from repo
 - Implement python scipting
+- Fix memory leak probably caused by phInputListenerSystem.
+- Fix memory leaks caused by *drum roll* nothing!
