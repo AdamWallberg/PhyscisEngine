@@ -25,10 +25,10 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 	// Initialize GLFW
 	if( !glfwInit() )
 	{
-		_log( "Couldn't initialize glfw!" );
+		_log( "Couldn't initialize glfw!\n" );
 		return false;
 	}
-	_log( "Initialized GLFW.." );
+	_log( "Initialized GLFW..\n" );
 
 	// Create the window
 	glfwWindowHint( GLFW_SAMPLES, samples );
@@ -40,11 +40,11 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 	m_window = glfwCreateWindow( width, height, title, nullptr, nullptr );
 	if( !m_window )
 	{
-		_log( "Couldn't create window!" );
+		_log( "Couldn't create window!\n" );
 		glfwTerminate();
 		return false;
 	}
-	_log( "Window created.." );
+	_log( "Window created..\n" );
 
 	// Set current context
 	glfwMakeContextCurrent( m_window );
@@ -59,11 +59,13 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 	glewExperimental = true;
 	if( glewInit() != GLEW_OK )
 	{
-		_log( "Couldn't initialize GLEW!" );
+		_log( "Couldn't initialize GLEW!\n" );
 		glfwTerminate();
 		return false;
 	}
-	_log( "Initialzied GLEW.." );
+	_log( "Initialzied GLEW..\n" );
+
+	return true;
 
 }
 
@@ -72,5 +74,6 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 void phWindow::Update()
 {
 	glfwPollEvents();
-	m_shouldClose = glfwWindowShouldClose( m_window );
+	m_shouldClose = glfwWindowShouldClose( m_window ) == GL_TRUE ? true : false;
+	glfwSwapBuffers( m_window );
 }
