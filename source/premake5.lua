@@ -41,31 +41,39 @@ project (FRAMEWORK_NAME)
 	debugdir "$(SolutionDir)../game/"
 	
 	includedirs {
-		LIBRARY_FOLDER .. "glew-1.13.0/include",
+		LIBRARY_FOLDER .. "glew-1.13.0/include/",
+		LIBRARY_FOLDER .. "python/include/",
 		"./code/"
+	}
+	
+	libdirs { 
+		LIBRARY_FOLDER .. "python/libs/"
 	}
 	
 	links {
 		"glew32",
 		"glfw3",
-		"opengl32"
+		"opengl32",
+		"_tkinter",
+		"python3",
+		"python35"
 	}
 	
 	configuration { "Win32" }
 		
 		includedirs{
-			LIBRARY_FOLDER .. "glfw32/include"
+			LIBRARY_FOLDER .. "glfw32/include/"
 		}
 		libdirs{
-			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/Win32",
-			LIBRARY_FOLDER .. "glfw32/lib-vc2013"
+			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/Win32/",
+			LIBRARY_FOLDER .. "glfw32/lib-vc2013/"
 		}
 	
 	configuration { "Win64" }
 		includedirs{
-			LIBRARY_FOLDER .. "glfw/include"
+			LIBRARY_FOLDER .. "glfw/include/"
 		}
 		libdirs{
-			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/x64",
-			LIBRARY_FOLDER .. "glfw/lib-vc2013"
+			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/x64/",
+			LIBRARY_FOLDER .. "glfw/lib-vc2013/"
 		}
