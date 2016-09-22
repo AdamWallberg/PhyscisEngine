@@ -6,7 +6,7 @@
 #include <assert.h>
 
 phWindow::phWindow()
-	: m_window( nullptr )
+	: m_pWindow( nullptr )
 	, m_shouldClose( false )
 {
 }
@@ -37,8 +37,8 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 	glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
 	glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
-	m_window = glfwCreateWindow( width, height, title, nullptr, nullptr );
-	if( !m_window )
+	m_pWindow = glfwCreateWindow( width, height, title, nullptr, nullptr );
+	if( !m_pWindow )
 	{
 		_log( "Couldn't create window!\n" );
 		glfwTerminate();
@@ -47,7 +47,7 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 	_log( "Window created..\n" );
 
 	// Set current context
-	glfwMakeContextCurrent( m_window );
+	glfwMakeContextCurrent( m_pWindow );
 
 	// Unlock fps
 	if( unlockFps )
@@ -74,6 +74,6 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 void phWindow::Update()
 {
 	glfwPollEvents();
-	m_shouldClose = glfwWindowShouldClose( m_window ) == GL_TRUE ? true : false;
-	glfwSwapBuffers( m_window );
+	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE ? true : false;
+	glfwSwapBuffers( m_pWindow );
 }

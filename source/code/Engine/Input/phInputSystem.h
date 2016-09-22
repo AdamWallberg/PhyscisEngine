@@ -9,7 +9,7 @@ class phInputSystem
 {
 public:
 
-	phInputSystem( phWindow* window );
+	phInputSystem( phWindow* pWindow );
 	~phInputSystem();
 
 	enum EEventType
@@ -28,6 +28,6 @@ private:
 
 #define NUM_KEYS 350
 
-	static void KeyPressedCB( GLFWwindow* window, int key, int scancode, int action, int mods );
+	static void KeyPressedCB( GLFWwindow* pWindow, int key, int scancode, int action, int mods );
 
 };

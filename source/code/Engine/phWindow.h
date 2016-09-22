@@ -20,14 +20,14 @@ public:
 
 	// Getters
 	bool ShouldClose() { return m_shouldClose; }
-	GLFWwindow* GetWindow() { return m_window; }
+	GLFWwindow* GetWindow() { return m_pWindow; }
 
 	// Setters
-	void SetWindowTitle( const char* title ) { glfwSetWindowTitle( m_window, title ); }
+	void SetWindowTitle( const char* title ) { glfwSetWindowTitle( m_pWindow, title ); }
 
 private:
 
-	GLFWwindow* m_window;
+	GLFWwindow* m_pWindow;
 	bool m_shouldClose;
 
 };

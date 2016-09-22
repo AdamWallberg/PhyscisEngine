@@ -3,11 +3,11 @@
 #include "Engine/phWindow.h"
 #include "phIInputListener.h"
 
-phInputSystem::phInputSystem( phWindow* window )
+phInputSystem::phInputSystem( phWindow* pWindow )
 {
 
 	// Set key event callback
-	glfwSetKeyCallback( window->GetWindow(), KeyPressedCB );
+	glfwSetKeyCallback( pWindow->GetWindow(), KeyPressedCB );
 
 } // phInputSystem
 
@@ -20,7 +20,7 @@ phInputSystem::~phInputSystem()
 
 
 
-void phInputSystem::KeyPressedCB( GLFWwindow* window, int key, int scancode, int action, int mods )
+void phInputSystem::KeyPressedCB( GLFWwindow* pWindow, int key, int scancode, int action, int mods )
 {
 	SEvent event;
 	event.key = key;

@@ -8,16 +8,16 @@
 
 Application::Application()
 	: phIInputListener( phInputSystem::KEY_PRESSED | phInputSystem::KEY_RELEASED )
-	, m_window( nullptr )
-	, m_inputSystem( nullptr )
+	, m_pWindow( nullptr )
+	, m_pInputSystem( nullptr )
 {
 	
 	// Create window
-	m_window = new phWindow;
-	m_window->CreateWindow( "Physcis Engine", 1280, 720, 0, false, true );
+	m_pWindow = new phWindow;
+	m_pWindow->CreateWindow( "Physcis Engine", 1280, 720, 0, false, true );
 
 	// Create input system
-	m_inputSystem = new phInputSystem( m_window );
+	m_pInputSystem = new phInputSystem( m_pWindow );
 
 } // Application
 
@@ -26,8 +26,8 @@ Application::Application()
 Application::~Application()
 {
 
-	delete m_inputSystem;
-	delete m_window;
+	delete m_pInputSystem;
+	delete m_pWindow;
 
 } // ~Application
 
@@ -37,7 +37,7 @@ void Application::Run()
 {
 
 	// Main loop
-	while( !m_window->ShouldClose() )
+	while( !m_pWindow->ShouldClose() )
 	{
 		Update();
 		Render();
@@ -47,16 +47,16 @@ void Application::Run()
 
 
 
-void Application::InputEvent( const phInputSystem::SEvent& event )
+void Application::InputEvent( const phInputSystem::SEvent& rEvent )
 {
 
-	if( event.type == phInputSystem::EEventType::KEY_PRESSED )
+	if( rEvent.type == phInputSystem::EEventType::KEY_PRESSED )
 	{
-		_log( "%c was pressed..\n", event.key );
+		_log( "%c was pressed..\n", rEvent.key );
 	}
-	else if( event.type == phInputSystem::EEventType::KEY_RELEASED )
+	else if( rEvent.type == phInputSystem::EEventType::KEY_RELEASED )
 	{
-		_log( "%c was released..\n", event.key );
+		_log( "%c was released..\n", rEvent.key );
 	}
 
 } // InputEvent
@@ -67,7 +67,7 @@ void Application::Update()
 {
 
 	// Update window
-	m_window->Update();
+	m_pWindow->Update();
 
 } // Update
 

@@ -17,14 +17,14 @@ public:
 	// Mathod that runs the game loop
 	void Run();
 
-	void InputEvent( const phInputSystem::SEvent& event ) override;
+	void InputEvent( const phInputSystem::SEvent& rEvent ) override;
 
 private:
 
 	void Update();
 	void Render();
 
-	phWindow* m_window;
-	phInputSystem* m_inputSystem;
+	phWindow* m_pWindow;
+	phInputSystem* m_pInputSystem;
 
 };

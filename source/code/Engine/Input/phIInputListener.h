@@ -16,7 +16,7 @@ public:
 
 	virtual ~phIInputListener(){}
 	
-	virtual void InputEvent( const phInputSystem::SEvent& event ) = 0;
+	virtual void InputEvent( const phInputSystem::SEvent& rEvent ) = 0;
 
 	virtual int GetTypeFlags() { return m_typeFlags; }
 

@@ -32,13 +32,13 @@ emb_run_application(PyObject *self, PyObject *args)
         return nullptr;
 
 	// Create the application
-	Application* app = new Application;
+	Application* pApp = new Application;
 
 	// Run the application
-	app->Run();
+	pApp->Run();
 
 	// Delete the application
-	delete app;
+	delete pApp;
 
     return PyLong_FromLong(numargs);
 }
@@ -152,13 +152,13 @@ main()
 int main()
 {
 	// Create the application
-	Application* app = new Application;
+	Application* pApp = new Application;
 	
 	// Run the application
-	app->Run();
+	pApp->Run();
 	
 	// Delete the application
-	delete app;
+	delete pApp;
 
 #ifdef DEBUG
 	// Dump memory leaks

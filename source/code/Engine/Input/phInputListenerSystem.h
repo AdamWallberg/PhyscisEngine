@@ -11,7 +11,7 @@ class phInputListenerSystem
 {
 public:
 
-	static void AddListener( phIInputListener* listener );
+	static void AddListener( phIInputListener* pListener );
 
 private:
 
