@@ -1,13 +1,9 @@
-*.log
 *.exe
-build/*
 *.sln
-*.sdf
-*.vcxproj
+build/
 *.opensdf
+*.sdf
 *.suo
-*.pdb
-*.ilk
+*.vcxproj
 *.filters
 *.user
-*.pyc
