@@ -34,6 +34,7 @@ project (FRAMEWORK_NAME)
 	
 	targetdir "$(SolutionDir)../game/"
 	debugdir "$(SolutionDir)../game/"
+	targetname(FRAMEWORK_NAME .. " - $(Configuration)")
 	
 	includedirs {
 		LIBRARY_FOLDER .. "glew-1.13.0/include/",
