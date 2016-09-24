@@ -9,14 +9,14 @@ phWindow::phWindow()
 	: m_pWindow( nullptr )
 	, m_shouldClose( false )
 {
-}
+} // phWindow
 
 
 
 phWindow::~phWindow()
 {
 	glfwTerminate();
-}
+} // ~phWindow
 
 
 
@@ -67,7 +67,7 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 
 	return true;
 
-}
+} // CreateWindow
 
 
 
@@ -76,4 +76,4 @@ void phWindow::Update()
 	glfwPollEvents();
 	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE ? true : false;
 	glfwSwapBuffers( m_pWindow );
-}
+} // Update
