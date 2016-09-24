@@ -1,6 +1,7 @@
 #pragma once
 
 class phCWindow;
+class phCInputSystem;
 
 // Contains the game loop, and updates the rest of
 // the application. 
@@ -20,5 +21,7 @@ private:
 	void Render();
 
 	phCWindow* m_pWindow;
+
+	phCInputSystem* m_pInputSystem;
 
 };
