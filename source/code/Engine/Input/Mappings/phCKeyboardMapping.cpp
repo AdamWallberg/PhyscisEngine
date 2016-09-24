@@ -4,6 +4,13 @@
 
 #include "phCWindow.h"
 
+//glfw
+#include "memdisable.h"
+#include <GLFW/glfw3.h>
+#include "memenable.h"
+
+
+
 phCKeyboardMapping::phCKeyboardMapping( phCWindow* pWindow, int key )
 	: phIInputMapping()
 	, m_pWindow( pWindow )
