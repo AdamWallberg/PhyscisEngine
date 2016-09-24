@@ -1,16 +1,9 @@
 // Program written by: Adam Wallberg
 
-// Track memory leaks
-#ifdef DEBUG
-#define _CRTDBG_MAP_ALLOC
-//#include <stdlib.h>
-#include <crtdbg.h>
-#endif
-
-
+// engine
+#include "Engine/phSystem.h"
 // framework
 #include "Application.h"
-
 
 int main()
 {
@@ -19,7 +12,7 @@ int main()
 	
 	// Run the application
 	pApp->Run();
-	
+
 	// Delete the application
 	delete pApp;
 
