@@ -39,7 +39,8 @@ project (FRAMEWORK_NAME)
 	includedirs {
 		LIBRARY_FOLDER .. "glew-1.13.0/include/",
 		LIBRARY_FOLDER .. "python/include/",
-		"./code/"
+		"./code/",
+		"./code/Engine/"
 	}
 	
 	libdirs { 
