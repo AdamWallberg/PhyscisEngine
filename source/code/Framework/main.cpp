@@ -1,6 +1,6 @@
 // Program written by: Adam Wallberg
 
-#define TEST_PYTHON
+//#define TEST_PYTHON
 
 #ifdef TEST_PYTHON
 
@@ -140,7 +140,7 @@ main()
 // Track memory leaks
 #ifdef DEBUG
 #define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <crtdbg.h>
 #endif
 
