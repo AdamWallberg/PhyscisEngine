@@ -3,12 +3,12 @@
 // engine
 #include "Engine/phSystem.h"
 // framework
-#include "Application.h"
+#include "CApplication.h"
 
 int main()
 {
 	// Create the application
-	Application* pApp = new Application;
+	CApplication* pApp = new CApplication;
 	
 	// Run the application
 	pApp->Run();

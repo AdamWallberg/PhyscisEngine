@@ -1,30 +1,30 @@
-#include "Application.h"
+#include "CApplication.h"
 // engine
-#include "Engine/phWindow.h"
+#include "Engine/phCWindow.h"
 #include "Engine/Utils/phLog.h"
 
 
-Application::Application()
+CApplication::CApplication()
 	: m_pWindow( nullptr )
 {
 	
 	// Create window
-	m_pWindow = new phWindow;
+	m_pWindow = new phCWindow;
 	m_pWindow->CreateWindow( "Physcis Engine", 1280, 720, 0, false, true );
 
-} // Application
+} // CApplication
 
 
 
-Application::~Application()
+CApplication::~CApplication()
 {
 	delete m_pWindow;
 
-} // ~Application
+} // ~CApplication
 
 
 
-void Application::Run()
+void CApplication::Run()
 {
 
 	// Main loop
@@ -38,7 +38,7 @@ void Application::Run()
 
 
 
-void Application::Update()
+void CApplication::Update()
 {
 
 	// Update window
@@ -48,7 +48,7 @@ void Application::Update()
 
 
 
-void Application::Render()
+void CApplication::Render()
 {
 	
 } // Render

@@ -5,12 +5,12 @@
 #include <GLFW/glfw3.h>
 
 // All interaction with the GLFW window goes through this class. 
-class phWindow
+class phCWindow
 {
 public:
 
-	phWindow();
-	~phWindow();
+	phCWindow();
+	~phCWindow();
 
 	// Creates the window
 	bool CreateWindow( const char* title, int width, int height, int samples, bool fullscreen, bool unlockFps );

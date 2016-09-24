@@ -1,26 +1,26 @@
-#include "phWindow.h"
+#include "phCWindow.h"
 
 // engine
 #include "Utils/phLog.h"
 // std
 #include <assert.h>
 
-phWindow::phWindow()
+phCWindow::phCWindow()
 	: m_pWindow( nullptr )
 	, m_shouldClose( false )
 {
-} // phWindow
+} // phCWindow
 
 
 
-phWindow::~phWindow()
+phCWindow::~phCWindow()
 {
 	glfwTerminate();
-} // ~phWindow
+} // ~phCWindow
 
 
 
-bool phWindow::CreateWindow( const char* title, int width, int height, int samples, bool fullscreen, bool unlockFps )
+bool phCWindow::CreateWindow( const char* title, int width, int height, int samples, bool fullscreen, bool unlockFps )
 {
 	// Initialize GLFW
 	if( !glfwInit() )
@@ -71,7 +71,7 @@ bool phWindow::CreateWindow( const char* title, int width, int height, int sampl
 
 
 
-void phWindow::Update()
+void phCWindow::Update()
 {
 	glfwPollEvents();
 	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE ? true : false;
