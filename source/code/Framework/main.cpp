@@ -7,6 +7,8 @@
 
 int main()
 {
+	new int(6);
+
 	// Create the application
 	Application* pApp = new Application;
 	
