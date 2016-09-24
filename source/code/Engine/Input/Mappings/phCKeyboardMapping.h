@@ -2,7 +2,7 @@
 
 #include "phIInputMapping.h"
 
-struct phCWindow;
+class phCWindow;
 
 class phCKeyboardMapping : public phIInputMapping
 {
