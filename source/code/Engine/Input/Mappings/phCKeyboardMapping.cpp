@@ -2,12 +2,9 @@
 
 #include "phCKeyboardMapping.h"
 
-// glfw
-#include "memdisable.h"
-#include <GLFW/glfw3.h>
-#include "memenable.h"
+#include "phCWindow.h"
 
-phCKeyboardMapping::phCKeyboardMapping( GLFWwindow* pWindow, int key )
+phCKeyboardMapping::phCKeyboardMapping( phCWindow* pWindow, int key )
 	: phIInputMapping()
 	, m_pWindow( pWindow )
 	, m_key( key )
@@ -23,22 +20,35 @@ phCKeyboardMapping::phCKeyboardMapping( GLFWwindow* pWindow, int key )
 void phCKeyboardMapping::Update()
 {
 
-	if( m_held )
-		m_pressed = false;
-
-	int state = glfwGetKey( m_pWindow, m_key );
+	int state = glfwGetKey( m_pWindow->GetWindow(), m_key );
 
 	if( state == GLFW_PRESS ) // Key pressed
 	{
-		m_pressed = true;
-		m_released = false;
-		m_held = true;
+		if( !m_held )
+		{
+			m_pressed = true;
+			m_held = true;
+			m_released = false;
+		}
+		else // m_held
+		{
+			m_pressed = false;	
+		}
+
 	}
 	else if( state == GLFW_RELEASE ) // Key released
 	{
-		m_released = true;
-		m_released = false;
-		m_held = false;
+		if( m_held )
+		{
+			m_held = false;
+			m_released = true;
+			m_pressed = false;
+		}
+		else // !m_held
+		{
+			m_released = false;
+		}
+
 	}
 
 } // Update

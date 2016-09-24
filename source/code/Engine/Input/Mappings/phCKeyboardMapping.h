@@ -2,13 +2,13 @@
 
 #include "phIInputMapping.h"
 
-struct GLFWwindow;
+struct phCWindow;
 
 class phCKeyboardMapping : public phIInputMapping
 {
 public:
 
-	phCKeyboardMapping( GLFWwindow* pWindow, int key );
+	phCKeyboardMapping( phCWindow* pWindow, int key );
 
 	bool GetPressed() const override { return m_pressed; }
 	bool GetHeld() const override { return m_held; }
@@ -19,7 +19,7 @@ public:
 
 private:
 
-	GLFWwindow* m_pWindow;
+	phCWindow* m_pWindow;
 
 	int m_key;
 
