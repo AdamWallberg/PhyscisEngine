@@ -9,3 +9,5 @@ build/
 *.user
 *.ilk
 *.pdb
+*.opendb
+*.db
