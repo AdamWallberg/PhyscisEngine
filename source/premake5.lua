@@ -18,6 +18,7 @@ solution (SOLUTION_NAME)
 	configuration { "Debug" }
 		defines { "DEBUG" }
 		flags { "Symbols" }
+		linkoptions{ "/NODEFAULTLIB:msvcrt.lib" }
 		
 	configuration { "Release" }
 		defines { "RELEASE", "NDEBUG" }
@@ -55,8 +56,6 @@ project (FRAMEWORK_NAME)
 		"python3",
 		"python35"
 	}
-	
-	linkoptions{ "/NODEFAULTLIB:msvcrt.lib" }
 	
 	configuration { "Win32" }
 		
