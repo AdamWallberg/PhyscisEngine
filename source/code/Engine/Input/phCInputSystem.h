@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Mappings/phCKeyboardMapping.h"
+#include "Actions/phCAction.h"
+
+class phCWindow;
 
 // Creates and manages all sub-systems concerning input
 class phCInputSystem
@@ -11,5 +13,9 @@ public:
 	~phCInputSystem();
 
 	void Update();
+
+private:
+
+	phCAction m_testAction;
 
 };
