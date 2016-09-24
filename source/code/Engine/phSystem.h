@@ -7,5 +7,5 @@
 	#include <crtdbg.h>
 #endif
 
-// Enable memory tracking
+// Enable detailed memory leak dump information
 #include "memenable.h"
