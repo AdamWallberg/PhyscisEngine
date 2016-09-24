@@ -1,6 +1,6 @@
 require 'settings'
 
-LIBRARY_FOLDER = "$(SolutionDir)../libraries/"
+LIBRARY_FOLDER = "$(SolutionDir)../dependencies/"
 
 --premake5.lua
  
