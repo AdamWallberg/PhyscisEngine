@@ -56,6 +56,8 @@ project (FRAMEWORK_NAME)
 		"python35"
 	}
 	
+	linkoptions{ "/NODEFAULTLIB:msvcrt.lib" }
+	
 	configuration { "Win32" }
 		
 		includedirs{
