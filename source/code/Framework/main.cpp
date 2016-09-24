@@ -7,6 +7,11 @@
 
 int main()
 {
+
+#ifdef DEBUG
+	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
+#endif
+
 	// Create the application
 	CApplication* pApp = new CApplication;
 	
@@ -16,10 +21,6 @@ int main()
 	// Delete the application
 	delete pApp;
 
-#ifdef DEBUG
-	// Dump memory leaks
-	_CrtDumpMemoryLeaks();
-#endif
-
 	return 0;
+
 } // main
