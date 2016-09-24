@@ -64,5 +64,5 @@ project (FRAMEWORK_NAME)
 		}
 		libdirs{
 			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/Win32/",
-			LIBRARY_FOLDER .. "glfw32/lib-vc2013/"
+			LIBRARY_FOLDER .. "glfw32/lib-vc2015/"
 		}

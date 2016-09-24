@@ -1,1 +1,1 @@
-& "../utils/premake5/premake5.exe" "vs2013"
+& "../utils/premake5/premake5.exe" "vs2015"
