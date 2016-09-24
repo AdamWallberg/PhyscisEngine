@@ -7,4 +7,5 @@
 	#include <crtdbg.h>
 #endif
 
-// TODO: Automatically include memory tracking .h file
+// Enable memory tracking
+#include "MemoryTracking/phMemoryTrack.h"
