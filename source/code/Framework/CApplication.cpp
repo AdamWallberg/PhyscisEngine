@@ -1,17 +1,20 @@
 #include "CApplication.h"
+// framework
+#include "Settings/CSettingsWindow.h"
 // engine
 #include "Engine/phCWindow.h"
 #include "Engine/Utils/phLog.h"
 #include "Engine/Input/phCInputSystem.h"
+#include "Engine/FileSystem/phCFileUtils.h"
 
 CApplication::CApplication()
 	: m_pWindow( nullptr )
 	, m_pInputSystem( nullptr )
 {
-	
 	// Create window
+	CSettingsWindow::LoadSettings();
 	m_pWindow = new phCWindow;
-	m_pWindow->CreateWindow( "Physcis Engine", 1280, 720, 0, false, true );
+	m_pWindow->CreateWindow( CSettingsWindow::title.c_str(), CSettingsWindow::width, CSettingsWindow::height, CSettingsWindow::samples, CSettingsWindow::fullscreen, CSettingsWindow::unlockFps );
 
 	// Create input system
 	m_pInputSystem = new phCInputSystem( m_pWindow );
