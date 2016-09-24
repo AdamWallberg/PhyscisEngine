@@ -7,3 +7,5 @@ build/
 *.vcxproj
 *.filters
 *.user
+*.ilk
+*.pdb
