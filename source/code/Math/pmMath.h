@@ -38,3 +38,21 @@ inline float pmSaturate( float value )
 
 	return value;
 }
+
+
+
+// Converts degrees to radians.
+// Uses only multiplication with const value to optimize performance.
+inline float pmToRadians( const float& degrees )
+{
+	return degrees * 0.0174532925f;
+}
+
+
+
+// Converts radians to degrees.
+// Uses only multiplication with const value to optimize performance.
+inline float pmToDegrees( const float& radians )
+{
+	return radians * 57.2957795f;
+}
