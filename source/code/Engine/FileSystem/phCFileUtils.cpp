@@ -12,7 +12,7 @@ nlohmann::json phCFileUtils::LoadAndParseJSON( const char* filePath )
 
 	// Read file data
 	std::ifstream file( filePath );
-	if (file.is_open())
+	if( file.is_open() )
 	{
 		std::stringstream buffer;
 		buffer << file.rdbuf();
@@ -20,7 +20,7 @@ nlohmann::json phCFileUtils::LoadAndParseJSON( const char* filePath )
 		file.close();
 		
 		// Parse json data
-		j = nlohmann::json::parse(content.c_str());
+		j = nlohmann::json::parse( content.c_str() );
 	}
 
 	return j;
