@@ -5,6 +5,7 @@
 #include "Engine/memenable.h"
 
 #include "pmMath.h"
+#include "pmV2.h"
 
 
 class pmV3
@@ -38,7 +39,8 @@ public:
 			float y;
 			float z;
 		};
-		// TODO: union 2D vector
+
+		pmV2 xy;
 	};
 
 ////////////////////////////////////////////////////////////////
