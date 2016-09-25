@@ -37,7 +37,12 @@ bool phCWindow::CreateWindow( const char* title, int width, int height, int samp
 	glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
 	glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
-	m_pWindow = glfwCreateWindow( width, height, title, nullptr, nullptr );
+	// Setup fullscreen
+	GLFWmonitor* pMonitor = nullptr;
+	if( fullscreen )
+		pMonitor = glfwGetPrimaryMonitor();
+
+	m_pWindow = glfwCreateWindow( width, height, title, pMonitor, nullptr );
 	if( !m_pWindow )
 	{
 		_log( "Couldn't create window!\n" );
