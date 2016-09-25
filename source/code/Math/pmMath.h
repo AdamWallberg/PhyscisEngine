@@ -14,6 +14,14 @@ inline float pmSqrt( const float& value )
 
 
 
+// Returns pow of the specified base
+inline float pmPow( const float& base, const float& exponent )
+{
+	return pow( base, exponent );
+}
+
+
+
 // Calculates and returns the absolute 
 // value of the specified float.
 inline float pmAbs( const float& value )
