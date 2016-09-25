@@ -1,5 +1,8 @@
 #pragma once
 
+#include "memdisable.h"
+#include <math.h>
+#include "memenable.h"
 
 // Calculates and returns the absolute 
 // value of the specified float.
@@ -55,4 +58,69 @@ inline float pmToRadians( const float& degrees )
 inline float pmToDegrees( const float& radians )
 {
 	return radians * 57.2957795f;
+}
+
+
+
+// Returns sine from degrees.
+inline float pmSin( const float& degrees )
+{
+	return sin( pmToRadians( degrees ) );
+}
+
+
+
+// Returns asin
+inline float pmASin( const float& sin )
+{
+	return pmToDegrees( asin( sin ) );
+}
+
+
+
+// Returns cosine from degrees.
+inline float pmCos( const float& degrees )
+{
+	return cos( pmToRadians( degrees ) );
+}
+
+
+
+// Returns acos
+inline float pmACos( const float& cos )
+{
+	return pmToDegrees( acos( cos ) );
+}
+
+
+
+// Returns tangent from degrees.
+inline float pmTan( const float& degrees )
+{
+	return tan( pmToRadians( degrees ) );
+}
+
+
+// Returns atan
+inline float pmATan( const float& tan )
+{
+	return pmToDegrees( atan( tan ) );
+}
+
+
+
+// Interpolates between two values using a factor.
+// factor 0 is no interpolation and factor 1 is full.
+// The interpolation can go outside range, both positive and negative.
+inline float pmLerp( const float& start, const float& end, const float& factor )
+{
+	return start + ( end - start ) * factor;
+}
+
+
+
+// Cosine interpolates between the two given values using the factor.
+inline float pmInterpolateCos( const float& start, const float& end, const float& factor )
+{
+	return start + ( end - start ) * ( ( -pmCos( factor * 180.0f ) + 1.0f ) * 0.5f );
 }
