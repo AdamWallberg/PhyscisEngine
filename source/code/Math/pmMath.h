@@ -4,6 +4,16 @@
 #include <math.h>
 #include "memenable.h"
 
+
+
+// Returns the square root of the specified value.
+inline float pmSqrt( const float& value )
+{
+	return sqrt( value );
+}
+
+
+
 // Calculates and returns the absolute 
 // value of the specified float.
 inline float pmAbs( const float& value )
