@@ -5,20 +5,24 @@
 Physcis Engine is a 3D game engine, using GLFW for OpenGL.<br>
 It's written by me (Adam Wallberg), and is only a small hobby project.<br>
 
+<h3>Implemented Features</h3> 
+  - Premake5 project setup.
+  - Component based input system. (Not complete yet.)
+  - 2D and 3D vectors, and some basic math functions.
+  - JSON loading and parsing using modern json. <a href="https://github.com/nlohmann/json">github.com/nlohmann/json</a>
+  - Window creating using GLFW.
+  - Toggable memory leak tracking.
+
 <h3>Planned Features</h3>
   - "Fully independent" math library (no glm or similar third party libraries)
     including own vector and matrix classes.
   - Deferred rendering with some fancy postFX. 'Tis my forte.
   - Some sort of python scripting.
-  - Component based input system. 
   - Event based communication.
   
 <h3>Setup</h3>
-For now the process is not fully optimized, but here's how to do it:
-  1. Change "generate_project_files.ps1", so that it builds for your IDE.
-  2. Change the includedirs in "premake5.lua", so that they match what you need. 
-     Note: I can't guarantee that it will work for anything else than Visual Studio 
-     Community 2013/2015, since that is what I've used, and haven't tried with anything else.
-  3. Run "generate_project_files.ps1" with powershell. If it complains about the execution policy,
+Heads up: the project can probably only compile using visual studio community 2015, mostly because of the json library.
+
+  1. Run "generate_project_files.ps1" with powershell. If it complains about the execution policy,
      set it to unrestricted. <a href="https://technet.microsoft.com/en-us/library/ee176961.aspx">check this out.</a>
-  4. Tadaa! Solution files! :D
+  2. Tadaa! Solution files! :D
