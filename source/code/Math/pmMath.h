@@ -9,7 +9,7 @@
 // Returns the square root of the specified value.
 inline float pmSqrt( const float& value )
 {
-	return sqrt( value );
+	return static_cast<float>( sqrt( value ) );
 }
 
 
@@ -17,7 +17,7 @@ inline float pmSqrt( const float& value )
 // Returns pow of the specified base
 inline float pmPow( const float& base, const float& exponent )
 {
-	return pow( base, exponent );
+	return static_cast<float>( pow( base, exponent ) );
 }
 
 
@@ -83,7 +83,7 @@ inline float pmToDegrees( const float& radians )
 // Returns sine from degrees.
 inline float pmSin( const float& degrees )
 {
-	return sin( pmToRadians( degrees ) );
+	return static_cast<float>( sin( pmToRadians( degrees ) ) );
 }
 
 
@@ -91,7 +91,7 @@ inline float pmSin( const float& degrees )
 // Returns asin
 inline float pmASin( const float& sin )
 {
-	return pmToDegrees( asin( sin ) );
+	return pmToDegrees( static_cast<float>( asin( sin ) ) );
 }
 
 
@@ -99,7 +99,7 @@ inline float pmASin( const float& sin )
 // Returns cosine from degrees.
 inline float pmCos( const float& degrees )
 {
-	return cos( pmToRadians( degrees ) );
+	return static_cast<float>( cos( pmToRadians( degrees ) ) );
 }
 
 
@@ -107,7 +107,7 @@ inline float pmCos( const float& degrees )
 // Returns acos
 inline float pmACos( const float& cos )
 {
-	return pmToDegrees( acos( cos ) );
+	return pmToDegrees( static_cast<float>( acos( cos ) ) );
 }
 
 
@@ -115,14 +115,14 @@ inline float pmACos( const float& cos )
 // Returns tangent from degrees.
 inline float pmTan( const float& degrees )
 {
-	return tan( pmToRadians( degrees ) );
+	return static_cast<float>( tan( pmToRadians( degrees ) ) );
 }
 
 
 // Returns atan
 inline float pmATan( const float& tan )
 {
-	return pmToDegrees( atan( tan ) );
+	return pmToDegrees( static_cast<float>( atan( tan ) ) );
 }
 
 
