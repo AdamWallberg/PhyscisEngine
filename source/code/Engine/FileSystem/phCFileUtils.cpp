@@ -1,10 +1,8 @@
 #include "phSystem.h"
 #include "phCFileUtils.h"
 //std
-#include "memdisable.h"
 #include <fstream>
 #include <string>
-#include "memenable.h"
 
 nlohmann::json phCFileUtils::LoadAndParseJSON( const char* filePath )
 {

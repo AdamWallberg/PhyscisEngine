@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Engine/memdisable.h"
 #include <string>
-#include "Engine/memenable.h"
 
 #include "pmMath.h"
 #include "pmV2.h"

@@ -1,9 +1,7 @@
 #pragma once
 
 //std
-#include "memdisable.h"
 #include <map>
-#include "memenable.h"
 // input
 #include "Input/Mappings/phIInputMapping.h"
 

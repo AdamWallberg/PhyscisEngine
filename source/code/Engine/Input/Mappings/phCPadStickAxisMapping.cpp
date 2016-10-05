@@ -3,9 +3,7 @@
 #include "phCWindow.h"
 #include "Engine/Utils/phLog.h"
 //glfw
-#include "memdisable.h"
 #include <GLFW/glfw3.h>
-#include "memenable.h"
 //math
 #include "Math/pmMath.h"
 

@@ -1,3 +1,5 @@
+#include "Engine/phSystem.h"
+
 #include "CApplication.h"
 // framework
 #include "Settings/CSettingsWindow.h"
@@ -13,11 +15,11 @@ CApplication::CApplication()
 {
 	// Create window
 	CSettingsWindow::LoadSettings();
-	m_pWindow = new phCWindow;
+	m_pWindow = newp phCWindow;
 	m_pWindow->CreateWindow( CSettingsWindow::title.c_str(), CSettingsWindow::width, CSettingsWindow::height, CSettingsWindow::samples, CSettingsWindow::fullscreen, CSettingsWindow::unlockFps );
 
 	// Create input system
-	m_pInputSystem = new phCInputSystem( m_pWindow );
+	m_pInputSystem = newp phCInputSystem( m_pWindow );
 
 } // CApplication
 

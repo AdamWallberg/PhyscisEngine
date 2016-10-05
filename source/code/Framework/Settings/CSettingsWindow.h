@@ -1,9 +1,7 @@
 #pragma once
 
 // std
-#include "memdisable.h"
 #include <string>
-#include "memdisable.h"
 
 class CSettingsWindow
 {

@@ -10,7 +10,7 @@ template< typename T > void phCSingleton<T>::Init()
 {
 
 	if( !m_pInstance )
-		m_pInstance = new T();
+		m_pInstance = newp T();
 
 } // Init
 

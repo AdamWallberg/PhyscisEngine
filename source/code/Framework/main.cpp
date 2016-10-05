@@ -13,7 +13,7 @@ int main()
 #endif
 
 	// Create the application
-	CApplication* pApp = new CApplication;
+	CApplication* pApp = newp CApplication;
 	
 	// Run the application
 	pApp->Run();

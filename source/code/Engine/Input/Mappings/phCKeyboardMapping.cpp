@@ -5,9 +5,7 @@
 #include "phCWindow.h"
 
 //glfw
-#include "memdisable.h"
 #include <GLFW/glfw3.h>
-#include "memenable.h"
 
 
 

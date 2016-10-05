@@ -1,8 +1,6 @@
 #pragma once
 
-#include "memdisable.h"
 #include <math.h>
-#include "memenable.h"
 
 
 
