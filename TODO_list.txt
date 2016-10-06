@@ -1,5 +1,5 @@
 - Start window on specific monitor.
-- Fullscreen.
 - Vector classes.
 - Logging with file .txt output
 - Have different lua scripts for each library.
+- Optimize data types, ie. short, unsigned etc..
