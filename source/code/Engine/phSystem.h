@@ -11,3 +11,6 @@
 #else
 	#define newp new
 #endif
+
+// Include typedefs
+#include "Utils/phTypes.h"
