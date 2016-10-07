@@ -20,6 +20,7 @@ CApplication::CApplication()
 
 	// Create input system
 	m_pInputSystem = newp phCInputSystem( m_pWindow );
+	_logDebug( "Input system initialized.." );
 
 } // CApplication
 
