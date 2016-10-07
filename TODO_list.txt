@@ -1,4 +1,4 @@
 - Start window on specific monitor.
-- Vector classes.
 - Logging with file .txt output
 - Have different lua scripts for each library.
+- Setup defines for joystick buttons/sticks
