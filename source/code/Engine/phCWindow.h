@@ -13,7 +13,7 @@ public:
 	~phCWindow();
 
 	// Creates the window
-	bool CreateWindow( const char* title, int width, int height, int samples, bool fullscreen, bool unlockFps );
+	bool CreateWindow( const char* title, uint16 width, uint16 height, uint8 samples, bool fullscreen, bool unlockFps );
 
 	// Polls glfw events
 	void Update();

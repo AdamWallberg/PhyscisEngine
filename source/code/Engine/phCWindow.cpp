@@ -1,3 +1,5 @@
+#include "phSystem.h"
+
 #include "phCWindow.h"
 
 // engine
@@ -20,7 +22,7 @@ phCWindow::~phCWindow()
 
 
 
-bool phCWindow::CreateWindow( const char* title, int width, int height, int samples, bool fullscreen, bool unlockFps )
+bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, uint8 samples, bool fullscreen, bool unlockFps )
 {
 	// Initialize GLFW
 	if( !glfwInit() )
