@@ -27,10 +27,10 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	// Initialize GLFW
 	if( !glfwInit() )
 	{
-		_log( "Couldn't initialize glfw!\n" );
+		_logError( "Couldn't initialize glfw!" );
 		return false;
 	}
-	_log( "Initialized GLFW..\n" );
+	_logDebug( "Initialized GLFW.." );
 
 	// Create the window
 	glfwWindowHint( GLFW_SAMPLES, samples );
@@ -47,11 +47,11 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	m_pWindow = glfwCreateWindow( width, height, title, pMonitor, nullptr );
 	if( !m_pWindow )
 	{
-		_log( "Couldn't create window!\n" );
+		_logError( "Couldn't create window!" );
 		glfwTerminate();
 		return false;
 	}
-	_log( "Window created..\n" );
+	_logDebug( "Window created.." );
 
 	// Set current context
 	glfwMakeContextCurrent( m_pWindow );
@@ -66,11 +66,11 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	glewExperimental = true;
 	if( glewInit() != GLEW_OK )
 	{
-		_log( "Couldn't initialize GLEW!\n" );
+		_logError( "Couldn't initialize GLEW!" );
 		glfwTerminate();
 		return false;
 	}
-	_log( "Initialzied GLEW..\n" );
+	_logDebug( "Initialzied GLEW.." );
 
 	return true;
 
