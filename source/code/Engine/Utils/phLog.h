@@ -11,7 +11,7 @@
 // Debug log message
 #ifdef DEBUG
 #define _logDebug( MESSAGE, ... ) printf( MESSAGE "\n", __VA_ARGS__ )
-#define _logError( MESSAGE, ... ) printf( MESSAGE "\n", __VA_ARGS__ )
+#define _logError( MESSAGE, ... ) printf( "ERROR: " MESSAGE "\n", __VA_ARGS__ )
 #else
 #define _logDebug( MESSAGE, ... )
 #define _logError( MESSAGE, ... )
