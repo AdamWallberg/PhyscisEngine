@@ -79,6 +79,6 @@ bool phCWindow::CreateWindow( const char* title, int width, int height, int samp
 void phCWindow::Update()
 {
 	glfwPollEvents();
-	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE ? true : false;
+	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE;
 	glfwSwapBuffers( m_pWindow );
 } // Update
