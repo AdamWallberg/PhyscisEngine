@@ -10,9 +10,9 @@ public:
 	static void LoadSettings();
 
 	static std::string title;
-	static int width;
-	static int height;
-	static int samples;
+	static uint16 width;
+	static uint16 height;
+	static uint8 samples;
 	static bool fullscreen;
 	static bool unlockFps;
 

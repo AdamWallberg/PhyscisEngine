@@ -4,9 +4,9 @@
 
 
 std::string CSettingsWindow::title = "Default Title";
-int CSettingsWindow::width = 1280;
-int CSettingsWindow::height = 720;
-int CSettingsWindow::samples = 0;
+uint16 CSettingsWindow::width = 1280;
+uint16 CSettingsWindow::height = 720;
+uint8 CSettingsWindow::samples = 0;
 bool CSettingsWindow::fullscreen = false;
 bool CSettingsWindow::unlockFps = true;
 
