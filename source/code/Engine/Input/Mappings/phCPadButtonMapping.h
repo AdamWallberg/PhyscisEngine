@@ -8,7 +8,7 @@ class phCPadButtonMapping : public phIInputMapping
 {
 public:
 
-	phCPadButtonMapping( phCWindow* pWindow, const int pad, const int button );
+	phCPadButtonMapping( phCWindow* pWindow, const uint8 pad, const uint8 button );
 
 	bool GetPressed() const override { return m_held && !m_prevHeld; }
 	bool GetHeld() const override { return m_held; }
@@ -20,8 +20,8 @@ public:
 private:
 
 	phCWindow* m_pWindow;
-	int m_pad;
-	int m_button;
+	uint8 m_pad;
+	uint8 m_button;
 
 	bool m_held;
 	bool m_prevHeld;

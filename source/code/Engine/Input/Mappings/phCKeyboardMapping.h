@@ -8,7 +8,7 @@ class phCKeyboardMapping : public phIInputMapping
 {
 public:
 
-	phCKeyboardMapping( phCWindow* pWindow, int key );
+	phCKeyboardMapping( phCWindow* pWindow, uint16 key );
 
 	bool GetPressed() const override { return m_pressed; }
 	bool GetHeld() const override { return m_held; }
@@ -21,7 +21,7 @@ private:
 
 	phCWindow* m_pWindow;
 
-	int m_key;
+	uint16 m_key;
 
 	bool m_pressed;
 	bool m_held;

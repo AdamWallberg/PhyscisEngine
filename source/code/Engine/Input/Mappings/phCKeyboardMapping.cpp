@@ -9,7 +9,7 @@
 
 
 
-phCKeyboardMapping::phCKeyboardMapping( phCWindow* pWindow, int key )
+phCKeyboardMapping::phCKeyboardMapping( phCWindow* pWindow, uint16 key )
 	: phIInputMapping()
 	, m_pWindow( pWindow )
 	, m_key( key )

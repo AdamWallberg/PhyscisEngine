@@ -11,7 +11,7 @@ phCInputSystem::phCInputSystem( phCWindow* pWindow )
 	
 	m_testAction.AddMapping( newp phCKeyboardMapping( pWindow, 'W' ), 1.0f );
 	m_testAction.AddMapping( newp phCKeyboardMapping( pWindow, 'S' ), -1.0f );
-	m_testAction.AddMapping( newp phCPadStickAxisMapping( pWindow, 0, 0, 0 ), 1.0f );
+	m_testAction.AddMapping( newp phCPadStickAxisMapping( pWindow, 0, 0 ), 1.0f );
 
 } // phCInputSystem
 

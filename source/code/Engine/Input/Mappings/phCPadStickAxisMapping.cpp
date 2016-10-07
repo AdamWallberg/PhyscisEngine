@@ -9,7 +9,7 @@
 
 
 
-phCPadStickAxisMapping::phCPadStickAxisMapping( phCWindow* pWindow, const int pad, const int stick, const int axis )
+phCPadStickAxisMapping::phCPadStickAxisMapping( phCWindow* pWindow, const uint8 pad, const uint8 axis )
 	: phIInputMapping()
 	, m_pWindow( pWindow )
 	, m_pad( pad )

@@ -6,7 +6,7 @@
 //glfw
 #include <GLFW/glfw3.h>
 
-phCPadButtonMapping::phCPadButtonMapping( phCWindow* pWindow, const int pad, const int button )
+phCPadButtonMapping::phCPadButtonMapping( phCWindow* pWindow, const uint8 pad, const uint8 button )
 	: m_pWindow( pWindow )
 	, m_pad( pad )
 	, m_button( button )
