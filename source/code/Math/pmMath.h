@@ -26,8 +26,8 @@ inline float pmAbs( const float& value )
 {
 	if( value < 0.f )
 		return -value;
-	else
-		return value;
+	
+	return value;
 }
 
 
@@ -38,7 +38,7 @@ inline float pmClamp( const float& value, const float& min, const float& max )
 {
 	if( value <= min )
 		return min;
-	else if( value >= max )
+	if( value >= max )
 		return max;
 
 	return value;
@@ -52,7 +52,7 @@ inline float pmSaturate( float value )
 {
 	if( value <= 0.f )
 		return 0.f;
-	else if( value >= 1.f )
+	if( value >= 1.f )
 		return 1.f;
 
 	return value;
