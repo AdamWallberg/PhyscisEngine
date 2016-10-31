@@ -60,6 +60,31 @@ inline float pmSaturate( float value )
 
 
 
+// Returns -1 if value is less than 0
+// Returns 0 if value is 0
+// Returns 1 if value is greater than 0
+inline float sign( const float& value )
+{
+	if( value == 0.f )
+		return 0.f;
+	if( value > 0.f )
+		return 1.f;
+	if( value < 0.f )
+		return -1.f;
+}
+
+inline int sign( const int& value )
+{
+	if( value == 0 )
+		return 0;
+	if( value > 0 )
+		return 1;
+	if( value < 0 )
+		return -1;
+}
+
+
+
 // Converts degrees to radians.
 // Uses only multiplication with const value to optimize performance.
 inline float pmToRadians( const float& degrees )
