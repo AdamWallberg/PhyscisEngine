@@ -165,3 +165,27 @@ inline float pmInterpolateCos( const float& start, const float& end, const float
 {
 	return start + ( end - start ) * ( ( -pmCos( factor * 180.0f ) + 1.0f ) * 0.5f );
 }
+
+
+
+// Rounds value to nearest whole number
+inline float roundf( const float& value )
+{
+	return static_cast<float>( static_cast<int>( value + 0.5f ) );
+}
+
+
+
+// Rounds value downwards
+inline float floorf( const float& value )
+{
+	return static_cast<float>( static_cast<int>( value + 1.0f ) );
+}
+
+
+
+// Rounds value upwards
+inline float ceilf( const float& value )
+{
+	return static_cast<float>( static_cast<int>( value ) );
+}
