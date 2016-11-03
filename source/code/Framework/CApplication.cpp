@@ -7,12 +7,15 @@
 #include "Engine/phCWindow.h"
 #include "Engine/Utils/phLog.h"
 #include "Engine/Input/phCInputSystem.h"
-#include "Engine/FileSystem/phCFileUtils.h"
+#include "Engine/FileSystem/phCFileSystem.h"
 
 CApplication::CApplication()
 	: m_pWindow( nullptr )
 	, m_pInputSystem( nullptr )
 {
+	// Initialize the file system
+	phCFileSystem::Init();
+
 	// Create window
 	CSettingsWindow::LoadSettings();
 	m_pWindow = newp phCWindow;
@@ -31,6 +34,7 @@ CApplication::~CApplication()
 
 	delete m_pInputSystem;
 	delete m_pWindow;
+	phCFileSystem::Destroy();
 
 } // ~CApplication
 

@@ -1,5 +1,5 @@
 #include "Engine/phSystem.h"
-#include "Engine/FileSystem/phCFileUtils.h"
+#include "Engine/FileSystem/phCFileSystem.h"
 #include "CSettingsWindow.h"
 
 
@@ -14,7 +14,7 @@ bool CSettingsWindow::unlockFps = true;
 void CSettingsWindow::LoadSettings()
 {
 
-	nlohmann::json j = phCFileUtils::LoadAndParseJSON( "data/settings/window.json" );
+	nlohmann::json j = phCFileSystem::GetInstance().LoadAndParseJSON( "data/settings/window.json" );
 
 	title = j[ "title" ].get<std::string>();
 	width = j[ "width" ];
