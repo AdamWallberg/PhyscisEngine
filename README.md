@@ -23,6 +23,7 @@ It's written by me (Adam Wallberg), and is only a small hobby project.<br>
 <h3>Setup</h3>
 Heads up: the project can probably only compile using visual studio community 2015, mostly because of the json library.
 
-  1. Run "generate_project_files.ps1" with powershell. If it complains about the execution policy,
+  1. Install the FBX SDK, and link to it in premake5.lua.
+  2. Run "generate_project_files.ps1" with powershell. If it complains about the execution policy,
      set it to unrestricted. <a href="https://technet.microsoft.com/en-us/library/ee176961.aspx">check this out.</a>
-  2. Tadaa! Solution files! :D
+  3. Tadaa! Solution files! :D
