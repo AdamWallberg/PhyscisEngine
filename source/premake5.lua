@@ -1,6 +1,9 @@
 require 'settings'
 
 LIBRARY_FOLDER = "$(SolutionDir)../dependencies/"
+EXTERNAL_LIB_FOLDER = "$(SolutionDir)../../../Libraries/"
+
+FBX_PATH = EXTERNAL_LIB_FOLDER .. "FBX SDK/2017.0.1/"
 
 --premake5.lua
  
@@ -40,6 +43,7 @@ project (FRAMEWORK_NAME)
 	includedirs {
 		LIBRARY_FOLDER .. "glew-1.13.0/include/",
 		LIBRARY_FOLDER .. "python/include/",
+		FBX_PATH .. "include/",
 		"./code/",
 		"./code/Engine/"
 	}
@@ -54,8 +58,19 @@ project (FRAMEWORK_NAME)
 		"opengl32",
 		"_tkinter",
 		"python3",
-		"python35"
+		"python35",
+		"libfbxsdk-md"
 	}
+	
+	configuration { "Debug" }
+		libdirs {
+			FBX_PATH .. "lib/vs2015/x86/debug/"
+		}
+		
+	configuration { "Release" }
+		libdirs{
+			FBX_PATH .. "lib/vs2015/x86/release/"
+		}
 	
 	configuration { "Win32" }
 		
@@ -66,3 +81,19 @@ project (FRAMEWORK_NAME)
 			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/Win32/",
 			LIBRARY_FOLDER .. "glfw32/lib-vc2015/"
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
