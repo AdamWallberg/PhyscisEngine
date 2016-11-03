@@ -14,3 +14,6 @@
 
 // Include typedefs
 #include "Utils/phTypes.h"
+
+// Include logging
+#include "Utils/phLog.h"
