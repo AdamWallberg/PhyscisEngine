@@ -11,7 +11,7 @@ It's written by me (Adam Wallberg), and is only a small hobby project.<br>
   - 2D and 3D vectors, and some basic math functions.
   - JSON loading and parsing using modern json. <a href="https://github.com/nlohmann/json">github.com/nlohmann/json</a>
   - Window creating using GLFW.
-  - Toggable memory leak tracking.
+  - Memory tracking and leak detection.
 
 <h3>Planned Features</h3>
   - "Fully independent" math library (no glm or similar third party libraries)
