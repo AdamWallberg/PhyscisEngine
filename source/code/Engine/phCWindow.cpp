@@ -57,10 +57,7 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	glfwMakeContextCurrent( m_pWindow );
 
 	// Unlock fps
-	if( unlockFps )
-	{
-		glfwSwapInterval( 0 );
-	}
+	glfwSwapInterval( !unlockFps );
 
 	// Init GLEW
 	glewExperimental = true;
