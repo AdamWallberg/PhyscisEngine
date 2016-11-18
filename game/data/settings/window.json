@@ -1,8 +1,8 @@
 {
   "title": "Physcis Engine",
-  "width": 1280,
-  "height": 720,
+  "width": 640,
+  "height": 480,
   "samples": 0,
   "fullscreen": false,
-  "unlock_fps": true
+  "unlock_fps": false
 }
