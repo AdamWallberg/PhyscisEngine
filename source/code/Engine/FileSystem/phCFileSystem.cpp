@@ -5,21 +5,25 @@
 
 phCFileSystem::phCFileSystem()
 {
+#if defined FBX
 	_logDebug( "Initializing FBX manager.." );
 	InitFBX();
+#endif
 }
 
 
 
 phCFileSystem::~phCFileSystem()
 {
+#if defined FBX
 	m_pFbxImporter->Destroy();
 	m_pFbxIOSettings->Destroy();
 	m_pFbxManager->Destroy();
+#endif
 }
 
 
-
+#if defined FBX
 void phCFileSystem::InitFBX()
 {
 	// Create the FBX manager
@@ -31,7 +35,7 @@ void phCFileSystem::InitFBX()
 	// Init the importer
 	m_pFbxImporter = FbxImporter::Create( m_pFbxManager, "fbx_importer" );
 }
-
+#endif
 
 
 nlohmann::json phCFileSystem::LoadAndParseJSON( const char* filePath )
@@ -55,7 +59,8 @@ nlohmann::json phCFileSystem::LoadAndParseJSON( const char* filePath )
 }
 
 
-
+#if defined FBX
 void phCFileSystem::LoadAndParseFBX( const char* filePath )
 {
 }
+#endif
