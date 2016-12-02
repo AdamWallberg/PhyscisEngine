@@ -30,10 +30,14 @@ public:
 	// Removes the stopwatch, and returns the final elapsed time.
 	const float& StopStopwatch( const char* name );
 
+	// Getters and setters
 	const float& GetLifeTime() { return static_cast<float>( m_lifeTime ); }
 	const float& GetLifeTimeReal() { return static_cast<float>( m_lifeTimeReal ); }
 	const float& GetDeltaTime() { return static_cast<float>( m_deltaTime ); }
 	const float& GetDeltaTimeReal() { return static_cast<float>( m_deltaTimeReal ); }
+	const bool& GetPaused() { return m_paused; }
+
+	void SetPaused( bool paused ) { m_paused = paused; }
 
 private:
 	struct SStopwatch
