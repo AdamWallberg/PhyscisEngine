@@ -2,6 +2,8 @@
 #include "Engine/phSystem.h"
 #include "IGameState.h"
 #include "Clock/phCClock.h"
+#include "CGameStateMenu.h"
+#include "CGameStateGame.h"
 
 CGameStateMachine::CGameStateMachine()
 	: m_pCurrentGameState( nullptr )
@@ -9,7 +11,13 @@ CGameStateMachine::CGameStateMachine()
 	, m_loading( false )
 	, m_pLoadingThread( nullptr )
 {
-	// TODO: Create game states
+	// Create game states
+	m_gameStates[ "menu" ] = new CGameStateMenu( this );
+	m_gameStates[ "game" ] = new CGameStateGame( this );
+
+	m_pCurrentGameState = m_gameStates[ "menu" ];
+	m_pCurrentGameState->OnCreate();
+	m_pCurrentGameState->OnEnter();
 }
 
 CGameStateMachine::~CGameStateMachine()
@@ -53,19 +61,24 @@ void CGameStateMachine::Update()
 
 void CGameStateMachine::ChangeGameState( const char* stateName )
 {
-	//m_pNextGameState = m_gameStates[ stateName ];
-	//
-	//if( !m_pNextGameState )
-	//{
-	//	_logError( "Couldn't find game state: %s", stateName );
-	//	return;
-	//}
+	if( m_loading || m_pLoadingThread )
+	{
+		_logError( "Already switching game states!" );
+		return;
+	}
+
+	m_pNextGameState = m_gameStates[ stateName ];
+	
+	if( !m_pNextGameState )
+	{
+		_logError( "Couldn't find game state: %s", stateName );
+		return;
+	}
 
 	// Start unload thread
 	m_loading = true;
-	m_pLoadingThread = new std::thread( UnloadCurrentStateAndLoadNext, this );
-	
 	phCClock::GetInstance().StartStopwatch( "gsm_loading_timer" );
+	m_pLoadingThread = new std::thread( UnloadCurrentStateAndLoadNext, this );
 }
 
 
@@ -73,6 +86,11 @@ void CGameStateMachine::ChangeGameState( const char* stateName )
 void CGameStateMachine::UnloadCurrentStateAndLoadNext( CGameStateMachine* pMachine )
 {
 	_logDebug( "Loading thread started.." );
+
+	while( phCClock::GetInstance().GetStopwatchTime( "gsm_loading_timer" ) < 4.0f )
+	{
+		_log( "Running on the superthread yeh! %.2f", phCClock::GetInstance().GetStopwatchTime( "gsm_loading_timer" ) );
+	}
 
 	pMachine->m_loading = false;
 }

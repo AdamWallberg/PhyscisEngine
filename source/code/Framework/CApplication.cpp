@@ -77,7 +77,7 @@ void CApplication::Update()
 	if( phCClock::GetInstance().GetLifeTime() > 4.0f && !changeState )
 	{
 		changeState = true;
-		m_pGameStateMachine->ChangeGameState( "testState" );
+		m_pGameStateMachine->ChangeGameState( "game" );
 	}
 
 	// Print fps in window title
