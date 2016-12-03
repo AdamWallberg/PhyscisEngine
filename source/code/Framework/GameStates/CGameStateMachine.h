@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <thread>
 
 class IGameState;
 
@@ -17,6 +18,14 @@ public:
 
 private:
 
+	IGameState* m_pCurrentGameState;
+	IGameState* m_pNextGameState;
 	std::map< const char* /*id*/, IGameState* /*pGameState*/ > m_gameStates;
+	
+	bool m_loading;
+	std::thread* m_pLoadingThread;
+
+	// Method pointers for loading thread
+	static void UnloadCurrentStateAndLoadNext( CGameStateMachine* pMachine );
 
 };
