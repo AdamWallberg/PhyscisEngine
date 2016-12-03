@@ -48,26 +48,26 @@ void phCClock::StartStopwatch( const char* name )
 	m_clocks[ name ] = { 0.0, false };
 }
 
-const float& phCClock::GetStopwatchTime( const char* name )
+const float phCClock::GetStopwatchTime( const char* name )
 {
 	return static_cast<float>( m_clocks[ name ].time );
 }
 
-const float& phCClock::PauseStopwatch( const char* name )
+const float phCClock::PauseStopwatch( const char* name )
 {
 	m_clocks[ name ].isPaused = true;
 	return static_cast<float>( m_clocks[ name ].time );
 }
 
-const float& phCClock::ResumeStopwatch( const char* name )
+const float phCClock::ResumeStopwatch( const char* name )
 {
 	m_clocks[ name ].isPaused = false;
 	return static_cast<float>( m_clocks[ name ].time );
 }
 
-const float& phCClock::StopStopwatch( const char* name )
+const float phCClock::StopStopwatch( const char* name )
 {
-	const float value = m_clocks[ name ].time;
+	const double value = m_clocks[ name ].time;
 	m_clocks.erase( name );
 	return static_cast<float>( value );
 }
