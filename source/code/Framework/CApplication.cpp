@@ -3,6 +3,7 @@
 #include "CApplication.h"
 // framework
 #include "Settings/CSettingsWindow.h"
+#include "GameStates/CGameStateMachine.h"
 // engine
 #include "Engine/phCWindow.h"
 #include "Engine/Utils/phLog.h"
@@ -30,12 +31,16 @@ CApplication::CApplication()
 	m_pInputSystem = newp phCInputSystem( m_pWindow );
 	_logDebug( "Input system initialized.." );
 
+	// Create the game state machine
+	m_pGameStateMachine = new CGameStateMachine();
+
 } // CApplication
 
 
 
 CApplication::~CApplication()
 {
+	delete m_pGameStateMachine;
 	delete m_pInputSystem;
 	phCClock::Destroy();
 	delete m_pWindow;
@@ -61,12 +66,19 @@ void CApplication::Run()
 
 void CApplication::Update()
 {
-
-	// Update window
-	m_pWindow->Update();
-
 	// Update clock
 	phCClock::GetInstance().Update();
+
+	// Update game state machine
+	m_pGameStateMachine->Update();
+
+	// TEMP
+	static bool changeState = false;
+	if( phCClock::GetInstance().GetLifeTime() > 4.0f && !changeState )
+	{
+		changeState = true;
+		m_pGameStateMachine->ChangeGameState( "testState" );
+	}
 
 	// Print fps in window title
 	if( phCClock::GetInstance().GetStopwatchTime( "fps_update_timer" ) > 0.25f )
@@ -78,6 +90,9 @@ void CApplication::Update()
 
 	// Update input
 	m_pInputSystem->Update();
+
+	// Update window
+	m_pWindow->Update();
 
 } // Update
 
