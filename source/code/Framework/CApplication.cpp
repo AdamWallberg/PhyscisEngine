@@ -42,6 +42,7 @@ CApplication::~CApplication()
 {
 	delete m_pGameStateMachine;
 	delete m_pInputSystem;
+	phCClock::GetInstance().StopStopwatch( "fps_update_timer" );
 	phCClock::Destroy();
 	delete m_pWindow;
 	phCFileSystem::Destroy();
