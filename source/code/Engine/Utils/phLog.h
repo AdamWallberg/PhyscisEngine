@@ -8,11 +8,12 @@
 // Regular log message
 #define _log( MESSAGE, ... ) printf( MESSAGE "\n", __VA_ARGS__ )
 
+// Error log message
+#define _logError( MESSAGE, ... ) printf( "ERROR: " MESSAGE "\n", __VA_ARGS__ )
+
 // Debug log message
 #ifdef DEBUG
 #define _logDebug( MESSAGE, ... ) printf( MESSAGE "\n", __VA_ARGS__ )
-#define _logError( MESSAGE, ... ) printf( "ERROR: " MESSAGE "\n", __VA_ARGS__ )
 #else
 #define _logDebug( MESSAGE, ... )
-#define _logError( MESSAGE, ... )
 #endif
