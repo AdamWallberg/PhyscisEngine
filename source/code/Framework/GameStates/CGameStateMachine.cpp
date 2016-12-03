@@ -12,8 +12,8 @@ CGameStateMachine::CGameStateMachine()
 	, m_pLoadingThread( nullptr )
 {
 	// Create game states
-	m_gameStates[ "menu" ] = new CGameStateMenu( this );
-	m_gameStates[ "game" ] = new CGameStateGame( this );
+	m_gameStates[ "menu" ] = newp CGameStateMenu( this );
+	m_gameStates[ "game" ] = newp CGameStateGame( this );
 
 	m_pCurrentGameState = m_gameStates[ "menu" ];
 	m_pCurrentGameState->OnCreate();
@@ -22,12 +22,18 @@ CGameStateMachine::CGameStateMachine()
 
 CGameStateMachine::~CGameStateMachine()
 {
+	// Properly exit current game state
+	m_pCurrentGameState->OnExit();
+	m_pCurrentGameState->OnDestroy();
+
 	// Destroy game states
 	for( auto& it : m_gameStates )
 	{
-		if( it.second )
+		IGameState* pGameState = it.second;
+
+		if( pGameState )
 		{
-			delete it.second;
+			delete pGameState;
 		}
 	}
 }
@@ -40,9 +46,18 @@ void CGameStateMachine::Update()
 	{
 		if( !m_loading ) // We are done loading
 		{
+			// Destroy thread
 			m_pLoadingThread->join();
 			delete m_pLoadingThread;
 			m_pLoadingThread = nullptr;
+
+			// Call OnEnter for new state
+			m_pNextGameState->OnEnter();
+
+			// Set current state to new state
+			m_pCurrentGameState = m_pNextGameState;
+			m_pNextGameState = nullptr;
+
 			_logDebug( "Done loading!" );
 		}
 		else // We are loading
@@ -61,7 +76,7 @@ void CGameStateMachine::Update()
 
 void CGameStateMachine::ChangeGameState( const char* stateName )
 {
-	if( m_loading || m_pLoadingThread )
+	if( m_loading || m_pLoadingThread || m_pNextGameState )
 	{
 		_logError( "Already switching game states!" );
 		return;
@@ -75,10 +90,12 @@ void CGameStateMachine::ChangeGameState( const char* stateName )
 		return;
 	}
 
+	// Call on OnExit for current state
+	m_pCurrentGameState->OnExit();
+
 	// Start unload thread
 	m_loading = true;
-	phCClock::GetInstance().StartStopwatch( "gsm_loading_timer" );
-	m_pLoadingThread = new std::thread( UnloadCurrentStateAndLoadNext, this );
+	m_pLoadingThread = newp std::thread( UnloadCurrentStateAndLoadNext, this );
 }
 
 
@@ -87,10 +104,11 @@ void CGameStateMachine::UnloadCurrentStateAndLoadNext( CGameStateMachine* pMachi
 {
 	_logDebug( "Loading thread started.." );
 
-	while( phCClock::GetInstance().GetStopwatchTime( "gsm_loading_timer" ) < 4.0f )
-	{
-		_log( "Running on the superthread yeh! %.2f", phCClock::GetInstance().GetStopwatchTime( "gsm_loading_timer" ) );
-	}
+	// Unload current game state
+	pMachine->m_pCurrentGameState->OnDestroy();
+
+	// Load new game state
+	pMachine->m_pNextGameState->OnCreate();
 
 	pMachine->m_loading = false;
 }
