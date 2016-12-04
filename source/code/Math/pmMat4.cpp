@@ -82,7 +82,7 @@ void pmMat4::Scale( const pmV3& scale )
 
 
 
-const pmMat4& pmMat4::operator*( const pmMat4& other )
+const pmMat4 pmMat4::operator*( const pmMat4& other )
 {
 	pmMat4 result;
 	float sum;

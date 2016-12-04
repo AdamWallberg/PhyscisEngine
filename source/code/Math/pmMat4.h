@@ -43,7 +43,7 @@ public:
 
 	// TODO: Add Invert, Transpose, and eventual Quaternion calculations..
 
-	const pmMat4& operator * ( const pmMat4& other );
+	const pmMat4 operator * ( const pmMat4& other );
 
 };
 
