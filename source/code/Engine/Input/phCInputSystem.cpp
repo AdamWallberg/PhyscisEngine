@@ -4,6 +4,7 @@
 #include "Utils/phLog.h"
 #include "Mappings/phCKeyboardMapping.h"
 #include "Mappings/phCPadStickAxisMapping.h"
+#include "Engine/Events/phCEventBroadcaster.h"
 
 
 phCInputSystem::phCInputSystem( phCWindow* pWindow )
@@ -28,5 +29,10 @@ void phCInputSystem::Update()
 {
 
 	m_testAction.Update();
+
+	if( m_testAction.GetPressed() )
+	{
+		phCEventBroadcaster::GetInstance().BroadcastEvent( "test_key_pressed", nullptr );
+	}
 	
 } // Update
