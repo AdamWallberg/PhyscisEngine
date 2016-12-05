@@ -10,6 +10,7 @@
 #include "Engine/Input/phCInputSystem.h"
 #include "Engine/FileSystem/phCFileSystem.h"
 #include "Engine/Clock/phCClock.h"
+#include "Engine/Events/phCEventBroadcaster.h"
 
 CApplication::CApplication()
 	: m_pWindow( nullptr )
@@ -27,6 +28,9 @@ CApplication::CApplication()
 	phCClock::Init();
 	phCClock::GetInstance().StartStopwatch( "fps_update_timer" );
 
+	// Initialize the event system
+	phCEventBroadcaster::Init();
+
 	// Create input system
 	m_pInputSystem = newp phCInputSystem( m_pWindow );
 	_logDebug( "Input system initialized.." );
@@ -42,6 +46,7 @@ CApplication::~CApplication()
 {
 	delete m_pGameStateMachine;
 	delete m_pInputSystem;
+	phCEventBroadcaster::GetInstance().Destroy();
 	phCClock::GetInstance().StopStopwatch( "fps_update_timer" );
 	phCClock::Destroy();
 	delete m_pWindow;
