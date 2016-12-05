@@ -1,10 +1,11 @@
 #include "CGameStateGame.h"
 #include "Engine/phSystem.h"
+#include "Engine/Events/phCEventBroadcaster.h"
 
 CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 	: IGameState( pMachine )
 {
-
+	phCEventBroadcaster::GetInstance().RegisterListener( "test_key_pressed", this, ListenerCallback );
 }
 
 
@@ -32,4 +33,10 @@ void CGameStateGame::OnExit()
 void CGameStateGame::Update()
 {
 
+}
+
+
+
+void CGameStateGame::ListenerCallback( const char* eventID, void* pObject, void* pData )
+{
 }

@@ -14,4 +14,6 @@ public:
 	void OnExit() override;
 	void Update() override;
 
+	static void ListenerCallback( const char* eventID, void* pObject, void* pData );
+
 };
