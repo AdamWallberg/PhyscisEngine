@@ -84,7 +84,7 @@ void CApplication::Update()
 	// Print fps in window title
 	if( phCClock::GetInstance().GetStopwatchTime( "fps_update_timer" ) > 0.25f )
 	{
-		std::string title = "Physcis Engine    |    " + std::to_string( 1.0 / phCClock::GetInstance().GetDeltaTimeReal() );
+		std::string title = "Physcis Engine    |    " + std::to_string( phCClock::GetInstance().GetDeltaTimeReal() * 1000.0f );
 		m_pWindow->SetWindowTitle( title.c_str() );
 		phCClock::GetInstance().StartStopwatch( "fps_update_timer" );
 	}
