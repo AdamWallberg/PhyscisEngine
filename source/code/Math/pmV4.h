@@ -54,6 +54,15 @@ public:
 		};
 		pmV2 xy;
 		pmV3 xyz;
+		struct
+		{
+			float r;
+			float g;
+			float b;
+			float a;
+		};
+		pmV2 rg;
+		pmV3 rgb;
 	};
 
 ////////////////////////////////////////////////////////////////
