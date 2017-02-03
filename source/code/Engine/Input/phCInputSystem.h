@@ -14,8 +14,4 @@ public:
 
 	void Update();
 
-private:
-
-	phCAction m_testAction;
-
 };
