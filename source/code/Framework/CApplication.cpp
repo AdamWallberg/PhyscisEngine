@@ -73,18 +73,10 @@ void CApplication::Update()
 	// Update game state machine
 	m_pGameStateMachine->Update();
 
-	// TEMP
-	static bool changeState = false;
-	if( phCClock::GetInstance().GetLifeTime() > 4.0f && !changeState )
-	{
-		changeState = true;
-		m_pGameStateMachine->ChangeGameState( "game" );
-	}
-
 	// Print fps in window title
 	if( phCClock::GetInstance().GetStopwatchTime( "fps_update_timer" ) > 0.25f )
 	{
-		std::string title = "Physcis Engine    |    " + std::to_string( phCClock::GetInstance().GetDeltaTimeReal() * 1000.0f );
+		std::string title = "Physcis Engine    |    " + std::to_string(1.0f / phCClock::GetInstance().GetDeltaTimeReal()) + " FPS";
 		m_pWindow->SetWindowTitle( title.c_str() );
 		phCClock::GetInstance().StartStopwatch( "fps_update_timer" );
 	}
