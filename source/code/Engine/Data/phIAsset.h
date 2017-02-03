@@ -1,7 +1,5 @@
 #pragma once
 
-#include <string>
-
 // Interface for all assets in the engine.
 // Useful for grouping multiple assets together.
 class phIAsset
@@ -15,14 +13,17 @@ public:
 		ASSET_TYPE_TEXTURE,
 	};
 
-	phIAsset();
+	phIAsset(const char* assetName = "")
+		: m_assetName(assetName)
+	{
+	}
 
 	virtual EAssetType GetAssetType() = 0;
 
-	virtual std::string& GetAssetName() { return m_assetName; }
+	virtual const char* GetAssetName() { return m_assetName; }
 
 private:
 
-	std::string m_assetName;
+	const char* m_assetName;
 
 };
