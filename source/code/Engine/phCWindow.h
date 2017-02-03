@@ -3,6 +3,7 @@
 // graphics
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include "phSystem.h"
 
 // All interaction with the GLFW window goes through this class. 
 class phCWindow
