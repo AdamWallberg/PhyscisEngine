@@ -1,26 +1,14 @@
 #pragma once
 
 #include "Data/phIAsset.h"
-#include "Math/pmV4.h"
 #include "Math/pmMat4.h"
 
-class phCMesh : phIAsset
+
+class phCMesh : public phIAsset
 {
 public:
 
-	struct SVertex
-	{
-		pmV3 position;
-		pmV3 normal;
-		pmV2 uv1;
-		// TODO: Add color
-	};
-
 	phCMesh();
-
-	virtual ~phCMesh()
-	{
-	}
 
 	// TODO: Automatically called from phCModel::Update()
 	void Update();
@@ -31,5 +19,5 @@ private:
 
 	pmMat4 m_matrix;
 	// TODO: phCModel* m_pParent;
-
+	// TODO: Vertex Buffer and Index Buffer *
 };

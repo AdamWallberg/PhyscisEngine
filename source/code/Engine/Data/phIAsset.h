@@ -18,6 +18,10 @@ public:
 	{
 	}
 
+	virtual ~phIAsset()
+	{
+	}
+
 	virtual EAssetType GetAssetType() = 0;
 
 	virtual const char* GetAssetName() { return m_assetName; }
