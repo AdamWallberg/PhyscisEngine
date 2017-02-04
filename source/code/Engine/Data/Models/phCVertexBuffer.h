@@ -16,7 +16,7 @@ class phCVertexBuffer
 {
 public:
 
-	phCVertexBuffer();
+	phCVertexBuffer(){}
 
 private:
 

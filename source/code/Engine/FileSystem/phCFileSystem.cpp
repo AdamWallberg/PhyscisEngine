@@ -69,7 +69,7 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexBuffer* pVer
 	while(true)
 	{
 		char lineHeader[128]; // Silly assumption, might need some rework later
-		int res = fscanf_s(pFile, "%s", lineHeader);
+		int res = fscanf_s(pFile, "%s", lineHeader, _countof(lineHeader));
 		if(res == EOF)
 			break;
 
