@@ -9,6 +9,8 @@
 #include "Engine/Utils/phLog.h"
 #include "Engine/Input/phCInputSystem.h"
 #include "Engine/FileSystem/phCFileSystem.h"
+#include "Engine/Systems/phCModelSystem.h"
+#include "Engine/Systems/phServiceLocators.h"
 #include "Engine/Clock/phCClock.h"
 
 CApplication::CApplication()
@@ -31,6 +33,11 @@ CApplication::CApplication()
 	m_pInputSystem = newp phCInputSystem( m_pWindow );
 	_logDebug( "Input system initialized.." );
 
+	// Create the model system
+	m_pModelSystem = new phCModelSystem();
+	// Register system to locator
+	phCModelSystemLocator::SetService(m_pModelSystem);
+
 	// Create the game state machine
 	m_pGameStateMachine = new CGameStateMachine();
 
@@ -41,6 +48,7 @@ CApplication::CApplication()
 CApplication::~CApplication()
 {
 	delete m_pGameStateMachine;
+	delete m_pModelSystem;
 	delete m_pInputSystem;
 	phCClock::GetInstance().StopStopwatch( "fps_update_timer" );
 	phCClock::Destroy();

@@ -2,6 +2,7 @@
 
 class phCWindow;
 class phCInputSystem;
+class phCModelSystem;
 class CGameStateMachine;
 
 // Contains the game loop, and updates the rest of
@@ -23,6 +24,7 @@ private:
 
 	phCWindow* m_pWindow;
 	phCInputSystem* m_pInputSystem;
+	phCModelSystem* m_pModelSystem;
 
 	CGameStateMachine* m_pGameStateMachine;
 };
