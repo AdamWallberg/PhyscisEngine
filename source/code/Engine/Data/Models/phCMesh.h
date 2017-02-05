@@ -2,15 +2,19 @@
 
 #include "Data/phIAsset.h"
 #include "Math/pmMat4.h"
+#include "phCVertexBuffer.h"
+#include "phCIndexBuffer.h"
 
+class phCModel;
 
 class phCMesh : public phIAsset
 {
 public:
 
-	phCMesh();
+	phCMesh(const char* filePath);
+	~phCMesh();
 
-	// TODO: Automatically called from phCModel::Update()
+	// Automatically called from phCModel::Update()
 	void Update();
 
 	EAssetType GetAssetType() override { return ASSET_TYPE_MESH; }
@@ -18,6 +22,13 @@ public:
 private:
 
 	pmMat4 m_matrix;
-	// TODO: phCModel* m_pParent;
-	// TODO: Vertex Buffer and Index Buffer *
+	phCModel* m_pParent;
+	
+	phCVertexData m_vertexData;
+	phCVertexBuffer* m_pVertexBuffer;
+
+	phCIndexData m_indexData;
+	phCIndexBuffer* m_pIndexBuffer;
+
+	friend class phCModel;
 };

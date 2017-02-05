@@ -13,6 +13,7 @@ class phCModel : public phIAsset
 public:
 
 	phCModel();
+	phCModel(const char* filePath);
 	
 	void Update();
 
