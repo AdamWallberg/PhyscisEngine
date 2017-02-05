@@ -14,12 +14,16 @@ public:
 
 	phCModel();
 	phCModel(const char* filePath);
+
+	~phCModel();
 	
 	void Update();
 
 	EAssetType GetAssetType() override { return ASSET_TYPE_MODEL; }
 
 private:
+
+	void Init();
 
 	std::vector<phCMesh> m_meshes;
 	pmMat4 m_matrix;
