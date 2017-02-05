@@ -31,9 +31,19 @@ private:
 class phCIndexBuffer
 {
 public:
-	phCIndexBuffer();
+
+	phCIndexBuffer(phCIndexData* pIndexData);
+	~phCIndexBuffer();
+
+	void Bind();
+
+	uint32 GetNumIndicies() const { return m_numIndices; }
 
 private:
+
+	phCIndexData* m_pIndexData;
+	GLuint m_bufferID;
+	uint32 m_numIndices;
 
 	friend class phCFileSystem;
 

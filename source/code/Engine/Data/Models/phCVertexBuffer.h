@@ -34,7 +34,26 @@ public:
 private:
 
 	std::vector<SVertex> m_vertices;
-
 	friend class phCFileSystem;
+	friend class phCVertexBuffer;
+};
+
+// Handles GL vertex buffers
+class phCVertexBuffer
+{
+public:
+
+	phCVertexBuffer(phCVertexData* pVertexData);
+	~phCVertexBuffer();
+
+	void Bind() const;
+
+	uint32 GetNumVertices() const { return m_numVertices; }
+
+private:
+
+	phCVertexData* m_pVertexData;
+	GLuint m_bufferID;
+	uint32 m_numVertices;
 
 };
