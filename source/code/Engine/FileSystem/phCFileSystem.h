@@ -8,8 +8,8 @@
 #include <fbxsdk.h>
 #endif
 
-class phCVertexBuffer;
-class phCIndexBuffer;
+class phCVertexData;
+class phCIndexData;
 
 // Used to load and manage files.
 class phCFileSystem : public phCSingleton< phCFileSystem >
@@ -23,7 +23,7 @@ public:
 	nlohmann::json LoadAndParseJSON( const char* filePath );
 
 	// OBJ parsing
-	bool LoadAndParseOBJ( const char* filePath, phCVertexBuffer* pVertexBuffer, phCIndexBuffer* pIndexBuffer );
+	bool LoadAndParseOBJ( const char* filePath, phCVertexData* pVertexData, phCIndexData* pIndexData );
 
 #if defined FBX
 	// FBX parsing
