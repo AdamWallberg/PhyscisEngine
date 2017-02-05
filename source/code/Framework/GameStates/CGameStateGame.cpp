@@ -13,7 +13,7 @@ CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 void CGameStateGame::OnCreate()
 {
 	_logDebug( "Game State GAME: ON CREATE" );
-	m_pTestModel = new phCModel("data/models/monkey/monkey.obj");
+	m_pTestModel = newp phCModel("data/models/monkey/monkey.obj");
 }
 
 void CGameStateGame::OnDestroy()
