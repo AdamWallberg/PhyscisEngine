@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IGameState.h"
+#include "Data/Models/phCModel.h"
 
 class CGameStateGame : public IGameState
 {
@@ -13,5 +14,9 @@ public:
 	void OnEnter() override;
 	void OnExit() override;
 	void Update() override;
+
+private:
+
+	phCModel* m_pTestModel;
 
 };
