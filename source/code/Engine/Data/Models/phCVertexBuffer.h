@@ -3,6 +3,8 @@
 #include <vector>
 #include "Math/pmV4.h"
 #include "Math/pmMat4.h"
+#include "phGL.h"
+#include "phSystem.h"
 
 struct SVertex
 {
@@ -12,11 +14,22 @@ struct SVertex
 	pmV4 color;
 };
 
-class phCVertexBuffer
+// Stores the raw vertex data
+class phCVertexData
 {
 public:
 
-	phCVertexBuffer(){}
+	phCVertexData()
+	{
+	}
+	phCVertexData(const std::vector<SVertex>& rVertices)
+		: m_vertices(rVertices)
+	{
+	}
+
+	void AddVertex(const SVertex& rVertex) { m_vertices.push_back(rVertex); }
+
+	uint32 GetNumVertices() const { return m_vertices.size(); }
 
 private:
 
