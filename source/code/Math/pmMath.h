@@ -69,8 +69,8 @@ inline float sign( const float& value )
 		return 0.f;
 	if( value > 0.f )
 		return 1.f;
-	if( value < 0.f )
-		return -1.f;
+	
+	return -1.f;
 }
 
 inline int sign( const int& value )
@@ -79,8 +79,7 @@ inline int sign( const int& value )
 		return 0;
 	if( value > 0 )
 		return 1;
-	if( value < 0 )
-		return -1;
+	return -1;
 }
 
 
