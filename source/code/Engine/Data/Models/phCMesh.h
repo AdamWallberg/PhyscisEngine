@@ -19,6 +19,10 @@ public:
 
 	EAssetType GetAssetType() override { return ASSET_TYPE_MESH; }
 
+	// Getters and setters
+	bool GetShouldRender() const { return m_shouldRender; }
+	void SetShouldRender(bool shouldRender) { m_shouldRender = shouldRender; } 
+
 private:
 
 	pmMat4 m_matrix;
@@ -29,6 +33,8 @@ private:
 
 	phCIndexData m_indexData;
 	phCIndexBuffer* m_pIndexBuffer;
+
+	bool m_shouldRender;
 
 	friend class phCModel;
 };
