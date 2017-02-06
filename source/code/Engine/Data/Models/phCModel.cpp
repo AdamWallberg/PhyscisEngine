@@ -3,34 +3,39 @@
 #include "Systems/phCModelSystem.h"
 
 phCModel::phCModel()
-	: m_matrix(pmMat4(1))
+	: m_matrix( pmMat4( 1 ) )
 {
 	Init();
 }
 
-phCModel::phCModel(const char* filePath)
-	: phIAsset(filePath)
-	, m_matrix(pmMat4(1))
+phCModel::phCModel( const char* filePath )
+	: phIAsset( filePath )
+	  , m_matrix( pmMat4( 1 ) )
 {
-	phCMesh mesh(filePath);
-	m_meshes.push_back(mesh);
+	phCMesh* pMesh = new phCMesh( filePath );
+	pMesh->m_pParent = this;
+	m_meshes.push_back( pMesh );
 	Init();
 }
 
 void phCModel::Init()
 {
-	phCModelSystemLocator::GetService()->AddModel(this);
+	phCModelSystemLocator::GetService()->AddModel( this );
 }
 
 phCModel::~phCModel()
 {
-	phCModelSystemLocator::GetService()->RemoveModel(this);
+	for( phCMesh* pMesh : m_meshes )
+	{
+		delete pMesh;
+	}
+	phCModelSystemLocator::GetService()->RemoveModel( this );
 }
 
 void phCModel::Update()
 {
-	for(phCMesh& mesh : m_meshes)
+	for( phCMesh* mesh : m_meshes )
 	{
-		mesh.Update();
+		mesh->Update();
 	}
 }

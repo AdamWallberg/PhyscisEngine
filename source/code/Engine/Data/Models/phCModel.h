@@ -20,12 +20,14 @@ public:
 	void Update();
 
 	EAssetType GetAssetType() override { return ASSET_TYPE_MODEL; }
+	std::vector<phCMesh*>& GetMeshes() { return m_meshes; } 
 
 private:
 
 	void Init();
 
-	std::vector<phCMesh> m_meshes;
+	std::vector<phCMesh*> m_meshes;
 	pmMat4 m_matrix;
 
+	friend class phCRenderer;
 };
