@@ -35,7 +35,7 @@ void CGameStateMenu::OnExit()
 
 void CGameStateMenu::Update()
 {
-	if(phCClock::GetInstance().GetStopwatchTime("game_state_menu_lifetime") >= 4.0f)
+	//if(phCClock::GetInstance().GetStopwatchTime("game_state_menu_lifetime") >= 4.0f)
 	{
 		m_pMachine->ChangeGameState("game");
 	}
