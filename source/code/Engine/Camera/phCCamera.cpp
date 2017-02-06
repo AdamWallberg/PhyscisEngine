@@ -6,6 +6,9 @@ phCCamera::phCCamera(float fov, float aspectRatio, float near, float far)
 	, m_near(near)
 	, m_far(far)
 {
+	m_position = pmV3::zero;
+	m_rotation = pmV3::zero;
+
 	m_projectionMatrix = pmMat4::Perspective(fov, aspectRatio, near, far);
 	m_transformationMatrix = pmMat4(1.0f);
 }

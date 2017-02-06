@@ -9,16 +9,20 @@ public:
 
 	phCCamera(float fov, float aspectRatio, float near, float far );
 
+	// Updates the transformation and projection matrices.
+	// Recommended to use after modifying camera values.
+	void Update(bool updateProjection = false, bool updateTransformation = true);
+
 	// Getters and setters
-	const float GetFov() const { return m_fov; }
-	const float GetAspectRatio() const { return m_aspectRatio; }
-	const float GetNearClip() const { return m_near; }
-	const float GetFarClip() const { return m_far; }
-	const pmV3 GetPosition() const { return m_position; }
-	const pmV3 GetRotationEuler() const { return m_rotation; }
-	const pmMat4 GetTransformationMatrix() const { return m_transformationMatrix; }
-	const pmMat4 GetProjectionMatrix() const { return m_projectionMatrix; }
-	const pmV4 GetClearColor() const { return m_clearColor; }
+	float GetFov() const { return m_fov; }
+	float GetAspectRatio() const { return m_aspectRatio; }
+	float GetNearClip() const { return m_near; }
+	float GetFarClip() const { return m_far; }
+	pmV3 GetPosition() const { return m_position; }
+	pmV3 GetRotationEuler() const { return m_rotation; }
+	pmMat4 GetTransformationMatrix() const { return m_transformationMatrix; }
+	pmMat4 GetProjectionMatrix() const { return m_projectionMatrix; }
+	pmV4 GetClearColor() const { return m_clearColor; }
 
 	void SetPosition( const pmV3& rPosition ) { m_position = rPosition; }
 	void SetRotationEuler( const pmV3& rRotation ) { m_rotation = rRotation; }
@@ -28,10 +32,6 @@ public:
 	void SetNearClip( float near ) { m_near = near; }
 	void SetFarClip( float far ) { m_far = far; }
 	void SetClearColor( const pmV4& clearColor ) { m_clearColor = clearColor; }
-
-	// Updates the transformation and projection matrices.
-	// Recommended to use after modifying camera values.
-	void Update(bool updateProjection = false, bool updateTransformation = true);
 
 private:
 
