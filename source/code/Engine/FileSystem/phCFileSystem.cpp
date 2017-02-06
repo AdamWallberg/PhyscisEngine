@@ -82,7 +82,7 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 		else if( strcmp( lineHeader, "vt" ) == 0 ) // Read uv position
 		{
 			pmV2 uv;
-			fscanf_s( pFile, "%f %f %f\n", &uv.x, &uv.y );
+			fscanf_s( pFile, "%f %f\n", &uv.x, &uv.y );
 			tempUVs.push_back( uv );
 		}
 		else if( strcmp( lineHeader, "vn" ) == 0 ) // Read normal
