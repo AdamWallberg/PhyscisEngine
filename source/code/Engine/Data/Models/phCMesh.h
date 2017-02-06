@@ -37,4 +37,5 @@ private:
 	bool m_shouldRender;
 
 	friend class phCModel;
+	friend class phCRenderer;
 };

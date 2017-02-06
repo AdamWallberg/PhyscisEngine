@@ -6,6 +6,7 @@ phCMesh::phCMesh(const char* filePath)
 	: phIAsset(filePath)
 	, m_pParent(nullptr)
 	, m_shouldRender(true)
+	, m_matrix(1.0f)
 {
 	// TODO: Fix this, this is only temporary.
 	// Assuming that we only want to create meshes this way is really silly...
