@@ -10,7 +10,8 @@
 #include "Engine/Input/phCInputSystem.h"
 #include "Engine/FileSystem/phCFileSystem.h"
 #include "Engine/Systems/phCModelSystem.h"
-#include "Engine/Systems/phServiceLocators.h"
+#include "Engine/Rendering/phCRenderSystem.h"
+#include "Engine/Camera/phCCameraSystem.h"
 #include "Engine/Clock/phCClock.h"
 
 CApplication::CApplication()
@@ -38,8 +39,26 @@ CApplication::CApplication()
 	// Register system to locator
 	phCModelSystemLocator::SetService(m_pModelSystem);
 
+	// Create the renderer
+	m_pRenderer = new phCRenderSystem();
+	// Register the renderer to locator
+	phCRenderSystemLocator::SetService(m_pRenderer);
+
+	// Create the camera system
+	m_pCameraSystem = new phCCameraSystem();
+	// Register the camera system to locator
+	phCCameraSystemLocator::SetService(m_pCameraSystem);
+
 	// Create the game state machine
 	m_pGameStateMachine = new CGameStateMachine();
+
+////////////////////////////////////////////////////////////////
+
+	m_pCamera3D = new phCCamera(90.0f, 16.0f / 9.0f, 0.1f, 1024.0f);
+	m_pCamera3D->SetPosition(pmV3(0.0f, 0.0f, -30.0f));
+	m_pCamera3D->Update(true, true);
+
+	phCCameraSystemLocator::GetService()->SetCurrentCamera(m_pCamera3D);
 
 } // CApplication
 
@@ -47,7 +66,10 @@ CApplication::CApplication()
 
 CApplication::~CApplication()
 {
+	delete m_pCamera3D;
 	delete m_pGameStateMachine;
+	delete m_pCameraSystem;
+	delete m_pRenderer;
 	delete m_pModelSystem;
 	delete m_pInputSystem;
 	phCClock::GetInstance().StopStopwatch( "fps_update_timer" );
@@ -101,5 +123,5 @@ void CApplication::Update()
 
 void CApplication::Render()
 {
-	
+	phCRenderSystemLocator::GetService()->Render();
 } // Render
