@@ -13,23 +13,26 @@ CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 void CGameStateGame::OnCreate()
 {
 	_logDebug( "Game State GAME: ON CREATE" );
-	m_pTestModel = newp phCModel("data/models/monkey/monkey.obj");
+	// WARNING:
+	// Opengl can't, for some reason, generate buffers on another thread,
+	// look into this!
 }
 
 void CGameStateGame::OnDestroy()
 {
 	_logDebug( "Game State GAME: ON DESTROY" );
-	delete m_pTestModel;
 }
 
 void CGameStateGame::OnEnter()
 {
 	_logDebug( "Game State GAME: ON ENTER" );
+	m_pTestModel = newp phCModel("data/models/cube/cube.obj");
 }
 
 void CGameStateGame::OnExit()
 {
 	_logDebug( "Game State GAME: ON EXIT" );
+	delete m_pTestModel;
 }
 
 void CGameStateGame::Update()
