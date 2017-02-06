@@ -27,6 +27,10 @@ public:
 	void SetFarClip( float far ) { m_far = far; }
 	void SetClearColor( const pmV4& clearColor ) { m_clearColor = clearColor; }
 
+	// Updates the transformation and projection matrices.
+	// Recommended to use after modifying camera values.
+	void Update(bool updateProjection = false, bool updateTransformation = true);
+
 private:
 
 	float m_fov, m_aspectRatio, m_near, m_far;
@@ -36,4 +40,6 @@ private:
 
 	pmV3 m_position;
 	pmV3 m_rotation;
+
+	pmV4 m_clearColor;
 };
