@@ -10,7 +10,7 @@ phCCamera::phCCamera(float fov, float aspectRatio, float near, float far)
 	m_transformationMatrix = pmMat4(1.0f);
 }
 
-void phCCamera::Update( bool updateProjection = false, bool updateTransformation = true )
+void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransformation /*= true*/ )
 {
 	if(updateProjection)
 	{

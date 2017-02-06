@@ -1,5 +1,7 @@
 #pragma once
 #include "Math/pmMat4.h"
+#include "Math/pmV4.h"
+#include "Math/pmV3.h"
 
 class phCCamera
 {
@@ -8,15 +10,15 @@ public:
 	phCCamera(float fov, float aspectRatio, float near, float far );
 
 	// Getters and setters
-	float GetFov() const { return m_fov; }
-	float GetAspectRatio() const { return m_aspectRatio; }
-	float GetNearClip() const { return m_near; }
-	float GetFarClip() const { return m_far; }
-	pmV3 GetPosition() const { return m_position; }
-	pmV3 GetRotationEuler() const { return m_rotation; }
-	pmMat4 GetTransformationMatrix() const { return m_transformationMatrix; }
-	pmMat4 GetProjectionMatrix() const { return m_projectionMatrix; }
-	pmV3 GetClearColor() const { return m_clearColor; }
+	const float GetFov() const { return m_fov; }
+	const float GetAspectRatio() const { return m_aspectRatio; }
+	const float GetNearClip() const { return m_near; }
+	const float GetFarClip() const { return m_far; }
+	const pmV3 GetPosition() const { return m_position; }
+	const pmV3 GetRotationEuler() const { return m_rotation; }
+	const pmMat4 GetTransformationMatrix() const { return m_transformationMatrix; }
+	const pmMat4 GetProjectionMatrix() const { return m_projectionMatrix; }
+	const pmV4 GetClearColor() const { return m_clearColor; }
 
 	void SetPosition( const pmV3& rPosition ) { m_position = rPosition; }
 	void SetRotationEuler( const pmV3& rRotation ) { m_rotation = rRotation; }
