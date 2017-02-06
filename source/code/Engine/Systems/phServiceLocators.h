@@ -1,8 +1,6 @@
 #pragma once
 
-#include "phSystem.h"
 #include <cassert>
-#include "phCModelSystem.h"
 
 // Simple service locator interface
 template <class T> class phIServiceLocator
@@ -30,6 +28,3 @@ private:
 
 template <typename T> T* phIServiceLocator<T>::s_pService = nullptr;
 
-class phCModelSystemLocator : public phIServiceLocator<phCModelSystem>
-{
-};
