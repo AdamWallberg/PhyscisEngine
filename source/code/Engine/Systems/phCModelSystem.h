@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Data/Models/phCModel.h"
+#include "phServiceLocators.h"
 
 class phCModelSystem
 {
@@ -18,4 +19,8 @@ private:
 
 	// TODO: Later this class should handle allocation and storage of all models and their data
 
+};
+
+class phCModelSystemLocator : public phIServiceLocator<phCModelSystem>
+{
 };
