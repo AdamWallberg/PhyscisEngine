@@ -147,7 +147,7 @@ pmMat4 pmMat4::LookAt( const pmV3& position, const pmV3& target, const pmV3& up 
 
 
 
-const pmMat4& pmMat4::operator*( const pmMat4& other )
+pmMat4 pmMat4::operator*( const pmMat4& other )
 {
 	pmMat4 result;
 	float sum;
