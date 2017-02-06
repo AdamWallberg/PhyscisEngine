@@ -54,5 +54,5 @@ private:
 	double m_lifeTimeReal;
 	double m_deltaTime;
 	double m_deltaTimeReal;
-	std::map<const char* /*name*/, SStopwatch> m_clocks;
+	std::map<std::string /*name*/, SStopwatch> m_clocks;
 };
