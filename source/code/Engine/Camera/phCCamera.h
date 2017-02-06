@@ -7,15 +7,25 @@ public:
 
 	phCCamera(float fov, float aspectRatio, float near, float far );
 
-	void SetPosition(const pmV3& rPosition) { m_position = rPosition; }
-	void SetRotationEuler(const pmV3& rRotation);
-	void RotateEuler(const pmV3& rRotationDelta);
-	void SetFOV(float fov);
-	void SetAspectRatio(float aspectRatio);
-	void SetNearClip(float near);
-	void SetFarClip(float far);
+	// Getters and setters
+	float GetFov() const { return m_fov; }
+	float GetAspectRatio() const { return m_aspectRatio; }
+	float GetNearClip() const { return m_near; }
+	float GetFarClip() const { return m_far; }
+	pmV3 GetPosition() const { return m_position; }
+	pmV3 GetRotationEuler() const { return m_rotation; }
+	pmMat4 GetTransformationMatrix() const { return m_transformationMatrix; }
+	pmMat4 GetProjectionMatrix() const { return m_projectionMatrix; }
+	pmV3 GetClearColor() const { return m_clearColor; }
 
-	void Update();
+	void SetPosition( const pmV3& rPosition ) { m_position = rPosition; }
+	void SetRotationEuler( const pmV3& rRotation ) { m_rotation = rRotation; }
+	void RotateEuler( const pmV3& rRotationDelta ) { m_rotation += rRotationDelta; }
+	void SetFOV( float fov ) { m_fov = fov; }
+	void SetAspectRatio( float aspectRatio ) { m_aspectRatio = aspectRatio; }
+	void SetNearClip( float near ) { m_near = near; }
+	void SetFarClip( float far ) { m_far = far; }
+	void SetClearColor( const pmV4& clearColor ) { m_clearColor = clearColor; }
 
 private:
 
