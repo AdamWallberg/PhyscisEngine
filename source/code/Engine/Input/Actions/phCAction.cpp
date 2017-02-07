@@ -16,11 +16,11 @@ phCAction::phCAction()
 phCAction::~phCAction()
 {
 
-	for( auto& it : m_mappings )
-	{
-		phIInputMapping* pMapping = it.first;
-		delete pMapping;
-	}
+	//for( auto& it : m_mappings )
+	//{
+	//	phIInputMapping* pMapping = it.first;
+	//	delete pMapping;
+	//}
 
 	m_mappings.clear();
 
