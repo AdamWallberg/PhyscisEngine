@@ -25,6 +25,8 @@ CApplication::CApplication()
 	CSettingsWindow::LoadSettings();
 	m_pWindow = newp phCWindow;
 	m_pWindow->CreateWindow( CSettingsWindow::title.c_str(), CSettingsWindow::width, CSettingsWindow::height, CSettingsWindow::samples, CSettingsWindow::fullscreen, CSettingsWindow::unlockFps );
+	// Register window to locator
+	phCWindowLocator::SetService(m_pWindow);
 
 	// Initialize the clock
 	phCClock::Init();
@@ -34,6 +36,8 @@ CApplication::CApplication()
 	// Create input system
 	m_pInputSystem = newp phCInputSystem( m_pWindow );
 	_logDebug( "Input system initialized.." );
+	// Register input system to locator
+	phCInputSystemLocator::SetService(m_pInputSystem);
 
 	// Create the renderer
 	m_pRenderer = newp phCRenderSystem();
@@ -53,21 +57,12 @@ CApplication::CApplication()
 	// Create the game state machine
 	m_pGameStateMachine = newp CGameStateMachine();
 
-////////////////////////////////////////////////////////////////
-
-	m_pCamera3D = newp phCCamera(110.0f, (float)CSettingsWindow::width / (float)CSettingsWindow::height, 0.1f, 1000.0f);
-	m_pCamera3D->SetPosition(pmV3(0.0f, 0.0f, -3.0f));
-	m_pCamera3D->Update(true, true);
-
-	phCCameraSystemLocator::GetService()->SetCurrentCamera(m_pCamera3D);
-
 } // CApplication
 
 
 
 CApplication::~CApplication()
 {
-	delete m_pCamera3D;
 	delete m_pGameStateMachine;
 	delete m_pCameraSystem;
 	delete m_pModelSystem;
@@ -114,10 +109,6 @@ void CApplication::Update()
 	}
 
 	const float lifeTime = phCClock::GetInstance().GetStopwatchTime("application_life_time");
-
-	m_pCamera3D->SetRotationEuler(pmV3(0.0f, lifeTime * 90.0f, 0.0f));
-	//m_pCamera3D->SetPosition(pmV3(pmSin(lifeTime * 44.0f) * 1.3f, pmSin(lifeTime * 90.0f) * 2.0f, -3.0f));
-	m_pCamera3D->Update(true, true);
 
 	// Update input
 	m_pInputSystem->Update();

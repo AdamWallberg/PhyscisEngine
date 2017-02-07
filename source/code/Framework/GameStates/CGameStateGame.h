@@ -2,6 +2,8 @@
 
 #include "IGameState.h"
 #include "Data/Models/phCModel.h"
+#include "Framework/Camera/CCameraFreeFlight.h"
+
 
 class CGameStateGame : public IGameState
 {
@@ -18,5 +20,8 @@ public:
 private:
 
 	phCModel* m_pTestModel;
+	phCModel* m_pTestModel2;
+
+	CCameraFreeFlight* m_pCamera;
 
 };

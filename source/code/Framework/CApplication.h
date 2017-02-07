@@ -32,7 +32,5 @@ private:
 	phCRenderSystem* m_pRenderer;
 	phCCameraSystem* m_pCameraSystem;
 
-	phCCamera* m_pCamera3D;
-
 	CGameStateMachine* m_pGameStateMachine;
 };
