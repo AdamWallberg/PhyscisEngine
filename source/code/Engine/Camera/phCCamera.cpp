@@ -25,14 +25,15 @@ void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransforma
 	if(updateTransformation)
 	{
 		pmMat4 newTransformMatrix( 1.0f );
-		
-		float length;
-		pmV3 rotationNormalized = m_rotation.normalize(&length);
-		
 		newTransformMatrix.Translate( m_position );
 		
-		newTransformMatrix.Rotate( length, rotationNormalized );
-		
+		pmMat4 rotation(1.0f);
+		float length;
+		pmV3 rotationNormalized = m_rotation.normalize(&length);
+		rotation.Rotate(length, rotationNormalized);
+
+		newTransformMatrix = newTransformMatrix * rotation;
+
 		m_transformationMatrix = newTransformMatrix;
 	}
 }
