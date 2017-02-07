@@ -102,17 +102,11 @@ pmMat4 pmMat4::Perspective( float fov, float aspectRatio, float near, float far 
 {
 	pmMat4 result(1.0f);
 
-	float q = 1.0f / pmTan(0.5f * fov);
-	float a = q / aspectRatio;
-
-	float b = (near + far) / (near - far);
-	float c = (2.0f * near * far) / (near - far);
-
-	result.elements[0 + 0 * 4] = a;
-	result.elements[1 + 1 * 4] = q;
-	result.elements[2 + 2 * 4] = b;
-	result.elements[2 + 3 * 4] = -1.0f;
-	result.elements[3 + 2 * 4] = c;
+	result.up.y = 1.0f / pmTan(fov * 0.5f);
+	result.left.x = result.up.y / aspectRatio;
+	result.elements[11] = -1.0f;
+	result.forward.z = -(far + near) / (far - near);
+	result.translation.z = -(2.0f * far * near) / (far - near);
 
 	return result;
 }
