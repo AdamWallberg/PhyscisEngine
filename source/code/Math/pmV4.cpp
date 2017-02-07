@@ -16,7 +16,7 @@ const pmV4 pmV4::negw = pmV4(  0.0f,  0.0f,  0.0f, -1.0f );
 
 // Color constants
 const pmV4 pmV4::white		= pmV4( 1.0f, 1.0f, 1.0f, 1.0f );
-const pmV4 pmV4::black		= zero;
+const pmV4 pmV4::black		= pmV4( 0.0f, 0.0f, 0.0f, 1.0f );
 const pmV4 pmV4::gray		= pmV4( 0.5f, 0.5f, 0.5f, 1.0f );
 const pmV4 pmV4::red		= pmV4( 1.0f, 0.0f, 0.0f, 1.0f );
 const pmV4 pmV4::green		= pmV4( 0.0f, 1.0f, 0.0f, 1.0f );
