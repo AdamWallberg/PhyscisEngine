@@ -11,6 +11,8 @@ phCCamera::phCCamera(float fov, float aspectRatio, float near, float far)
 
 	m_projectionMatrix = pmMat4::Perspective(fov, aspectRatio, near, far);
 	m_transformationMatrix = pmMat4(1.0f);
+
+	m_clearColor = pmV4::black;
 }
 
 void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransformation /*= true*/ )
@@ -23,8 +25,13 @@ void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransforma
 	if(updateTransformation)
 	{
 		pmMat4 newTransformMatrix( 1.0f );
-		newTransformMatrix.Rotate( 1.0f, m_rotation );
+		
+		float length;
+		pmV3 rotationNormalized = m_rotation.normalize(&length);
+		newTransformMatrix.Rotate( length, rotationNormalized );
+		
 		newTransformMatrix.Translate( m_position );
+		
 		m_transformationMatrix = newTransformMatrix;
 	}
 }
