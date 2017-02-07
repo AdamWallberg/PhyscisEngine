@@ -34,7 +34,7 @@ void CGameStateGame::OnEnter()
 	m_pTestModel->m_matrix.Translate(pmV3(-2.0f, 0.0f, 3.0f));
 	m_pTestModel2->m_matrix.Translate(pmV3(2.0f, 0.0f, 3.0f));
 
-	m_pCamera = new CCameraFreeFlight();
+	m_pCamera = newp CCameraFreeFlight();
 	phCCameraSystemLocator::GetService()->SetCurrentCamera(m_pCamera);
 }
 
