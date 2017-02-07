@@ -18,6 +18,7 @@ public:
 
 	// Polls glfw events
 	void Update();
+	void SwapBuffers();
 
 	// Getters
 	bool ShouldClose() { return m_shouldClose; }

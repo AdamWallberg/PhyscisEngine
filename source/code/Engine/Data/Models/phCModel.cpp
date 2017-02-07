@@ -12,7 +12,7 @@ phCModel::phCModel( const char* filePath )
 	: phIAsset( filePath )
 	  , m_matrix( pmMat4( 1 ) )
 {
-	phCMesh* pMesh = new phCMesh( filePath );
+	phCMesh* pMesh = newp phCMesh( filePath );
 	pMesh->m_pParent = this;
 	m_meshes.push_back( pMesh );
 	Init();

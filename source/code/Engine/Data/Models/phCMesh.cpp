@@ -10,10 +10,12 @@ phCMesh::phCMesh(const char* filePath)
 {
 	// TODO: Fix this, this is only temporary.
 	// Assuming that we only want to create meshes this way is really silly...
-	phCFileSystem::GetInstance().LoadAndParseOBJ(filePath, &m_vertexData, &m_indexData);
+	m_pVertexData = new phCVertexData();
+	m_pIndexData = new phCIndexData();
+	phCFileSystem::GetInstance().LoadAndParseOBJ(filePath, m_pVertexData, m_pIndexData);
 
-	m_pVertexBuffer = newp phCVertexBuffer(&m_vertexData);
-	m_pIndexBuffer = newp phCIndexBuffer(&m_indexData);
+	m_pVertexBuffer = newp phCVertexBuffer(m_pVertexData);
+	m_pIndexBuffer = newp phCIndexBuffer(m_pIndexData);
 }
 
 phCMesh::~phCMesh()

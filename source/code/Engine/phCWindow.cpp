@@ -79,5 +79,10 @@ void phCWindow::Update()
 {
 	glfwPollEvents();
 	m_shouldClose = glfwWindowShouldClose( m_pWindow ) == GL_TRUE;
-	glfwSwapBuffers( m_pWindow );
 } // Update
+
+
+void phCWindow::SwapBuffers()
+{
+	glfwSwapBuffers( m_pWindow );
+}

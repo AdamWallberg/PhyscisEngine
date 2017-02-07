@@ -15,6 +15,10 @@ public:
 	// Shaders
 	phCShaderDefault* m_pShaderDefault;
 
+private:
+
+	GLuint m_vertexArrayID;
+
 };
 
 class phCRenderSystemLocator : public phIServiceLocator<phCRenderSystem>

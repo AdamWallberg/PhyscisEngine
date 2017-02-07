@@ -28,10 +28,10 @@ private:
 	pmMat4 m_matrix;
 	phCModel* m_pParent;
 	
-	phCVertexData m_vertexData;
+	phCVertexData* m_pVertexData;
 	phCVertexBuffer* m_pVertexBuffer;
 
-	phCIndexData m_indexData;
+	phCIndexData* m_pIndexData;
 	phCIndexBuffer* m_pIndexBuffer;
 
 	bool m_shouldRender;
