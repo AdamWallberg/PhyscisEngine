@@ -48,7 +48,7 @@ void CGameStateGame::OnExit()
 
 void CGameStateGame::Update()
 {
-	m_pTestModel->m_matrix.Rotate(phCClock::GetInstance().GetLifeTime() * 90.0f, pmV3::posy);
+	m_pTestModel->m_matrix.Rotate(pmV3::posy * phCClock::GetInstance().GetLifeTime() * 90.0f);
 	m_pTestModel->Update();
 
 	m_pTestModel2->m_matrix.translation.y = pmSin(phCClock::GetInstance().GetLifeTime() * 90.0f) * 3.0f;

@@ -46,28 +46,35 @@ void pmMat4::Translate( const pmV3& translation )
 }
 
 
-
-void pmMat4::Rotate( float angle, const pmV3& axis )
+void pmMat4::Rotate( const pmV3& axis )
 {
-	float c = pmCos( angle );
-	float s = pmSin( angle );
-	float omc = 1.0f - c;
+	// TODO: Do all of this in one matrix instead of 3
+	float cx = pmCos(axis.x);
+	float sx = pmSin(axis.x);
+	float cy = pmCos(axis.y);
+	float sy = pmSin(axis.y);
+	float cz = pmCos(axis.z);
+	float sz = pmSin(axis.z);
+	
+	pmMat4 rotx(1);
+	rotx.up.y = cx;
+	rotx.up.z = sx;
+	rotx.forward.y = -sx;
+	rotx.forward.z = cx;
 
-	float x = axis.x;
-	float y = axis.y;
-	float z = axis.z;
+	pmMat4 roty(1);
+	roty.left.x = cy;
+	roty.left.z = -sy;
+	roty.forward.x = sy;
+	roty.forward.z = cy;
 
-	elements[ 0 + 0 * 4 ] = x * omc + c;
-	elements[ 0 + 1 * 4 ] = y * x * omc + z * s;
-	elements[ 0 + 2 * 4 ] = x * z * omc - y * s;
+	pmMat4 rotz(1);
+	rotz.left.x = cz;
+	rotz.left.y = sz;
+	rotz.up.x = -sz;
+	rotz.up.y = cz;
 
-	elements[ 1 + 0 * 4 ] = x * y * omc - z * s;
-	elements[ 1 + 1 * 4 ] = y * omc + c;
-	elements[ 1 + 2 * 4 ] = y * z * omc + x * s;
-
-	elements[ 2 + 0 * 4 ] = x * z * omc + y * s;
-	elements[ 2 + 1 * 4 ] = y * z * omc - x * s;
-	elements[ 2 + 2 * 4 ] = z * omc + c;
+	*this = rotx * roty * rotz;
 }
 
 

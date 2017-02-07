@@ -28,9 +28,7 @@ void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransforma
 		newTransformMatrix.Translate( m_position );
 		
 		pmMat4 rotation(1.0f);
-		float length;
-		pmV3 rotationNormalized = m_rotation.normalize(&length);
-		rotation.Rotate(length, rotationNormalized);
+		rotation.Rotate(m_rotation);
 
 		newTransformMatrix = newTransformMatrix * rotation;
 

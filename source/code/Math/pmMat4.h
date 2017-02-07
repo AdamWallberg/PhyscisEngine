@@ -38,7 +38,7 @@ public:
 	};
 
 	void Translate( const pmV3& translation );
-	void Rotate( float angle, const pmV3& axis );
+	void Rotate( const pmV3& axis );
 	void Scale( const pmV3& scale );
 
 	static pmMat4 Orthographic(float left, float right, float bottom, float top, float near, float far);
