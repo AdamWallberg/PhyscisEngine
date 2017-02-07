@@ -26,7 +26,9 @@ void CGameStateGame::OnDestroy()
 void CGameStateGame::OnEnter()
 {
 	_logDebug( "Game State GAME: ON ENTER" );
-	m_pTestModel = newp phCModel("data/models/cube/cube.obj");
+	m_pTestModel = newp phCModel("data/models/monkey/monkey.obj");
+	
+	m_pTestModel->m_matrix.Translate(pmV3(0.0f, 0.0f, 3.0f));
 }
 
 void CGameStateGame::OnExit()
