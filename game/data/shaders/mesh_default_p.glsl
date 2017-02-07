@@ -1,11 +1,12 @@
 #version 330 core
 
-in vec2 in_uv;
-in vec4 in_color;
+//in vec2 in_uv;
+in vec3 normal;
+in vec4 color;
 
-out vec3 out_color;
+out vec4 out_color;
 
 void main()
 {
-	out_color = vec3(1.0, 0.0, 1.0);
+	out_color = vec4(normal, 1.0);
 }
