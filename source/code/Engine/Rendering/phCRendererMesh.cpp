@@ -23,10 +23,10 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	//pmMat4 matViewProj = pCamera->GetProjectionMatrix() * pCamera->GetTransformationMatrix();
 	//pmMat4 matWorldViewProj = matViewProj * matWorld;
 
-	pmMat4 matWorld = pMesh->m_matrix;
+	pmMat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
 	pmMat4 matView = pCamera->GetTransformationMatrix();
 	pmMat4 matProj = pCamera->GetProjectionMatrix();
-	pmMat4 matWorldViewProj = pCamera->GetTransformationMatrix() * pCamera->GetProjectionMatrix();
+	pmMat4 matWorldViewProj = matWorld * matView * matProj;
 
 	// Set uniforms
 	glUniformMatrix4fv(uWorldMatrixID, 1, GL_FALSE, &matWorld.elements[0]);
