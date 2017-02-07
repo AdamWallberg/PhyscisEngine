@@ -49,9 +49,8 @@ void pmMat4::Translate( const pmV3& translation )
 
 void pmMat4::Rotate( float angle, const pmV3& axis )
 {
-	float r = pmToRadians( angle );
-	float c = pmCos( r );
-	float s = pmSin( r );
+	float c = pmCos( angle );
+	float s = pmSin( angle );
 	float omc = 1.0f - c;
 
 	float x = axis.x;
