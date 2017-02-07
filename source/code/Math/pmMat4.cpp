@@ -42,7 +42,7 @@ pmMat4::~pmMat4()
 
 void pmMat4::Translate( const pmV3& translation )
 {
-	this->translation = translation;
+	this->translation += translation;
 }
 
 
