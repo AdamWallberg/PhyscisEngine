@@ -33,7 +33,7 @@ public:
 	void SetFarClip( float far ) { m_far = far; }
 	void SetClearColor( const pmV4& clearColor ) { m_clearColor = clearColor; }
 
-private:
+protected:
 
 	float m_fov, m_aspectRatio, m_near, m_far;
 
