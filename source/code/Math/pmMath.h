@@ -110,6 +110,14 @@ inline float pmSin( const float& degrees )
 
 
 
+// Returns sine from radians.
+inline float pmSinRad( const float& radians )
+{
+	return static_cast<float>( sin( radians ) );
+}
+
+
+
 // Returns asin
 inline float pmASin( const float& sin )
 {
@@ -122,6 +130,14 @@ inline float pmASin( const float& sin )
 inline float pmCos( const float& degrees )
 {
 	return static_cast<float>( cos( pmToRadians( degrees ) ) );
+}
+
+
+
+// Returns cosine from radians.
+inline float pmCosRad( const float& radians )
+{
+	return static_cast<float>( cos( radians ) );
 }
 
 
