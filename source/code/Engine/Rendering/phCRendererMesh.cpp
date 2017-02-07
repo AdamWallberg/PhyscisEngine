@@ -8,7 +8,9 @@
 void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 {
 	phCCamera* pCamera = phCCameraSystemLocator::GetService()->GetCurrentCamera();
-	
+	if(!pCamera)
+		return;
+
 	GLuint programID = phCRenderSystemLocator::GetService()->m_pShaderDefault->GetProgramID();
 	glUseProgram(programID);
 
