@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "phSystem.h"
+#include "Systems/phServiceLocators.h"
 
 // All interaction with the GLFW window goes through this class. 
 class phCWindow
@@ -32,4 +33,8 @@ private:
 	GLFWwindow* m_pWindow;
 	bool m_shouldClose;
 
+};
+
+class phCWindowLocator : public phIServiceLocator<phCWindow>
+{
 };
