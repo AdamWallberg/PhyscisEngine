@@ -28,6 +28,12 @@ public:
 	//		p2: A pointer to the custom data that the event sends out.
 	void RegisterListener( const char* eventID, void* pListenerObject, void ( *ListenerCallback ) ( const char*, void*, void* ) );
 	
+	// Deletes all listener instances for this object.
+	void DeleteListener( void* pListenerObject );
+
+	// Deletes the listener for the specified event.
+	void DeleteEventListener( const char* eventID, void* pListenerObject );
+
 	// Broadcasts an event to all listeners that are registered to it.
 	void BroadcastEvent( const char* eventID, void* pOptionalArguments );
 
