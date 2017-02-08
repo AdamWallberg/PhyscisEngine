@@ -161,18 +161,12 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 		uint32 index;
 		bool alreadyIndexed = false;
 
-		// Check if identical vertex has already been indexed
-		//std::map< SVertex, uint32 >::iterator it = indexedVertices.find( vertex );
-		//if( it != indexedVertices.end() )
-		//{
-		//	index = it->second;
-		//	alreadyIndexed = true;
-		//}
-
+		// TODO: Check how this works with uv's later
 		for(auto& it : indexedVertices)
 		{
 			const SVertex& rVertex = it.first;
 
+			// Calc smooth shading / flat shading
 			if(rVertex.position == vertex.position)
 			{
 				if(hasSmoothNormals || (rVertex.normal == vertex.normal && rVertex.uv == vertex.uv && rVertex.color == vertex.color))
