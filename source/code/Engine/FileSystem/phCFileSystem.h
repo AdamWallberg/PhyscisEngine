@@ -3,6 +3,7 @@
 //engine
 #include "Engine/Utils/phCSingleton.h"
 #include "Dependencies/json.hpp"
+#include "phGL.h"
 //fbx
 #if defined FBX
 #include <fbxsdk.h>
@@ -24,6 +25,9 @@ public:
 
 	// OBJ parsing
 	bool LoadAndParseOBJ( const char* filePath, phCVertexData* pVertexData, phCIndexData* pIndexData );
+
+	// BMP parsing
+	GLuint LoadAndParseBMP( const char* filePath );
 
 #if defined FBX
 	// FBX parsing

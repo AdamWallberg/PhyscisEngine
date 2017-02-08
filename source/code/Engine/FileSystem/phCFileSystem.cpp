@@ -198,6 +198,91 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 
 
 
+GLuint phCFileSystem::LoadAndParseBMP( const char* filePath )
+{
+	_logDebug("Reading image: %s", filePath);
+
+	unsigned char header[54];
+	uint16 dataPos;
+	uint16 imageSize;
+	uint16 width, height;
+
+	uint8* data;
+
+	// Open file
+	FILE* pFile;
+	fopen_s(&pFile, filePath, "rb");
+
+	if(!pFile)
+	{
+		_logError("Couldn't find file!");
+		return 0;
+	}
+
+	if( fread(header, 1, 54, pFile) != 54 )
+	{
+		_logError("Not a correct BMP file!");
+		fclose(pFile);
+		return 0;
+	}
+
+	if( header[0] != 'B' || header[1] != 'M' )
+	{
+		_logError("Not a correct BMP file!");
+		fclose(pFile);
+		return 0;
+	}
+
+	if ( *(int*)& (header[0x1E]) != 0 )
+	{
+		_logError("Not a correct BMP file!");
+		fclose(pFile);
+		return 0;
+	}
+
+	if ( *(int*)& (header[0x1C]) != 24 )
+	{
+		_logError("Not a correct BMP file!");
+		fclose(pFile);
+		return 0;
+	}
+
+	// Read image info
+	dataPos		= *(int*)& (header[0x0A]);
+	imageSize	= *(int*)& (header[0x22]);
+	width		= *(int*)& (header[0x12]);
+	height		= *(int*)& (header[0x16]);
+
+	if(imageSize == 0) imageSize = width * height * 3;
+	if(dataPos == 0) dataPos = 54;
+
+	data = new uint8[imageSize];
+
+	fread(data, 1, imageSize, pFile);
+
+	fclose(pFile);
+
+	// Create the GL texture
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+	delete [] data;
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	return textureID;
+}
+
+
+
 #if defined FBX
 void phCFileSystem::InitFBX()
 {
