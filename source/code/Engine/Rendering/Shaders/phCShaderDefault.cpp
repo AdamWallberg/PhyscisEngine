@@ -34,4 +34,5 @@ phCShaderDefault::phCShaderDefault( const char* vertexShaderPath, const char* fr
 phCShaderDefault::~phCShaderDefault()
 {
 	glDeleteProgram( m_programID );
+	m_programID = 0;
 }

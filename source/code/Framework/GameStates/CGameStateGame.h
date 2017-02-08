@@ -1,6 +1,9 @@
 #pragma once
 
 #include "IGameState.h"
+#include "Data/Models/phCModel.h"
+#include "Framework/Camera/CCameraFreeFlight.h"
+
 
 class CGameStateGame : public IGameState
 {
@@ -14,6 +17,11 @@ public:
 	void OnExit() override;
 	void Update() override;
 
-	static void ListenerCallback( const char* eventID, void* pObject, void* pData );
+private:
+
+	phCModel* m_pTestModel;
+	phCModel* m_pTestModel2;
+
+	CCameraFreeFlight* m_pCamera;
 
 };

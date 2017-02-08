@@ -1,5 +1,6 @@
 #pragma once
 
+#include "phSystem.h"
 #include "phIInputMapping.h"
 
 class phCWindow;

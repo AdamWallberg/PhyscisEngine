@@ -23,7 +23,7 @@ public:
 	virtual void OnExit() = 0;
 	virtual void Update() = 0;
 
-private:
+protected:
 
 	CGameStateMachine* m_pMachine;
 

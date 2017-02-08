@@ -20,7 +20,7 @@ private:
 
 	IGameState* m_pCurrentGameState;
 	IGameState* m_pNextGameState;
-	std::map< const char* /*id*/, IGameState* /*pGameState*/ > m_gameStates;
+	std::map< std::string /*id*/, IGameState* /*pGameState*/ > m_gameStates;
 	
 	bool m_loading;
 	std::thread* m_pLoadingThread;

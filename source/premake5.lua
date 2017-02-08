@@ -12,12 +12,16 @@ solution (SOLUTION_NAME)
 	configurations { "Debug", "Release" }
 	
 	platforms {
-		"Win32"
+		"Win32", "Win64"
 	}
 	
 	filter { "platforms:Win32" }
 		system "Windows"
 		architecture "x32"
+		
+	filter { "platforms:Win64" }
+		system "Windows"
+		architecture "x64"
 		
 	configuration { "Debug" }
 		defines { "DEBUG" }
@@ -81,6 +85,16 @@ project (FRAMEWORK_NAME)
 		libdirs{
 			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/Win32/",
 			LIBRARY_FOLDER .. "glfw32/lib-vc2015/"
+		}
+		
+	configuration { "Win64" }
+		
+		includedirs{
+			LIBRARY_FOLDER .. "glfw64/include/"
+		}
+		libdirs{
+			LIBRARY_FOLDER .. "glew-1.13.0/lib/Release/x64/",
+			LIBRARY_FOLDER .. "glfw64/lib-vc2015/"
 		}
 		
 		

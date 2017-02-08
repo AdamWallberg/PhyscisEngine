@@ -130,7 +130,7 @@ public:
 	void operator /= ( const float in );
 
 	// Comparison operators
-	bool operator == ( const pmV3& in ) const ;
+	bool operator == ( const pmV3& in ) const;
 	bool operator != ( const pmV3& in ) const;
 
 };

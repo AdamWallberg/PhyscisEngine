@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Actions/phCAction.h"
+#include "Systems/phServiceLocators.h"
 
 class phCWindow;
 
@@ -14,8 +15,8 @@ public:
 
 	void Update();
 
-private:
+};
 
-	phCAction m_testAction;
-
+class phCInputSystemLocator : public phIServiceLocator<phCInputSystem>
+{
 };

@@ -33,11 +33,11 @@ public:
 	// Getters and setters
 #pragma warning( push )
 #pragma warning( disable : 4172 )
-	const float& GetLifeTime() { return static_cast<float>( m_lifeTime ); }
-	const float& GetLifeTimeReal() { return static_cast<float>( m_lifeTimeReal ); }
-	const float& GetDeltaTime() { return static_cast<float>( m_deltaTime ); }
-	const float& GetDeltaTimeReal() { return static_cast<float>( m_deltaTimeReal ); }
-	const bool& GetPaused() { return m_paused; }
+	const float& GetLifeTime() const { return static_cast<float>( m_lifeTime ); }
+	const float& GetLifeTimeReal() const { return static_cast<float>( m_lifeTimeReal ); }
+	const float& GetDeltaTime() const { return static_cast<float>( m_deltaTime ); }
+	const float& GetDeltaTimeReal() const { return static_cast<float>( m_deltaTimeReal ); }
+	const bool& GetPaused() const { return m_paused; }
 #pragma warning( pop )
 	void SetPaused( bool paused ) { m_paused = paused; }
 
@@ -54,5 +54,5 @@ private:
 	double m_lifeTimeReal;
 	double m_deltaTime;
 	double m_deltaTimeReal;
-	std::map<const char* /*name*/, SStopwatch> m_clocks;
+	std::map<std::string /*name*/, SStopwatch> m_clocks;
 };

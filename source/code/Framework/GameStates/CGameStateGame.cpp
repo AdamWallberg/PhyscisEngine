@@ -1,11 +1,13 @@
 #include "CGameStateGame.h"
 #include "Engine/phSystem.h"
-#include "Engine/Events/phCEventBroadcaster.h"
+#include "Clock/phCClock.h"
+#include "Camera/phCCameraSystem.h"
 
 CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 	: IGameState( pMachine )
+	, m_pTestModel(nullptr)
 {
-	phCEventBroadcaster::GetInstance().RegisterListener( "test_key_pressed", this, ListenerCallback );
+
 }
 
 
@@ -13,6 +15,9 @@ CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 void CGameStateGame::OnCreate()
 {
 	_logDebug( "Game State GAME: ON CREATE" );
+	// WARNING:
+	// Opengl can't, for some reason, generate buffers on another thread,
+	// look into this!
 }
 
 void CGameStateGame::OnDestroy()
@@ -23,20 +28,30 @@ void CGameStateGame::OnDestroy()
 void CGameStateGame::OnEnter()
 {
 	_logDebug( "Game State GAME: ON ENTER" );
+	m_pTestModel = newp phCModel("data/models/monkey/monkey.obj");
+	m_pTestModel2 = newp phCModel("data/models/cube/cube.obj");
+	
+	m_pTestModel->m_matrix.Translate(pmV3(-2.0f, 0.0f, 3.0f));
+	m_pTestModel2->m_matrix.Translate(pmV3(2.0f, 0.0f, 3.0f));
+
+	m_pCamera = newp CCameraFreeFlight();
+	phCCameraSystemLocator::GetService()->SetCurrentCamera(m_pCamera);
 }
 
 void CGameStateGame::OnExit()
 {
 	_logDebug( "Game State GAME: ON EXIT" );
+	delete m_pCamera;
+	delete m_pTestModel;
+	delete m_pTestModel2;
 }
 
 void CGameStateGame::Update()
 {
+	m_pTestModel->m_matrix.Rotate(pmV3::posy * phCClock::GetInstance().GetLifeTime() * 90.0f);
+	m_pTestModel->Update();
 
-}
+	m_pTestModel2->m_matrix.translation.y = pmSin(phCClock::GetInstance().GetLifeTime() * 90.0f) * 3.0f;
 
-
-
-void CGameStateGame::ListenerCallback( const char* eventID, void* pObject, void* pData )
-{
+	m_pCamera->Update();
 }

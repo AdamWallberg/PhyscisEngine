@@ -2,7 +2,12 @@
 
 class phCWindow;
 class phCInputSystem;
+class phCModelSystem;
+class phCRenderSystem;
+class phCCameraSystem;
 class CGameStateMachine;
+
+class phCCamera;
 
 // Contains the game loop, and updates the rest of
 // the application. 
@@ -23,6 +28,9 @@ private:
 
 	phCWindow* m_pWindow;
 	phCInputSystem* m_pInputSystem;
+	phCModelSystem* m_pModelSystem;
+	phCRenderSystem* m_pRenderer;
+	phCCameraSystem* m_pCameraSystem;
 
 	CGameStateMachine* m_pGameStateMachine;
 };

@@ -38,12 +38,16 @@ public:
 	};
 
 	void Translate( const pmV3& translation );
-	void Rotate( float angle, const pmV3& axis );
+	void Rotate( const pmV3& axis );
 	void Scale( const pmV3& scale );
+
+	static pmMat4 Orthographic(float left, float right, float bottom, float top, float near, float far);
+	static pmMat4 Perspective(float fov, float aspectRatio, float near, float far);
+	static pmMat4 LookAt(const pmV3& position, const pmV3& target, const pmV3& up);
 
 	// TODO: Add Invert, Transpose, and eventual Quaternion calculations..
 
-	const pmMat4 operator * ( const pmMat4& other );
+	pmMat4 operator * ( const pmMat4& other );
 
 };
 

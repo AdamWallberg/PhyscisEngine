@@ -1,4 +1,16 @@
-- Start window on specific monitor.
-- Logging with file .txt output
-- Have different lua scripts for each library.
+[GRAPHICS]
+- Start window on specific monitor
+- Camera class
+- Rendering of meshes
+- VBO indexing
+- Materials
+
+[INPUT]
 - Setup defines for joystick buttons/sticks
+
+[LOGGING]
+- Logging with file .txt output
+
+[PROJECT SETUP]
+- Have different lua scripts for each library
+- Different repo/project for math library

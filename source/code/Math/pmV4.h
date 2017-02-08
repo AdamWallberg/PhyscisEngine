@@ -6,7 +6,6 @@
 #include "pmV2.h"
 #include "pmV3.h"
 
-
 class pmV4
 {
 public:
@@ -32,6 +31,17 @@ public:
 	static const pmV4 posw;
 	static const pmV4 negw;
 
+	// Color constants
+	static const pmV4 white;
+	static const pmV4 black;
+	static const pmV4 gray;
+	static const pmV4 red;
+	static const pmV4 green;
+	static const pmV4 blue;
+	static const pmV4 magenta;
+	static const pmV4 yellow;
+	static const pmV4 turquoise;
+
 	// Member variables
 	union
 	{
@@ -44,6 +54,15 @@ public:
 		};
 		pmV2 xy;
 		pmV3 xyz;
+		struct
+		{
+			float r;
+			float g;
+			float b;
+			float a;
+		};
+		pmV2 rg;
+		pmV3 rgb;
 	};
 
 ////////////////////////////////////////////////////////////////

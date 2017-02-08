@@ -1,10 +1,16 @@
 #pragma once
 
+//engine
 #include "Engine/Utils/phCSingleton.h"
 #include "Dependencies/json.hpp"
+//fbx
 #if defined FBX
 #include <fbxsdk.h>
 #endif
+
+class phCVertexData;
+class phCIndexData;
+
 // Used to load and manage files.
 class phCFileSystem : public phCSingleton< phCFileSystem >
 {
@@ -15,6 +21,9 @@ public:
 
 	// JSON parsing
 	nlohmann::json LoadAndParseJSON( const char* filePath );
+
+	// OBJ parsing
+	bool LoadAndParseOBJ( const char* filePath, phCVertexData* pVertexData, phCIndexData* pIndexData );
 
 #if defined FBX
 	// FBX parsing

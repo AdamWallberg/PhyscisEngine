@@ -69,8 +69,8 @@ inline float sign( const float& value )
 		return 0.f;
 	if( value > 0.f )
 		return 1.f;
-	if( value < 0.f )
-		return -1.f;
+	
+	return -1.f;
 }
 
 inline int sign( const int& value )
@@ -79,8 +79,7 @@ inline int sign( const int& value )
 		return 0;
 	if( value > 0 )
 		return 1;
-	if( value < 0 )
-		return -1;
+	return -1;
 }
 
 
@@ -111,6 +110,14 @@ inline float pmSin( const float& degrees )
 
 
 
+// Returns sine from radians.
+inline float pmSinRad( const float& radians )
+{
+	return static_cast<float>( sin( radians ) );
+}
+
+
+
 // Returns asin
 inline float pmASin( const float& sin )
 {
@@ -123,6 +130,14 @@ inline float pmASin( const float& sin )
 inline float pmCos( const float& degrees )
 {
 	return static_cast<float>( cos( pmToRadians( degrees ) ) );
+}
+
+
+
+// Returns cosine from radians.
+inline float pmCosRad( const float& radians )
+{
+	return static_cast<float>( cos( radians ) );
 }
 
 

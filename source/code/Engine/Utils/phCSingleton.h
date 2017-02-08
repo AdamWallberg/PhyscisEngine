@@ -1,4 +1,5 @@
 #pragma once
+#include "phSystem.h"
 
 // Singleton template class.
 // Just to offend every c++ programmer out there.
