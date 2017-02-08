@@ -61,20 +61,20 @@ void pmMat4::Rotate( const pmV3& axis )
 	rotx.up.z = sx;
 	rotx.forward.y = -sx;
 	rotx.forward.z = cx;
-
+	
 	pmMat4 roty(1);
 	roty.left.x = cy;
 	roty.left.z = -sy;
 	roty.forward.x = sy;
 	roty.forward.z = cy;
-
+	
 	pmMat4 rotz(1);
 	rotz.left.x = cz;
 	rotz.left.y = sz;
 	rotz.up.x = -sz;
 	rotz.up.y = cz;
 
-	*this = rotx * roty * rotz;
+	*this = *this * rotx * roty * rotz;
 }
 
 
