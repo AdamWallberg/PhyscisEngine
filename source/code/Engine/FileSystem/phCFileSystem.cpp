@@ -55,6 +55,8 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 	std::vector< pmV2 > tempUVs;
 	std::vector< pmV3 > tempNormals;
 
+	bool hasSmoothNormals = false;
+
 	FILE* pFile;
 	fopen_s( &pFile, filePath, "r" );
 
@@ -115,6 +117,16 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 			normalIndices.push_back( normalIndex[ 1 ] );
 			normalIndices.push_back( normalIndex[ 2 ] );
 		}
+		else if( strcmp( lineHeader, "s" ) == 0 )
+		{
+			char result;
+			fscanf_s( pFile, " %c\n", &result );
+
+			if(result == '1')
+			{
+				hasSmoothNormals = true;
+			}
+		}
 	}
 
 	// Create GL readable data
@@ -144,17 +156,32 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 
 	for( uint32 i = 0; i < vertices.size(); ++i )
 	{
-		SVertex vertex = vertices[ i ];
+		const SVertex vertex = vertices[ i ];
 
 		uint32 index;
 		bool alreadyIndexed = false;
 
 		// Check if identical vertex has already been indexed
-		std::map< SVertex, uint32 >::iterator it = indexedVertices.find( vertex );
-		if( it != indexedVertices.end() )
+		//std::map< SVertex, uint32 >::iterator it = indexedVertices.find( vertex );
+		//if( it != indexedVertices.end() )
+		//{
+		//	index = it->second;
+		//	alreadyIndexed = true;
+		//}
+
+		for(auto& it : indexedVertices)
 		{
-			index = it->second;
-			alreadyIndexed = true;
+			const SVertex& rVertex = it.first;
+
+			if(rVertex.position == vertex.position)
+			{
+				if(hasSmoothNormals || (rVertex.normal == vertex.normal && rVertex.uv == vertex.uv && rVertex.color == vertex.color))
+				{
+					index = it.second;
+					alreadyIndexed = true;
+					break;
+				}
+			}
 		}
 
 		if( alreadyIndexed )
