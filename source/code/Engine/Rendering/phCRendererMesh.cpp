@@ -20,11 +20,6 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	GLint uProjMatrixID = glGetUniformLocation(programID, "u_matProj");
 	GLint uWorldViewProjMatrixID = glGetUniformLocation(programID, "u_matWorldViewProj");
 	
-	// Calc matrices
-	//pmMat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
-	//pmMat4 matViewProj = pCamera->GetProjectionMatrix() * pCamera->GetTransformationMatrix();
-	//pmMat4 matWorldViewProj = matViewProj * matWorld;
-
 	pmMat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
 	pmMat4 matView = pCamera->GetTransformationMatrix();
 	pmMat4 matProj = pCamera->GetProjectionMatrix();
@@ -46,10 +41,10 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	glVertexAttribPointer(0, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(0));
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(12));
-	//glEnableVertexAttribArray(2);
-	//glVertexAttribPointer(2, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(20));
-	//glEnableVertexAttribArray(3);
-	//glVertexAttribPointer(3, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(32));
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(2, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(20));
+	glEnableVertexAttribArray(3);
+	glVertexAttribPointer(3, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(32));
 
 	// Index buffers
 	pMesh->m_pIndexBuffer->Bind();
@@ -60,7 +55,7 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	// Disable attribute buffers
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
-	//glDisableVertexAttribArray(2);
-	//glDisableVertexAttribArray(3);
+	glDisableVertexAttribArray(2);
+	glDisableVertexAttribArray(3);
 
 }

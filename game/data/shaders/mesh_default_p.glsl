@@ -1,12 +1,17 @@
 #version 330 core
 
-//in vec2 in_uv;
-in vec3 normal;
-in vec4 color;
+struct SPixel
+{
+	vec3 normal;
+	vec2 uv;
+	vec4 color;
+};
+
+in SPixel PS;
 
 out vec4 out_color;
 
 void main()
 {
-	out_color = vec4(normal, 1.0);
+	out_color = vec4(PS.normal, 1.0);
 }
