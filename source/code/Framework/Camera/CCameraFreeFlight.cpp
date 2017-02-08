@@ -38,7 +38,7 @@ void CCameraFreeFlight::Update()
 	//m_position += m_transformationMatrix.forward * ( m_verticalMovement.GetValue() * phCClock::GetInstance().GetDeltaTime() );
 	//m_position += m_transformationMatrix.left * ( m_horizontalMovement.GetValue() * phCClock::GetInstance().GetDeltaTime() );
 	
-	m_position += pmV3( m_horizontalMovement.GetValue(), 0.0f,m_verticalMovement.GetValue() ) * phCClock::GetInstance().GetDeltaTime();
+	m_position += pmV3( m_horizontalMovement.GetValue(), 0.0f,m_verticalMovement.GetValue() ) * phCClock::GetInstance().GetDeltaTime() * 3.0f; 
 
 	m_rotation -= pmV3(m_pitchMovement.GetValue(), m_yawMovement.GetValue(), 0.0f) * phCClock::GetInstance().GetDeltaTime() * 180.0f;
 
