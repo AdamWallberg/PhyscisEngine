@@ -19,8 +19,7 @@ public:
 
 private:
 
-	phCModel* m_pTestModel;
-	phCModel* m_pTestModel2;
+	phCModel* m_models[12];
 
 	CCameraFreeFlight* m_pCamera;
 
