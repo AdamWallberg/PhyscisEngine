@@ -3,6 +3,7 @@
 class phCWindow;
 class phCInputSystem;
 class phCModelSystem;
+class phCTextureSystem;
 class phCRenderSystem;
 class phCCameraSystem;
 class CGameStateMachine;
@@ -29,6 +30,7 @@ private:
 	phCWindow* m_pWindow;
 	phCInputSystem* m_pInputSystem;
 	phCModelSystem* m_pModelSystem;
+	phCTextureSystem* m_pTextureSystem;
 	phCRenderSystem* m_pRenderer;
 	phCCameraSystem* m_pCameraSystem;
 

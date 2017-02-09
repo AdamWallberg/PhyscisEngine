@@ -10,6 +10,7 @@
 #include "Engine/Input/phCInputSystem.h"
 #include "Engine/FileSystem/phCFileSystem.h"
 #include "Engine/Systems/phCModelSystem.h"
+#include "Engine/Data/Textures/phCTextureSystem.h"
 #include "Engine/Rendering/phCRenderSystem.h"
 #include "Engine/Camera/phCCameraSystem.h"
 #include "Engine/Clock/phCClock.h"
@@ -53,6 +54,11 @@ CApplication::CApplication()
 	// Register system to locator
 	phCModelSystemLocator::SetService(m_pModelSystem);
 
+	// Create the texture system
+	m_pTextureSystem = newp phCTextureSystem();
+	// Register texture system to locator
+	phCTextureSystemLocator::SetService(m_pTextureSystem);
+
 	// Create the camera system
 	m_pCameraSystem = newp phCCameraSystem();
 	// Register the camera system to locator
@@ -69,6 +75,7 @@ CApplication::~CApplication()
 {
 	delete m_pGameStateMachine;
 	delete m_pCameraSystem;
+	delete m_pTextureSystem;
 	delete m_pModelSystem;
 	delete m_pRenderer;
 	delete m_pInputSystem;
