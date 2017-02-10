@@ -30,7 +30,7 @@ void phCCamera::Update( bool updateProjection /*= false*/, bool updateTransforma
 		pmMat4 rotation(1.0f);
 		rotation.Rotate(m_rotation);
 
-		newTransformMatrix = newTransformMatrix * rotation;
+		newTransformMatrix = rotation * newTransformMatrix;
 
 		m_transformationMatrix = newTransformMatrix;
 	}
