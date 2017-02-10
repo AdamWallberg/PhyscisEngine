@@ -31,6 +31,14 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	glUniformMatrix4fv(uProjMatrixID, 1, GL_FALSE, &matProj.elements[0]);
 	glUniformMatrix4fv(uWorldViewProjMatrixID, 1, GL_FALSE, &matWorldViewProj.elements[0]);
 
+	// Bind textures
+	GLuint uTextureID = glGetUniformLocation(programID, "u_textureSampler");
+	glActiveTexture(GL_TEXTURE0);
+	// TODO: Bind specified texture
+	// pMesh->GetMaterial().textureID or whatever
+	glBindTexture( GL_TEXTURE_2D, 1 );
+
+	glUniform1i(uTextureID, 0);
 
 	// Vertex buffers
 #define BUFFER_OFFSET(i) ((char*) NULL + (i))

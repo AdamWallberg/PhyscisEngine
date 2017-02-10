@@ -21,6 +21,8 @@ phCTextureSystem::~phCTextureSystem()
 				delete[] pTexture->pData;
 			}
 
+			glDeleteTextures(1, &pTexture->ID);
+
 			delete pTexture;
 		}
 	}
@@ -31,6 +33,7 @@ phCTextureSystem::~phCTextureSystem()
 STexture* phCTextureSystem::LoadTexture( std::string filePath, std::string nameOptional )
 {
 	STexture* pTexture = newp STexture;
+	pTexture->name = nameOptional == "" ? filePath : nameOptional;
 
 	// Check which filetype texture is
 	uint8 dotPos = (uint8)filePath.find_last_of(".");
@@ -78,7 +81,7 @@ STexture* phCTextureSystem::LoadTexture( std::string filePath, std::string nameO
 	glGenerateMipmap( GL_TEXTURE_2D );
 
 	// If nameOptional has been defined, use that as ID
-	m_textures[nameOptional == "" ? filePath : nameOptional] = pTexture;
+	m_textures[pTexture->name] = pTexture;
 
 	return pTexture;
 }
@@ -92,6 +95,8 @@ void phCTextureSystem::DestroyTexture( std::string textureName )
 		{
 			delete[] pTexture->pData;
 		}
+		glDeleteTextures( 1, &pTexture->ID );
+
 		m_textures.erase( textureName );
 		delete pTexture;
 	}
@@ -110,6 +115,7 @@ void phCTextureSystem::DestroyTexture( const GLuint textureID )
 			{
 				delete[] pTexture->pData;
 			}
+			glDeleteTextures( 1, &pTexture->ID );
 
 			delete pTexture;
 			m_textures.erase( it );
@@ -131,6 +137,8 @@ void phCTextureSystem::DestroyTexture( STexture* pTargetTexture )
 			{
 				delete[] pTexture->pData;
 			}
+			glDeleteTextures( 1, &pTexture->ID );
+
 			delete pTexture;
 			m_textures.erase( it );
 			break;

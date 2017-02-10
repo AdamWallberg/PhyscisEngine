@@ -12,7 +12,9 @@ in SPixel PS;
 
 out vec4 out_color;
 
+uniform sampler2D u_textureSampler;
+
 void main()
 {
-	out_color = vec4(PS.worldNormal, 1.0);
+	out_color = texture(u_textureSampler, PS.uv);
 }

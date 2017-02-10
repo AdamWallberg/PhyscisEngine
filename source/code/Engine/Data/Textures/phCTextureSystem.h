@@ -9,6 +9,7 @@ struct STexture
 {
 	STexture()
 		: ID(0)
+		, name("")
 		, width(0)
 		, height(0)
 		, pData(nullptr)
@@ -16,6 +17,7 @@ struct STexture
 	}
 
 	GLuint ID;
+	std::string name;
 	uint16 width;
 	uint16 height;
 	uint8* pData;
