@@ -40,6 +40,8 @@ public:
 	void Translate( const pmV3& translation );
 	void Rotate( const pmV3& axis );
 	void Scale( const pmV3& scale );
+	// Returns view matrix if this is a transform, and vice versa
+	pmMat4 GetToggledMatrix() const;
 
 	static pmMat4 Orthographic(float left, float right, float bottom, float top, float near, float far);
 	static pmMat4 Perspective(float fov, float aspectRatio, float near, float far);
