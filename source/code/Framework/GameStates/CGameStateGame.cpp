@@ -14,9 +14,6 @@ CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 void CGameStateGame::OnCreate()
 {
 	_logDebug( "Game State GAME: ON CREATE" );
-	// WARNING:
-	// Opengl can't, for some reason, generate buffers on another thread,
-	// look into this!
 
 	m_models[ 0 ] = newp phCModel( "data/models/monkey/monkey.obj" );
 	m_models[ 1 ] = newp phCModel( "data/models/test_scene/test_scene.obj" );
