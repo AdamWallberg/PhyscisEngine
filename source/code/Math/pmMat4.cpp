@@ -48,28 +48,33 @@ void pmMat4::Translate( const pmV3& translation )
 
 void pmMat4::Rotate( const pmV3& axis )
 {
-	pmMat4 rot(1);
+	// TODO: Do all of this in one matrix instead of 3
+	float cx = pmCos(axis.x);
+	float sx = pmSin(axis.x);
+	float cy = pmCos(axis.y);
+	float sy = pmSin(axis.y);
+	float cz = pmCos(axis.z);
+	float sz = pmSin(axis.z);
+	
+	pmMat4 rotx(1);
+	rotx.up.y = cx;
+	rotx.up.z = sx;
+	rotx.forward.y = -sx;
+	rotx.forward.z = cx;
+	
+	pmMat4 roty(1);
+	roty.left.x = cy;
+	roty.left.z = -sy;
+	roty.forward.x = sy;
+	roty.forward.z = cy;
+	
+	pmMat4 rotz(1);
+	rotz.left.x = cz;
+	rotz.left.y = sz;
+	rotz.up.x = -sz;
+	rotz.up.y = cz;
 
-	float cx = pmCos( axis.x );
-	float sx = pmSin( axis.x );
-	float cy = pmCos( axis.y );
-	float sy = pmSin( axis.y );
-	float cz = pmCos( axis.z );
-	float sz = pmSin( axis.z );
-
-	rot.left.x = cy * cz;
-	rot.left.y = sx * sy * cz + cx * sz;
-	rot.left.z = -cx * sy * cz + sx * sz;
-
-	rot.up.x = -cy * sz;
-	rot.up.y = -sx * sy + cx * cz;
-	rot.up.z = cx * sy * sz + sx * cz;
-
-	rot.forward.x = sy;
-	rot.forward.y = -sx * cy;
-	rot.forward.z = cx * cy;
-
-	*this = rot * *this;
+	*this = *this * rotx * roty * rotz;
 }
 
 
