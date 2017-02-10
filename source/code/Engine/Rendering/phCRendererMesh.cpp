@@ -21,7 +21,7 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	GLint uWorldViewProjMatrixID = glGetUniformLocation(programID, "u_matWorldViewProj");
 	
 	pmMat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
-	pmMat4 matView = pCamera->GetTransformationMatrix();
+	pmMat4 matView = pCamera->GetTransformationMatrix().GetViewMatrix();
 	pmMat4 matProj = pCamera->GetProjectionMatrix();
 	pmMat4 matWorldViewProj = matWorld * matView * matProj;
 
