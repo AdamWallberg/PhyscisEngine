@@ -33,7 +33,6 @@ CApplication::CApplication()
 	// Initialize the clock
 	phCClock::Init();
 	phCClock::GetInstance().StartStopwatch( "fps_update_timer" );
-	phCClock::GetInstance().StartStopwatch( "application_life_time" );
 
 	// Initialize the event system
 	phCEventBroadcaster::Init();
@@ -81,7 +80,6 @@ CApplication::~CApplication()
 	delete m_pInputSystem;
 	phCEventBroadcaster::GetInstance().Destroy();
 	phCClock::GetInstance().StopStopwatch( "fps_update_timer" );
-	phCClock::GetInstance().StopStopwatch( "application_life_time" );
 	phCClock::Destroy();
 	delete m_pWindow;
 	phCFileSystem::Destroy();
@@ -119,8 +117,6 @@ void CApplication::Update()
 		m_pWindow->SetWindowTitle( title.c_str() );
 		phCClock::GetInstance().StartStopwatch( "fps_update_timer" );
 	}
-
-	const float lifeTime = phCClock::GetInstance().GetStopwatchTime("application_life_time");
 
 	// Update input
 	m_pInputSystem->Update();
