@@ -106,7 +106,7 @@ void CGameStateMachine::UnloadCurrentStateAndLoadNext( CGameStateMachine* pMachi
 	_logDebug( "Loading thread started.." );
 
 	// Set GL context
-	glfwMakeContextCurrent(phCWindowLocator::GetService()->GetWindow());
+	glfwMakeContextCurrent(phCWindowLocator::GetService()->GetThreadContext());
 
 	// Unload current game state
 	pMachine->m_pCurrentGameState->OnDestroy();
