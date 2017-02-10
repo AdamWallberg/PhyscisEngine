@@ -83,23 +83,129 @@ void pmMat4::Scale( const pmV3& scale )
 
 
 
-pmMat4 pmMat4::GetToggledMatrix() const
+pmMat4 pmMat4::GetInverse() const
 {
-	pmMat4 result(1);
+	float temp[ 16 ];
 
-	result.left.x = left.x;
-	result.left.y = up.x;
-	result.left.z = -forward.x;
+	temp[ 0 ] = elements[ 5 ] * elements[ 10 ] * elements[ 15 ] -
+		elements[ 5 ] * elements[ 11 ] * elements[ 14 ] -
+		elements[ 9 ] * elements[ 6 ] * elements[ 15 ] +
+		elements[ 9 ] * elements[ 7 ] * elements[ 14 ] +
+		elements[ 13 ] * elements[ 6 ] * elements[ 11 ] -
+		elements[ 13 ] * elements[ 7 ] * elements[ 10 ];
 
-	result.up.x = left.y;
-	result.up.y = up.y;
-	result.up.z = -forward.y;
+	temp[ 4 ] = -elements[ 4 ] * elements[ 10 ] * elements[ 15 ] +
+		elements[ 4 ] * elements[ 11 ] * elements[ 14 ] +
+		elements[ 8 ] * elements[ 6 ] * elements[ 15 ] -
+		elements[ 8 ] * elements[ 7 ] * elements[ 14 ] -
+		elements[ 12 ] * elements[ 6 ] * elements[ 11 ] +
+		elements[ 12 ] * elements[ 7 ] * elements[ 10 ];
 
-	result.forward.x = left.z;
-	result.forward.x = up.z;
-	result.forward.x = -forward.z;
+	temp[ 8 ] = elements[ 4 ] * elements[ 9 ] * elements[ 15 ] -
+		elements[ 4 ] * elements[ 11 ] * elements[ 13 ] -
+		elements[ 8 ] * elements[ 5 ] * elements[ 15 ] +
+		elements[ 8 ] * elements[ 7 ] * elements[ 13 ] +
+		elements[ 12 ] * elements[ 5 ] * elements[ 11 ] -
+		elements[ 12 ] * elements[ 7 ] * elements[ 9 ];
 
-	result.translation = translation;
+	temp[ 12 ] = -elements[ 4 ] * elements[ 9 ] * elements[ 14 ] +
+		elements[ 4 ] * elements[ 10 ] * elements[ 13 ] +
+		elements[ 8 ] * elements[ 5 ] * elements[ 14 ] -
+		elements[ 8 ] * elements[ 6 ] * elements[ 13 ] -
+		elements[ 12 ] * elements[ 5 ] * elements[ 10 ] +
+		elements[ 12 ] * elements[ 6 ] * elements[ 9 ];
+
+	temp[ 1 ] = -elements[ 1 ] * elements[ 10 ] * elements[ 15 ] +
+		elements[ 1 ] * elements[ 11 ] * elements[ 14 ] +
+		elements[ 9 ] * elements[ 2 ] * elements[ 15 ] -
+		elements[ 9 ] * elements[ 3 ] * elements[ 14 ] -
+		elements[ 13 ] * elements[ 2 ] * elements[ 11 ] +
+		elements[ 13 ] * elements[ 3 ] * elements[ 10 ];
+
+	temp[ 5 ] = elements[ 0 ] * elements[ 10 ] * elements[ 15 ] -
+		elements[ 0 ] * elements[ 11 ] * elements[ 14 ] -
+		elements[ 8 ] * elements[ 2 ] * elements[ 15 ] +
+		elements[ 8 ] * elements[ 3 ] * elements[ 14 ] +
+		elements[ 12 ] * elements[ 2 ] * elements[ 11 ] -
+		elements[ 12 ] * elements[ 3 ] * elements[ 10 ];
+
+	temp[ 9 ] = -elements[ 0 ] * elements[ 9 ] * elements[ 15 ] +
+		elements[ 0 ] * elements[ 11 ] * elements[ 13 ] +
+		elements[ 8 ] * elements[ 1 ] * elements[ 15 ] -
+		elements[ 8 ] * elements[ 3 ] * elements[ 13 ] -
+		elements[ 12 ] * elements[ 1 ] * elements[ 11 ] +
+		elements[ 12 ] * elements[ 3 ] * elements[ 9 ];
+
+	temp[ 13 ] = elements[ 0 ] * elements[ 9 ] * elements[ 14 ] -
+		elements[ 0 ] * elements[ 10 ] * elements[ 13 ] -
+		elements[ 8 ] * elements[ 1 ] * elements[ 14 ] +
+		elements[ 8 ] * elements[ 2 ] * elements[ 13 ] +
+		elements[ 12 ] * elements[ 1 ] * elements[ 10 ] -
+		elements[ 12 ] * elements[ 2 ] * elements[ 9 ];
+
+	temp[ 2 ] = elements[ 1 ] * elements[ 6 ] * elements[ 15 ] -
+		elements[ 1 ] * elements[ 7 ] * elements[ 14 ] -
+		elements[ 5 ] * elements[ 2 ] * elements[ 15 ] +
+		elements[ 5 ] * elements[ 3 ] * elements[ 14 ] +
+		elements[ 13 ] * elements[ 2 ] * elements[ 7 ] -
+		elements[ 13 ] * elements[ 3 ] * elements[ 6 ];
+
+	temp[ 6 ] = -elements[ 0 ] * elements[ 6 ] * elements[ 15 ] +
+		elements[ 0 ] * elements[ 7 ] * elements[ 14 ] +
+		elements[ 4 ] * elements[ 2 ] * elements[ 15 ] -
+		elements[ 4 ] * elements[ 3 ] * elements[ 14 ] -
+		elements[ 12 ] * elements[ 2 ] * elements[ 7 ] +
+		elements[ 12 ] * elements[ 3 ] * elements[ 6 ];
+
+	temp[ 10 ] = elements[ 0 ] * elements[ 5 ] * elements[ 15 ] -
+		elements[ 0 ] * elements[ 7 ] * elements[ 13 ] -
+		elements[ 4 ] * elements[ 1 ] * elements[ 15 ] +
+		elements[ 4 ] * elements[ 3 ] * elements[ 13 ] +
+		elements[ 12 ] * elements[ 1 ] * elements[ 7 ] -
+		elements[ 12 ] * elements[ 3 ] * elements[ 5 ];
+
+	temp[ 14 ] = -elements[ 0 ] * elements[ 5 ] * elements[ 14 ] +
+		elements[ 0 ] * elements[ 6 ] * elements[ 13 ] +
+		elements[ 4 ] * elements[ 1 ] * elements[ 14 ] -
+		elements[ 4 ] * elements[ 2 ] * elements[ 13 ] -
+		elements[ 12 ] * elements[ 1 ] * elements[ 6 ] +
+		elements[ 12 ] * elements[ 2 ] * elements[ 5 ];
+
+	temp[ 3 ] = -elements[ 1 ] * elements[ 6 ] * elements[ 11 ] +
+		elements[ 1 ] * elements[ 7 ] * elements[ 10 ] +
+		elements[ 5 ] * elements[ 2 ] * elements[ 11 ] -
+		elements[ 5 ] * elements[ 3 ] * elements[ 10 ] -
+		elements[ 9 ] * elements[ 2 ] * elements[ 7 ] +
+		elements[ 9 ] * elements[ 3 ] * elements[ 6 ];
+
+	temp[ 7 ] = elements[ 0 ] * elements[ 6 ] * elements[ 11 ] -
+		elements[ 0 ] * elements[ 7 ] * elements[ 10 ] -
+		elements[ 4 ] * elements[ 2 ] * elements[ 11 ] +
+		elements[ 4 ] * elements[ 3 ] * elements[ 10 ] +
+		elements[ 8 ] * elements[ 2 ] * elements[ 7 ] -
+		elements[ 8 ] * elements[ 3 ] * elements[ 6 ];
+
+	temp[ 11 ] = -elements[ 0 ] * elements[ 5 ] * elements[ 11 ] +
+		elements[ 0 ] * elements[ 7 ] * elements[ 9 ] +
+		elements[ 4 ] * elements[ 1 ] * elements[ 11 ] -
+		elements[ 4 ] * elements[ 3 ] * elements[ 9 ] -
+		elements[ 8 ] * elements[ 1 ] * elements[ 7 ] +
+		elements[ 8 ] * elements[ 3 ] * elements[ 5 ];
+
+	temp[ 15 ] = elements[ 0 ] * elements[ 5 ] * elements[ 10 ] -
+		elements[ 0 ] * elements[ 6 ] * elements[ 9 ] -
+		elements[ 4 ] * elements[ 1 ] * elements[ 10 ] +
+		elements[ 4 ] * elements[ 2 ] * elements[ 9 ] +
+		elements[ 8 ] * elements[ 1 ] * elements[ 6 ] -
+		elements[ 8 ] * elements[ 2 ] * elements[ 5 ];
+
+	float determinant = elements[ 0 ] * temp[ 0 ] + elements[ 1 ] * temp[ 4 ] + elements[ 2 ] * temp[ 8 ] + elements[ 3 ] * temp[ 12 ];
+	determinant = 1.0f / determinant;
+
+	pmMat4 result(0.0f);
+
+	for( uint8 i = 0; i < 4 * 4; i++ )
+		result.elements[ i ] = temp[ i ] * determinant;
 
 	return result;
 }
