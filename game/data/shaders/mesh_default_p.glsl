@@ -3,6 +3,7 @@
 struct SPixel
 {
 	vec3 normal;
+	vec3 worldNormal;
 	vec2 uv;
 	vec4 color;
 };
@@ -13,5 +14,5 @@ out vec4 out_color;
 
 void main()
 {
-	out_color = vec4(PS.normal, 1.0);
+	out_color = vec4(PS.worldNormal, 1.0);
 }

@@ -11,6 +11,7 @@ struct SVertex
 struct SPixel
 {
 	vec3 normal;
+	vec3 worldNormal;
 	vec2 uv;
 	vec4 color;
 };
@@ -28,6 +29,7 @@ void main()
 {
 	gl_Position = u_matWorldViewProj * vec4(VS.position,1);
 	PS.normal = VS.normal * 0.5 + 0.5;
+	PS.worldNormal = (u_matWorld * vec4( VS.normal, 0.0 )).xyz * 0.5 + 0.5;
 	PS.color = vec4(VS.uv, 0.0, 1.0);
 	PS.uv = VS.uv;
 }
