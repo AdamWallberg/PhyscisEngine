@@ -107,13 +107,13 @@ pmMat4 pmMat4::Orthographic( float left, float right, float bottom, float top, f
 
 pmMat4 pmMat4::Perspective( float fov, float aspectRatio, float near, float far )
 {
-	pmMat4 result(1.0f);
+	pmMat4 result(0.0f);
 
+	result.left.x = (1.0f / pmTan(fov * 0.5f)) / aspectRatio;
 	result.up.y = 1.0f / pmTan(fov * 0.5f);
-	result.left.x = result.up.y / aspectRatio;
+	result.forward.z = (near + far) / (near - far);
+	result.translation.z = (2.0f * near * far) / (near - far);
 	result.elements[11] = -1.0f;
-	result.forward.z = -(far + near) / (far - near);
-	result.translation.z = -(2.0f * far * near) / (far - near);
 
 	return result;
 }

@@ -4,7 +4,7 @@
 #include "Clock/phCClock.h"
 
 CCameraFreeFlight::CCameraFreeFlight()
-	: phCCamera(90.0f, static_cast<float>(CSettingsWindow::width) / static_cast<float>(CSettingsWindow::height), 0.01f, 1000.0f)
+	: phCCamera(75.0f, static_cast<float>(CSettingsWindow::width) / static_cast<float>(CSettingsWindow::height), 0.01f, 1000.0f)
 	, m_mappingW(phCWindowLocator::GetService(), 'W')
 	, m_mappingS(phCWindowLocator::GetService(), 'S')
 	, m_mappingA(phCWindowLocator::GetService(), 'A')
