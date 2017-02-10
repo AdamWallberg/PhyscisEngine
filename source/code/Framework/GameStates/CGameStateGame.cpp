@@ -9,19 +9,17 @@ CGameStateGame::CGameStateGame( CGameStateMachine* pMachine )
 
 }
 
-
-
 void CGameStateGame::OnCreate()
 {
 	_logDebug( "Game State GAME: ON CREATE" );
 
-	m_models[ 0 ] = newp phCModel( "data/models/monkey/monkey.obj" );
+	m_models[ 0 ] = newp phCModel( "data/models/stump/stump.obj" );
 	m_models[ 1 ] = newp phCModel( "data/models/test_scene/test_scene.obj" );
-	m_models[ 2 ] = newp phCModel( "data/models/fence/fence.obj" );
+	m_models[ 2 ] = newp phCModel( "data/models/thing/thing.obj" );
 
-	m_models[ 0 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
-	m_models[ 1 ]->m_matrix.Translate( pmV3( 0.0f, -2.0f, 0.0f ) );
-	m_models[ 2 ]->m_matrix.Translate( pmV3( 0.0f, -2.0f, 0.0f ) );
+	//m_models[ 0 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
+	//m_models[ 1 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
+	//m_models[ 2 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
 
 	m_pCamera = newp CCameraFreeFlight();
 	phCCameraSystemLocator::GetService()->SetCurrentCamera( m_pCamera );
@@ -30,6 +28,10 @@ void CGameStateGame::OnCreate()
 void CGameStateGame::OnDestroy()
 {
 	_logDebug( "Game State GAME: ON DESTROY" );
+	delete m_pCamera;
+	delete m_models[0];
+	delete m_models[1];
+	delete m_models[2];
 }
 
 void CGameStateGame::OnEnter()
@@ -41,15 +43,12 @@ void CGameStateGame::OnEnter()
 void CGameStateGame::OnExit()
 {
 	_logDebug( "Game State GAME: ON EXIT" );
-	delete m_pCamera;
-	delete m_models[0];
-	delete m_models[1];
-	delete m_models[2];
+
 }
 
 void CGameStateGame::Update()
 {
-	m_models[0]->m_matrix.RotateXYZ(pmV3(1.0f, 1.0f, 1.0f) * phCClock::GetInstance().GetDeltaTime() * 35.0f);
+	m_models[0]->m_matrix.RotateXYZ(pmV3(0.0f, 1.0f, 0.0f) * phCClock::GetInstance().GetDeltaTime() * 35.0f);
 	m_models[0]->m_matrix.Translate(m_models[0]->m_matrix.forward * phCClock::GetInstance().GetDeltaTime());
 	m_models[0]->Update();
 
