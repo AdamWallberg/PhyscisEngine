@@ -41,6 +41,7 @@ public:
 	void Rotate( const pmV3& axis );
 	void Scale( const pmV3& scale );
 
+	pmMat4 GetViewMatrix() const;
 	pmMat4 GetInverse() const;
 
 	static pmMat4 Orthographic(float left, float right, float bottom, float top, float near, float far);

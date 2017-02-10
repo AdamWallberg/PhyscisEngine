@@ -88,6 +88,31 @@ void pmMat4::Scale( const pmV3& scale )
 
 
 
+pmMat4 pmMat4::GetViewMatrix() const
+{
+	pmMat4 result(1.0f);
+	
+	result.left.x = left.x;
+	result.left.y = up.x;
+	result.left.z = -forward.x;
+
+	result.up.x = left.y;
+	result.up.y = up.y;
+	result.up.z = -forward.y;
+
+	result.forward.x = left.z;
+	result.forward.y = up.z;
+	result.forward.z = -forward.z;
+
+	result.translation.x = -left.dot( translation );
+	result.translation.y = -up.dot( translation );
+	result.translation.z = forward.dot( translation );
+
+	return result;
+}
+
+
+
 pmMat4 pmMat4::GetInverse() const
 {
 	float temp[ 16 ];
