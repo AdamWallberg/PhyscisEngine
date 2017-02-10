@@ -24,7 +24,7 @@ CCameraFreeFlight::CCameraFreeFlight()
 	m_pitchMovement.AddMapping(&m_mappingUP, 1.0f);
 	m_pitchMovement.AddMapping(&m_mappingDOWN, -1.0f);
 
-	m_position = pmV3(0.0f, 0.0f, -6.0f);
+	m_position = pmV3(0.0f, 3.0f, 0.0f);
 	m_rotation = pmV3(0.0f, 0.0f, 0.0f);
 }
 
