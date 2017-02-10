@@ -7,8 +7,18 @@
 
 struct STexture
 {
-	GLuint ID;
+	STexture()
+		: ID(0)
+		, width(0)
+		, height(0)
+		, pData(nullptr)
+	{
+	}
 
+	GLuint ID;
+	uint16 width;
+	uint16 height;
+	uint8* pData;
 };
 
 class phCTextureSystem
@@ -20,15 +30,15 @@ public:
 
 	// Name will default to filePath
 	STexture* LoadTexture(std::string filePath, std::string nameOptional = "");
-	void UnloadTexture(std::string textureName);
-	void UnloadTexture(const GLuint textureID);
-	void UnloadTexture(STexture* pTexture);
+	void DestroyTexture(std::string textureName);
+	void DestroyTexture(const GLuint textureID);
+	void DestroyTexture(STexture* pTexture);
 
 private:
 
-	bool LoadFromBMP(std::string filePath, uint8* data);
+	bool LoadFromBMP(std::string filePath, STexture* pTexture);
 
-	std::map<std::string, STexture> m_textures;
+	std::map<std::string, STexture*> m_textures;
 
 };
 
