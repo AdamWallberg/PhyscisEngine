@@ -55,7 +55,7 @@ CApplication::CApplication()
 
 	// Create the texture system
 	m_pTextureSystem = newp phCTextureSystem();
-	m_pTextureSystem->LoadTexture("data/textures/test.bmp");
+	m_pTextureSystem->LoadTexture("data/models/monkey/monkey_diffuse.bmp");
 	// Register texture system to locator
 	phCTextureSystemLocator::SetService(m_pTextureSystem);
 

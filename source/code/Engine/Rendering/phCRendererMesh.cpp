@@ -50,7 +50,7 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(12));
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(20));
+	glVertexAttribPointer(2, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(24));
 	glEnableVertexAttribArray(3);
 	glVertexAttribPointer(3, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(32));
 

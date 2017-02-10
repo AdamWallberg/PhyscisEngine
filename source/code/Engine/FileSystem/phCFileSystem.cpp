@@ -167,9 +167,9 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 			const SVertex& rVertex = it.first;
 
 			// Calc smooth shading / flat shading
-			if(rVertex.position == vertex.position)
+			if(rVertex.position == vertex.position && rVertex.uv == vertex.uv)
 			{
-				if(hasSmoothNormals || (rVertex.normal == vertex.normal && rVertex.uv == vertex.uv && rVertex.color == vertex.color))
+				if(hasSmoothNormals || (rVertex.normal == vertex.normal && rVertex.color == vertex.color))
 				{
 					index = it.second;
 					alreadyIndexed = true;

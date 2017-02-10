@@ -49,7 +49,7 @@ void CGameStateGame::OnExit()
 
 void CGameStateGame::Update()
 {
-	m_models[0]->m_matrix.Rotate(pmV3(1.0f, 1.0f, 1.0f) * phCClock::GetInstance().GetDeltaTime() * 35.0f);
+	m_models[0]->m_matrix.RotateXYZ(pmV3(1.0f, 1.0f, 1.0f) * phCClock::GetInstance().GetDeltaTime() * 35.0f);
 	m_models[0]->m_matrix.Translate(m_models[0]->m_matrix.forward * phCClock::GetInstance().GetDeltaTime());
 	m_models[0]->Update();
 

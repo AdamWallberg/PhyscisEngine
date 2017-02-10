@@ -38,7 +38,9 @@ public:
 	};
 
 	void Translate( const pmV3& translation );
-	void Rotate( const pmV3& axis );
+	// Recommended for camera rotation
+	void RotateZYX( const pmV3& axis );
+	void RotateXYZ( const pmV3& axis );
 	void Scale( const pmV3& scale );
 
 	pmMat4 GetViewMatrix() const;

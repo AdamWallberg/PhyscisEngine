@@ -46,35 +46,55 @@ void pmMat4::Translate( const pmV3& translation )
 }
 
 
-void pmMat4::Rotate( const pmV3& axis )
+void pmMat4::RotateZYX( const pmV3& axis )
 {
-	// TODO: Do all of this in one matrix instead of 3
-	float cx = pmCos(axis.x);
-	float sx = pmSin(axis.x);
-	float cy = pmCos(axis.y);
-	float sy = pmSin(axis.y);
-	float cz = pmCos(axis.z);
-	float sz = pmSin(axis.z);
-	
-	pmMat4 rotx(1);
-	rotx.up.y = cx;
-	rotx.up.z = sx;
-	rotx.forward.y = -sx;
-	rotx.forward.z = cx;
-	
-	pmMat4 roty(1);
-	roty.left.x = cy;
-	roty.left.z = -sy;
-	roty.forward.x = sy;
-	roty.forward.z = cy;
-	
-	pmMat4 rotz(1);
-	rotz.left.x = cz;
-	rotz.left.y = sz;
-	rotz.up.x = -sz;
-	rotz.up.y = cz;
+	float ca = pmCos(axis.x);
+	float sa = pmSin(axis.x);
+	float cb = pmCos(axis.y);
+	float sb = pmSin(axis.y);
+	float cc = pmCos(axis.z);
+	float sc = pmSin(axis.z);
 
-	*this = *this * rotx * roty * rotz;
+	// ZYX
+	pmMat4 result( 1.0f );
+	result.left.x = cc * cb;
+	result.left.y = sc * cb;
+	result.left.z = -sb;
+
+	result.up.x = -sc * ca + cc * sb * sa;
+	result.up.y = cc * ca + sc * sb * sa;
+	result.up.z = cb * sa;
+
+	result.forward.x = sc * sa + cc * sb * ca;
+	result.forward.y = -cc * sa + sc * sb * ca;
+	result.forward.z = cb * ca;
+
+	*this = result * *this;
+}
+
+void pmMat4::RotateXYZ( const pmV3& axis )
+{
+	float ca = pmCos(axis.x);
+	float sa = pmSin(axis.x);
+	float cb = pmCos(axis.y);
+	float sb = pmSin(axis.y);
+	float cc = pmCos(axis.z);
+	float sc = pmSin(axis.z);
+
+	pmMat4 result(1.0f);
+	result.left.x = cb * cc;
+	result.left.y = sa * sb * cc + ca * sc;
+	result.left.z = -ca * sb * cc + sa * sc;
+	
+	result.up.x = -cb * sc;
+	result.up.y = -sa * sb * sc + ca * cc;
+	result.up.z = ca * sb * sc + sa * cc;
+	
+	result.forward.x = sb;
+	result.forward.y = -sa * cb;
+	result.forward.z = ca * cb;
+
+	*this = result * *this;
 }
 
 
