@@ -9,6 +9,7 @@
 
 phCWindow::phCWindow()
 	: m_pWindow( nullptr )
+	, m_pThreadContext( nullptr )
 	, m_shouldClose( false )
 {
 } // phCWindow
@@ -39,12 +40,17 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
 	glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
+	glfwWindowHint(GLFW_VISIBLE, true);
+	m_pThreadContext = glfwCreateWindow(1, 1, "physcis_thread_context", nullptr, nullptr);
+	assert(m_pThreadContext);
+	glfwWindowHint(GLFW_VISIBLE, false);
+
 	// Setup fullscreen
 	GLFWmonitor* pMonitor = nullptr;
 	if( fullscreen )
 		pMonitor = glfwGetPrimaryMonitor();
 
-	m_pWindow = glfwCreateWindow( width, height, title, pMonitor, nullptr );
+	m_pWindow = glfwCreateWindow( width, height, title, pMonitor, m_pThreadContext );
 	if( !m_pWindow )
 	{
 		_logError( "Couldn't create window!" );

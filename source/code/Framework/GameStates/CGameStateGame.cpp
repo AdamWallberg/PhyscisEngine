@@ -17,6 +17,17 @@ void CGameStateGame::OnCreate()
 	// WARNING:
 	// Opengl can't, for some reason, generate buffers on another thread,
 	// look into this!
+
+	m_models[ 0 ] = newp phCModel( "data/models/monkey/monkey.obj" );
+	m_models[ 1 ] = newp phCModel( "data/models/test_scene/test_scene.obj" );
+	m_models[ 2 ] = newp phCModel( "data/models/fence/fence.obj" );
+
+	m_models[ 0 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
+	m_models[ 1 ]->m_matrix.Translate( pmV3( 0.0f, -2.0f, 0.0f ) );
+	m_models[ 2 ]->m_matrix.Translate( pmV3( 0.0f, -2.0f, 0.0f ) );
+
+	m_pCamera = newp CCameraFreeFlight();
+	phCCameraSystemLocator::GetService()->SetCurrentCamera( m_pCamera );
 }
 
 void CGameStateGame::OnDestroy()
@@ -27,16 +38,7 @@ void CGameStateGame::OnDestroy()
 void CGameStateGame::OnEnter()
 {
 	_logDebug( "Game State GAME: ON ENTER" );
-	m_models[0] = newp phCModel("data/models/monkey/monkey.obj");
-	m_models[1] = newp phCModel("data/models/test_scene/test_scene.obj");
-	m_models[2] = newp phCModel("data/models/fence/fence.obj");
 	
-	m_models[0]->m_matrix.Translate(pmV3(0.0f, 0.0f, 0.0f));
-	m_models[1]->m_matrix.Translate(pmV3(0.0f, -2.0f, 0.0f));
-	m_models[2]->m_matrix.Translate(pmV3(0.0f, -2.0f, 0.0f));
-
-	m_pCamera = newp CCameraFreeFlight();
-	phCCameraSystemLocator::GetService()->SetCurrentCamera(m_pCamera);
 }
 
 void CGameStateGame::OnExit()

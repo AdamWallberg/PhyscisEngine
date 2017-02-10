@@ -1,8 +1,7 @@
 #pragma once
 
 // graphics
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "phGL.h"
 #include "phSystem.h"
 #include "Systems/phServiceLocators.h"
 
@@ -24,6 +23,7 @@ public:
 	// Getters
 	bool ShouldClose() { return m_shouldClose; }
 	GLFWwindow* GetWindow() { return m_pWindow; }
+	GLFWwindow* GetThreadContext() { return m_pThreadContext; }
 
 	// Setters
 	void SetWindowTitle( const char* title ) { glfwSetWindowTitle( m_pWindow, title ); }
@@ -31,6 +31,7 @@ public:
 private:
 
 	GLFWwindow* m_pWindow;
+	GLFWwindow* m_pThreadContext;
 	bool m_shouldClose;
 
 };

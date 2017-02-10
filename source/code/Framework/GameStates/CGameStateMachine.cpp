@@ -4,6 +4,7 @@
 #include "Clock/phCClock.h"
 #include "CGameStateMenu.h"
 #include "CGameStateGame.h"
+#include "Engine/phCWindow.h"
 
 CGameStateMachine::CGameStateMachine()
 	: m_pCurrentGameState( nullptr )
@@ -103,6 +104,9 @@ void CGameStateMachine::ChangeGameState( const char* stateName )
 void CGameStateMachine::UnloadCurrentStateAndLoadNext( CGameStateMachine* pMachine )
 {
 	_logDebug( "Loading thread started.." );
+
+	// Set GL context
+	glfwMakeContextCurrent(phCWindowLocator::GetService()->GetWindow());
 
 	// Unload current game state
 	pMachine->m_pCurrentGameState->OnDestroy();
