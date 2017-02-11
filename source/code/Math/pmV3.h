@@ -83,14 +83,14 @@ public:
 	} // normalize
 
 	// Dot product methods
-	inline const float& dot( const pmV3& rOther ) const
+	inline const float dot( const pmV3& rOther ) const
 	{
 		return x * rOther.x + y * rOther.y + z * rOther.z;
 
 	} // dot
 
 	// Cross product methods
-	inline const pmV3& cross( const pmV3& in ) const
+	inline const pmV3 cross( const pmV3& in ) const
 	{
 		return pmV3( y * in.z - in.y * z, z * in.x - in.z * x, x * in.y - in.x * y );
 

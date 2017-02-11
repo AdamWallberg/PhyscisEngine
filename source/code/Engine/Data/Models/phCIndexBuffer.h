@@ -18,7 +18,7 @@ public:
 
 	void AddIndex(const uint32& rIndex) { m_indices.push_back(rIndex); }
 
-	uint32 GetNumIndicies() const { return m_indices.size(); }
+	uint32 GetNumIndicies() const { return static_cast<uint32>( m_indices.size() ); }
 
 private:
 

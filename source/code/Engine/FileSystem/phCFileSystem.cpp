@@ -185,7 +185,7 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 		else
 		{
 			pVertexData->m_vertices.push_back( vertex );
-			uint32 newIndex = pVertexData->m_vertices.size() - 1;
+			uint32 newIndex = static_cast<uint32>( pVertexData->m_vertices.size() ) - 1;
 			pIndexData->m_indices.push_back( newIndex );
 			indexedVertices[ vertex ] = newIndex;
 		}

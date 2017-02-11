@@ -17,7 +17,7 @@ phCClock::~phCClock()
 {
 	for( auto it : m_clocks )
 	{
-		_logError( "Found unremoved clock: %s. Please call StopStopwatch() when done using it, for increased performance.", it.first );
+		_logError( "Found unremoved clock: %s. Please call StopStopwatch() when done using it, for increased performance.", it.first.c_str() );
 	}
 
 	m_clocks.clear();

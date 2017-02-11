@@ -39,7 +39,7 @@ public:
 
 	void AddVertex( const SVertex& rVertex ) { m_vertices.push_back( rVertex ); }
 
-	uint32 GetNumVertices() const { return m_vertices.size(); }
+	uint32 GetNumVertices() const { return static_cast<uint32>( m_vertices.size() ); }
 
 private:
 
