@@ -40,6 +40,7 @@ bool phCWindow::CreateWindow( const char* title, uint16 width, uint16 height, ui
 	glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
 	glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
 
+	// Create thread context
 	glfwWindowHint(GLFW_VISIBLE, false);
 	m_pThreadContext = glfwCreateWindow(1, 1, "physcis_thread_context", nullptr, nullptr);
 	assert(m_pThreadContext);
