@@ -108,6 +108,22 @@ void pmMat4::Scale( const pmV3& scale )
 
 
 
+void pmMat4::Transpose()
+{
+	pmMat4 result(1);
+	for( uint8 c = 0; c < 4; ++c )
+	{
+		for( uint8 r = 0; r < 4; ++r )
+		{
+			result.elements[c + r * 4] = elements[r + c * 4];
+		}
+	}
+
+	*this = result;
+}
+
+
+
 pmMat4 pmMat4::GetViewMatrix() const
 {
 	pmMat4 result(1.0f);
@@ -288,33 +304,6 @@ pmMat4 pmMat4::Perspective( float fov, float aspectRatio, float near, float far 
 	result.forward.z = (near + far) / (near - far);
 	result.translation.z = (2.0f * near * far) / (near - far);
 	result.elements[11] = -1.0f;
-
-	return result;
-}
-
-
-
-pmMat4 pmMat4::LookAt( const pmV3& position, const pmV3& target, const pmV3& up )
-{
-	pmMat4 result(1.0f);
-
-	pmV3 f = (target - position).normalize();
-	pmV3 s = f.cross(up.normalize());
-	pmV3 u = s.cross(f);
-
-	result.elements[0 + 0 * 4] = s.x;
-	result.elements[0 + 1 * 4] = s.y;
-	result.elements[0 + 2 * 4] = s.z;
-
-	result.elements[1 + 0 * 4] = u.x;
-	result.elements[1 + 1 * 4] = u.y;
-	result.elements[1 + 2 * 4] = u.z;
-
-	result.elements[2 + 0 * 4] = -f.x;
-	result.elements[2 + 1 * 4] = -f.y;
-	result.elements[2 + 2 * 4] = -f.z;
-
-	result.Translate(pmV3::zero - position);
 
 	return result;
 }

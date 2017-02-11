@@ -38,19 +38,16 @@ public:
 	};
 
 	void Translate( const pmV3& translation );
-	// Recommended for camera rotation
-	void RotateZYX( const pmV3& axis );
+	void RotateZYX( const pmV3& axis ); // Recommended for camera rotation
 	void RotateXYZ( const pmV3& axis );
 	void Scale( const pmV3& scale );
+	void Transpose();
 
 	pmMat4 GetViewMatrix() const;
 	pmMat4 GetInverse() const;
 
 	static pmMat4 Orthographic(float left, float right, float bottom, float top, float near, float far);
 	static pmMat4 Perspective(float fov, float aspectRatio, float near, float far);
-	static pmMat4 LookAt(const pmV3& position, const pmV3& target, const pmV3& up);
-
-	// TODO: Add Invert, Transpose, and eventual Quaternion calculations..
 
 	pmMat4 operator * ( const pmMat4& other );
 
