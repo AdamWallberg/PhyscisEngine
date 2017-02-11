@@ -16,5 +16,6 @@ uniform sampler2D u_textureSampler;
 
 void main()
 {
-	out_color = texture(u_textureSampler, PS.uv);
+	out_color = texture(u_textureSampler, PS.uv) * vec4(PS.normal, 1) * PS.color;
+	//out_color = PS.color;
 }
