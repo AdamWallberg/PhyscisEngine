@@ -26,9 +26,6 @@ public:
 	// OBJ parsing
 	bool LoadAndParseOBJ( const char* filePath, phCVertexData* pVertexData, phCIndexData* pIndexData );
 
-	// BMP parsing
-	GLuint LoadAndParseBMP( const char* filePath );
-
 #if defined FBX
 	// FBX parsing
 	// TODO: Change return type after proper model implementation
