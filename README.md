@@ -9,17 +9,19 @@ It's written by me (Adam Wallberg), and is only a small hobby project.<br>
 <h3>Implemented Features</h3> 
   - Premake5 project setup.
   - Component based input system. (Not complete yet.)
-  - 2D and 3D vectors, and some basic math functions.
   - JSON loading and parsing using modern json. <a href="https://github.com/nlohmann/json">github.com/nlohmann/json</a>
   - Window creating using GLFW.
   - Memory tracking and leak detection.
+  - Lightweight math library. 2D, 3D, 4D vectors, 4x4 matrices, and basic math operations.
+  - Basic rendering and shading.
+  - Lots of bugs.
+  - Parsing of OBJ, and BMP files.
 
 <h3>Planned Features</h3>
-  - "Fully independent" math library (no glm or similar third party libraries)
-    including own vector and matrix classes.
   - Deferred rendering with some fancy postFX. 'Tis my forte.
   - Some sort of python scripting.
-  - Event based communication.
+  - Event based communication. (Implemented, but not representable)
+  
   
 <h3>Setup</h3>
 Heads up: the project can probably only compile using visual studio community 2015, mostly because of the json library.
