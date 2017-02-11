@@ -17,11 +17,6 @@ struct SVertex
 	pmV2 uv;
 	pmV4 color;
 
-	//bool operator ==( const SVertex& rOther ) const
-	//{
-	//	return position == rOther.position && normal == rOther.normal && uv == rOther.uv && color == rOther.color;
-	//}
-
 	bool operator <( const SVertex other ) const
 	{
 		return memcmp( ( void* )this, ( void* )&other, sizeof(SVertex) ) > 0;
