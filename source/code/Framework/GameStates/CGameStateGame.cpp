@@ -15,11 +15,7 @@ void CGameStateGame::OnCreate()
 
 	m_models[ 0 ] = newp phCModel( "data/models/stump/stump.obj" );
 	m_models[ 1 ] = newp phCModel( "data/models/test_scene/test_scene.obj" );
-	m_models[ 2 ] = newp phCModel( "data/models/thing/thing.obj" );
-
-	//m_models[ 0 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
-	//m_models[ 1 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
-	//m_models[ 2 ]->m_matrix.Translate( pmV3( 0.0f, 0.0f, 0.0f ) );
+	m_models[ 2 ] = newp phCModel( "data/models/monkey/monkey.obj" );
 
 	m_pCamera = newp CCameraFreeFlight();
 	phCCameraSystemLocator::GetService()->SetCurrentCamera( m_pCamera );
