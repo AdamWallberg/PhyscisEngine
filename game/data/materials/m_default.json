@@ -1,0 +1,9 @@
+{
+  "name": "MAT_Default",
+  "shaderProgram": "mesh_default",
+  "textures": 
+  [
+    "models/stump/stunp_c.bmp",
+	"textures/temp.bmp"
+  ]
+}
