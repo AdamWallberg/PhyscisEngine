@@ -1,16 +1,20 @@
 [GRAPHICS]
-- Start window on specific monitor
-- Camera class
-- Rendering of meshes
-- VBO indexing
 - Materials
 
 [INPUT]
 - Setup defines for joystick buttons/sticks
+- Create mouse input
 
 [LOGGING]
 - Logging with file .txt output
 
+[MATH]
+- Iterate on matrix class
+
 [PROJECT SETUP]
 - Have different lua scripts for each library
 - Different repo/project for math library
+
+[BUGS AND FIXES]
+- Last mesh that is being rendered disappears, probably has to do with VBO
+- When using alpha, objects behind only render half their triangles
