@@ -7,6 +7,9 @@
 
 void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 {
+	if(!pMesh->GetShouldRender())
+		return;
+
 	phCCamera* pCamera = phCCameraSystemLocator::GetService()->GetCurrentCamera();
 	if(!pCamera)
 		return;
@@ -45,14 +48,18 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	
 	pMesh->m_pVertexBuffer->Bind();
 
+	// Positions
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(0));
+	// Normals
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(12));
+	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3)));
+	// UV's
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(24));
+	glVertexAttribPointer(2, 2,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3) + sizeof(pmV3)));
+	// Colors
 	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(32));
+	glVertexAttribPointer(3, 4,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3) + sizeof(pmV3) + sizeof(pmV2)));
 
 	// Index buffers
 	pMesh->m_pIndexBuffer->Bind();
