@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-#include "Math/pmV4.h"
-#include "Math/pmMat4.h"
+#include "phMath/vec4.h"
+#include "phMath/mat4.h"
 #include "phGL.h"
 #include "phSystem.h"
 
@@ -12,10 +12,10 @@ struct SVertex
 	{
 	}
 
-	pmV3 position;
-	pmV3 normal;
-	pmV2 uv;
-	pmV4 color;
+	pm::vec3 position;
+	pm::vec3 normal;
+	pm::vec2 uv;
+	pm::vec4 color;
 
 	bool operator <( const SVertex other ) const
 	{

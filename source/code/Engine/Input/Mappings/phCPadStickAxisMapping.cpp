@@ -5,8 +5,7 @@
 //glfw
 #include <GLFW/glfw3.h>
 //math
-#include "Math/pmMath.h"
-
+#include <phMath/math.h>
 
 
 phCPadStickAxisMapping::phCPadStickAxisMapping( phCWindow* pWindow, const uint8 pad, const uint8 axis )
@@ -29,7 +28,7 @@ void phCPadStickAxisMapping::Update()
 		int numAxes;
 		const float value = glfwGetJoystickAxes( m_pad, &numAxes )[ m_axis ];
 
-		m_magnitude = pmAbs( value ) >= JOYSTICK_DEADZONE ? value : 0.0f;
+		m_magnitude = pm::abs( value ) >= JOYSTICK_DEADZONE ? value : 0.0f;
 	}
 
 	m_prevHeld = m_held;

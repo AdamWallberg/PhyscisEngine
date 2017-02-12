@@ -1,6 +1,6 @@
 #include "phSystem.h"
 #include "phCAction.h"
-#include "Math/pmMath.h"
+#include "phMath/math.h"
 
 phCAction::phCAction()
 	: m_pressed( false )
@@ -51,7 +51,7 @@ void phCAction::Update()
 		pMapping->Update();
 
 		const float mappingValue = pMapping->GetValue() * scale;
-		if( pmAbs( mappingValue ) >= pmAbs( highestValue ) ) // Use abs since values can be negative
+		if( pm::abs( mappingValue ) >= pm::abs( highestValue ) ) // Use abs since values can be negative
 		{
 			pStrongestMapping = pMapping;
 			highestValue = mappingValue;

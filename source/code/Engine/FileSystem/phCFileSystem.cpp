@@ -51,9 +51,9 @@ nlohmann::json phCFileSystem::LoadAndParseJSON( const char* filePath )
 bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVertexData, phCIndexData* pIndexData )
 {
 	std::vector< uint32 > positionIndices, uvIndices, normalIndices;
-	std::vector< pmV3 > tempPositions;
-	std::vector< pmV2 > tempUVs;
-	std::vector< pmV3 > tempNormals;
+	std::vector< pm::vec3 > tempPositions;
+	std::vector< pm::vec2 > tempUVs;
+	std::vector< pm::vec3 > tempNormals;
 
 	bool hasSmoothNormals = false;
 
@@ -77,19 +77,19 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 
 		if( strcmp( lineHeader, "v" ) == 0 ) // Read vertex position
 		{
-			pmV3 position;
+			pm::vec3 position;
 			fscanf_s( pFile, "%f %f %f\n", &position.x, &position.y, &position.z );
 			tempPositions.push_back( position );
 		}
 		else if( strcmp( lineHeader, "vt" ) == 0 ) // Read uv position
 		{
-			pmV2 uv;
+			pm::vec2 uv;
 			fscanf_s( pFile, "%f %f\n", &uv.x, &uv.y );
 			tempUVs.push_back( uv );
 		}
 		else if( strcmp( lineHeader, "vn" ) == 0 ) // Read normal
 		{
-			pmV3 normal;
+			pm::vec3 normal;
 			fscanf_s( pFile, "%f %f %f\n", &normal.x, &normal.y, &normal.z );
 			tempNormals.push_back( normal );
 		}
@@ -138,15 +138,15 @@ bool phCFileSystem::LoadAndParseOBJ( const char* filePath, phCVertexData* pVerte
 		uint32 uvIndex = uvIndices[ i ];
 		uint32 normalIndex = normalIndices[ i ];
 
-		pmV3 position = tempPositions[ positionIndex - 1 ];
-		pmV2 uv = tempUVs[ uvIndex - 1 ];
-		pmV3 normal = tempNormals[ normalIndex - 1 ];
+		pm::vec3 position = tempPositions[ positionIndex - 1 ];
+		pm::vec2 uv = tempUVs[ uvIndex - 1 ];
+		pm::vec3 normal = tempNormals[ normalIndex - 1 ];
 
 		SVertex vertex; // TODO: Read vertex color
 		vertex.position = position;
 		vertex.normal = normal;
 		vertex.uv = uv;
-		vertex.color = pmV4::white;
+		vertex.color = pm::vec4::white;
 
 		vertices.push_back( vertex );
 	}

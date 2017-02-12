@@ -1,4 +1,5 @@
-require 'settings'
+require "settings"
+require "modules/physcismath"
 
 LIBRARY_FOLDER = "$(SolutionDir)../dependencies/"
 EXTERNAL_LIB_FOLDER = "$(SolutionDir)../../../Libraries/"
@@ -40,6 +41,9 @@ project (FRAMEWORK_NAME)
 	objdir ("$(SolutionDir)../build/")
 	
 	files { "**.h", "**.cpp", "**.hpp" }
+	
+	-- Enable libraries
+	pm_enable()
 	
 	targetdir "$(SolutionDir)../game/"
 	debugdir "$(SolutionDir)../game/"

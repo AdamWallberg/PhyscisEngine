@@ -23,10 +23,10 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	GLint uProjMatrixID = glGetUniformLocation(programID, "u_matProj");
 	GLint uWorldViewProjMatrixID = glGetUniformLocation(programID, "u_matWorldViewProj");
 	
-	pmMat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
-	pmMat4 matView = pCamera->GetTransformationMatrix().GetViewMatrix();
-	pmMat4 matProj = pCamera->GetProjectionMatrix();
-	pmMat4 matWorldViewProj = matWorld * matView * matProj;
+	pm::mat4 matWorld = pMesh->m_matrix * pMesh->m_pParent->m_matrix;
+	pm::mat4 matView = pCamera->GetTransformationMatrix().GetViewMatrix();
+	pm::mat4 matProj = pCamera->GetProjectionMatrix();
+	pm::mat4 matWorldViewProj = matWorld * matView * matProj;
 
 	// Set uniforms
 	glUniformMatrix4fv(uWorldMatrixID, 1, GL_FALSE, &matWorld.elements[0]);
@@ -53,13 +53,13 @@ void phCRenderer::RenderMeshDefault(phCMesh* pMesh)
 	glVertexAttribPointer(0, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(0));
 	// Normals
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3)));
+	glVertexAttribPointer(1, 3,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pm::vec3)));
 	// UV's
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3) + sizeof(pmV3)));
+	glVertexAttribPointer(2, 2,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pm::vec3) + sizeof(pm::vec3)));
 	// Colors
 	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(3, 4,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pmV3) + sizeof(pmV3) + sizeof(pmV2)));
+	glVertexAttribPointer(3, 4,	GL_FLOAT, GL_FALSE,	sizeof(SVertex), BUFFER_OFFSET(sizeof(pm::vec3) + sizeof(pm::vec3) + sizeof(pm::vec2)));
 
 	// Index buffers
 	pMesh->m_pIndexBuffer->Bind();

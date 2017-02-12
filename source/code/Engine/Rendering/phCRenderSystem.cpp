@@ -30,7 +30,7 @@ void phCRenderSystem::Render()
 	if(!phCCameraSystemLocator::GetService()->GetCurrentCamera())
 		return;
 
-	const pmV4 clearColor = phCCameraSystemLocator::GetService()->GetCurrentCamera()->GetClearColor();
+	const pm::vec4 clearColor = phCCameraSystemLocator::GetService()->GetCurrentCamera()->GetClearColor();
 	glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

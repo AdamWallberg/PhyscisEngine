@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Data/phIAsset.h"
-#include "Math/pmMat4.h"
+#include <phMath/mat4.h>
 #include "phCVertexBuffer.h"
 #include "phCIndexBuffer.h"
 
@@ -25,7 +25,7 @@ public:
 
 private:
 
-	pmMat4 m_matrix;
+	pm::mat4 m_matrix;
 	phCModel* m_pParent;
 	
 	phCVertexData* m_pVertexData;

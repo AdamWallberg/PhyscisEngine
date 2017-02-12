@@ -6,7 +6,7 @@
 #include "../phIAsset.h"
 #include "phCMesh.h"
 //math
-#include "Math/pmMat4.h"
+#include "phMath/mat4.h"
 
 class phCModel : public phIAsset 
 {
@@ -22,7 +22,7 @@ public:
 	EAssetType GetAssetType() override { return ASSET_TYPE_MODEL; }
 	std::vector<phCMesh*>& GetMeshes() { return m_meshes; } 
 
-	pmMat4 m_matrix;
+	pm::mat4 m_matrix;
 
 private:
 

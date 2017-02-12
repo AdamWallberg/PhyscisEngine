@@ -24,8 +24,8 @@ CCameraFreeFlight::CCameraFreeFlight()
 	m_pitchMovement.AddMapping(&m_mappingUP, 1.0f);
 	m_pitchMovement.AddMapping(&m_mappingDOWN, -1.0f);
 
-	m_position = pmV3(0.0f, 3.0f, 0.0f);
-	m_rotation = pmV3(0.0f, 0.0f, 0.0f);
+	m_position = pm::vec3(0.0f, 3.0f, 0.0f);
+	m_rotation = pm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 void CCameraFreeFlight::Update()
@@ -38,7 +38,7 @@ void CCameraFreeFlight::Update()
 	m_position += m_transformationMatrix.forward * ( m_verticalMovement.GetValue() * phCClock::GetInstance().GetDeltaTime() ) * 3.0f;
 	m_position += m_transformationMatrix.left * ( m_horizontalMovement.GetValue() * phCClock::GetInstance().GetDeltaTime() ) * 3.0f;
 	
-	m_rotation -= pmV3(m_pitchMovement.GetValue(), m_yawMovement.GetValue(), 0.0f) * phCClock::GetInstance().GetDeltaTime() * 180.0f;
+	m_rotation -= pm::vec3(m_pitchMovement.GetValue(), m_yawMovement.GetValue(), 0.0f) * phCClock::GetInstance().GetDeltaTime() * 180.0f;
 
 	phCCamera::Update();
 }
