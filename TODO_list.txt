@@ -1,5 +1,14 @@
 [GRAPHICS]
 - Materials
+- Quad and sprite rendering
+- Font rendering
+- Line rendering
+- Frustum culling
+- Animations
+
+[MISC]
+- Bounding boxes for meshes
+- Debug geometry
 
 [INPUT]
 - Setup defines for joystick buttons/sticks
@@ -8,13 +17,15 @@
 [LOGGING]
 - Logging with file .txt output
 
-[MATH]
-- Iterate on matrix class
-
 [PROJECT SETUP]
 - Have different lua scripts for each library
-- Different repo/project for math library
+- Have different projects for Engine and Framework
 
 [BUGS AND FIXES]
 - Last mesh that is being rendered disappears, probably has to do with VBO
 - When using alpha, objects behind only render half their triangles
+
+[UI]
+- Buttons
+- Menu bars
+- Containers
