@@ -3,6 +3,8 @@
 <h4 align="center">Not Actually a Physics Engine</h4>
 
 <h3>Description</h3>
+MESSAGE: No longer working on this project. Just keeping the code up on github for reference.
+
 Physcis Engine is a 3D game engine, using GLFW for OpenGL.<br>
 It's written by me (Adam Wallberg), and is only a small hobby project.<br>
 
